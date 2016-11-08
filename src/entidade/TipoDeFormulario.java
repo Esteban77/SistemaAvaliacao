@@ -34,6 +34,11 @@ public class TipoDeFormulario {
 		this.perguntas = perguntas;	
 		this.empresa = empresa;
 	}
+	
+	public TipoDeFormulario() {
+		super();		
+	}
+	
 	public int getId() {
 		return id;
 	}

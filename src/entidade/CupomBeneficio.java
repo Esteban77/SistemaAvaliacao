@@ -50,7 +50,9 @@ public class CupomBeneficio {
 		this.consumidor = consumidor;
 		this.empresa = empresa;
 	}
-
+	public CupomBeneficio() {
+		super();		
+	}
 	public int getId() {
 		return id;
 	}

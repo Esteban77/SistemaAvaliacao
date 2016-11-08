@@ -40,7 +40,7 @@ private static final long serialVersionUID = 1L;
 		this.login = login;
 		this.senha = senha;
 	}
-	
+		
 	public String getLogin() {
 		return login;
 	}

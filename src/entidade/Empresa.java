@@ -33,6 +33,10 @@ public class Empresa extends Pessoa implements Serializable {
 		super(id, nome, telefone, login, senha);
 		this.cnpj = cnpj;
 	}
+	
+	public Empresa() {
+		super();		
+	}
 
 	public String getCnpj() {
 		return cnpj;

@@ -53,6 +53,11 @@ public class RespostaFormulario {
 		this.anonimo = anonimo;
 		this.consumidor = consumidor;
 	}
+	
+	public RespostaFormulario() {
+		super();
+		
+	}
 
 	public int getId() {
 		return id;

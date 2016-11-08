@@ -37,6 +37,9 @@ public class Pergunta {
 		this.pergunta = pergunta;
 		this.tipoDeFormulario = tipoDeFormulario;
 	}
+	public Pergunta() {
+		super();		
+	}
 	public int getId() {
 		return id;
 	}

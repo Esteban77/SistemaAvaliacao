@@ -31,6 +31,10 @@ public class TipoDeBeneficio {
 		this.empresa = empresa;
 	}
 	
+	public TipoDeBeneficio() {
+		super();		
+	}
+	
 	public int getId() {
 		return id;
 	}
