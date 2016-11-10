@@ -1,12 +1,13 @@
 package entidade;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -23,8 +24,9 @@ public class Consumidor extends Pessoa implements Serializable{
 
 	private String email;
 	
-	@OneToMany(mappedBy="consumidor"/*,fetch=FetchType.EAGER*/)
-	private List<RespostaFormulario> respostasFormulario;
+	@OneToMany(mappedBy="consumidor",fetch=FetchType.EAGER)
+	@OrderBy(value="id")
+	private Set<RespostaFormulario> respostasFormulario;
 	
 	
 	public Consumidor() {

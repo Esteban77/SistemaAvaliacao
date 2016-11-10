@@ -3,6 +3,7 @@ package entidade;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -42,10 +43,12 @@ public class RespostaFormulario implements Serializable{
 	@JoinColumn(name="idTipoDeFormulario")
 	private TipoDeFormulario tipoDeFormulario;
 	
-	@OneToMany(mappedBy="respostaFormulario", cascade = CascadeType.ALL/*, fetch=FetchType.EAGER*/)
-	private List<Resposta> respostas;
+//	@Sort(type = SortType.COMPARATOR)
+//	@OrderBy(value="id")
+	@OneToMany(mappedBy="respostaFormulario", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	private Set<Resposta> respostas;
 		
-	public RespostaFormulario(int id, List<Resposta> respostas, Date data, String comentario, TipoDeFormulario tipoDeFormulario, int numeroPedido, boolean anonimo, Consumidor consumidor) {
+	public RespostaFormulario(int id, Set<Resposta> respostas, Date data, String comentario, TipoDeFormulario tipoDeFormulario, int numeroPedido, boolean anonimo, Consumidor consumidor) {
 		super();
 		this.id = id;
 		this.respostas = respostas;
@@ -69,10 +72,10 @@ public class RespostaFormulario implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public List<Resposta> getRespostas() {
+	public Set<Resposta> getRespostas() {
 		return respostas;
 	}
-	public void setRespostas(List<Resposta> respostas) {
+	public void setRespostas(Set<Resposta> respostas) {
 		this.respostas = respostas;
 	}
 	public Date getData() {
