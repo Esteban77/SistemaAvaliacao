@@ -1,5 +1,7 @@
 package entidade;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -8,12 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
 @Table(name="pergunta")
-public class Pergunta {
+public class Pergunta implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -22,9 +25,10 @@ public class Pergunta {
 	@Transient  //nao persistir
 	private Opcao opcoes;
 	
-	private String pergunta;
+	private String nomePergunta;
 	
-	private int ordemPergunta;
+	@OneToOne(mappedBy="pergunta")
+	private Resposta resposta;
 	
 	@ManyToOne
 	@JoinColumn(name="idTipoDeFormulario")
@@ -34,7 +38,7 @@ public class Pergunta {
 		super();
 		this.id = id;
 		this.opcoes = opcoes;
-		this.pergunta = pergunta;
+		this.nomePergunta = pergunta;
 		this.tipoDeFormulario = tipoDeFormulario;
 	}
 	public Pergunta() {
@@ -52,25 +56,20 @@ public class Pergunta {
 	public void setOpcoes(Opcao opcoes) {
 		this.opcoes = opcoes;
 	}
-	public String getPergunta() {
-		return pergunta;
+	public String getNomePergunta() {
+		return nomePergunta;
 	}
-	public void setPergunta(String pergunta) {
-		this.pergunta = pergunta;
+	public void setNpmePergunta(String pergunta) {
+		this.nomePergunta = pergunta;
 	}
-	public int getOrdemPergunta() {
-		return ordemPergunta;
-	}
-	public void setOrdemPergunta(int ordemPergunta) {
-		this.ordemPergunta = ordemPergunta;
-	}
+	
 	public TipoDeFormulario getTipoDeFormulario() {
 		return tipoDeFormulario;
 	}
 	public void setTipoDeFormulario(TipoDeFormulario tipoDeFormulario) {
 		this.tipoDeFormulario = tipoDeFormulario;
 	}
-	
+
 		
 
 }

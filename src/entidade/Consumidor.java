@@ -23,7 +23,7 @@ public class Consumidor extends Pessoa implements Serializable{
 
 	private String email;
 	
-	@OneToMany(mappedBy="consumidor", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="consumidor"/*,fetch=FetchType.EAGER*/)
 	private List<RespostaFormulario> respostasFormulario;
 	
 	
@@ -54,5 +54,8 @@ public class Consumidor extends Pessoa implements Serializable{
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+	
+
+	
 	
 }
