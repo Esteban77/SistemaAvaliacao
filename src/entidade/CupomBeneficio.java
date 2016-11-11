@@ -37,7 +37,12 @@ public class CupomBeneficio {
 	@ManyToOne
 	@JoinColumn(name="idEmpresa")
 	private Empresa empresa;
+
 	
+	public CupomBeneficio() {
+		super();
+	}
+
 	public CupomBeneficio(int id, Date dataInicio, Date dataEfetivacao, boolean darBeneficio, boolean beneficioDado,
 			int pontos, Consumidor consumidor, Empresa empresa) {
 		super();

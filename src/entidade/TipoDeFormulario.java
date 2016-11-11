@@ -27,7 +27,11 @@ public class TipoDeFormulario {
 	@ManyToOne
 	@JoinColumn(name="idEmpresa")
 	private Empresa empresa;
+	
 			
+	public TipoDeFormulario() {
+		super();
+	}
 	public TipoDeFormulario(int id, List<Pergunta> perguntas, Empresa empresa) {
 		super();
 		this.id = id;

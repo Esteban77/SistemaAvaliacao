@@ -24,6 +24,10 @@ public class TipoDeBeneficio {
 	@JoinColumn(name="idEmpresa")
 	private Empresa empresa;
 	
+	public TipoDeBeneficio() {
+		super();
+	}
+
 	public TipoDeBeneficio(int id, String nomeBeneficio, Empresa empresa) {
 		super();
 		this.id = id;

@@ -30,6 +30,9 @@ public class Pergunta {
 	@JoinColumn(name="idTipoDeFormulario")
 	private TipoDeFormulario tipoDeFormulario;
 	
+	public Pergunta() {
+		super();
+	}
 	public Pergunta(int id, Opcao opcoes, String pergunta, TipoDeFormulario tipoDeFormulario) {
 		super();
 		this.id = id;

@@ -29,7 +29,12 @@ public class Empresa extends Pessoa implements Serializable {
 	@OneToMany(mappedBy="empresa",fetch=FetchType.EAGER)
 	private List<TipoDeFormulario> tiposDeFormulario;
 	
-	public Empresa(Long id, String nome, String email, String telefone, String login, String senha, String cnpj) {
+	
+	public Empresa() {
+		super();
+	}
+
+	public Empresa(Long id, String nome, String telefone, String login, String senha, String cnpj) {
 		super(id, nome, telefone, login, senha);
 		this.cnpj = cnpj;
 	}

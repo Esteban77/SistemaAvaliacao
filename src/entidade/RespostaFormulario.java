@@ -42,6 +42,10 @@ public class RespostaFormulario {
 	@OneToMany(mappedBy="respostaFormulario", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Resposta> respostas;
 		
+	public RespostaFormulario() {
+		super();
+	}
+
 	public RespostaFormulario(int id, List<Resposta> respostas, Date data, String comentario, TipoDeFormulario tipoDeFormulario, int numeroPedido, boolean anonimo, Consumidor consumidor) {
 		super();
 		this.id = id;
