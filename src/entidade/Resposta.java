@@ -1,5 +1,7 @@
 package entidade;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -8,11 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="resposta")
-public class Resposta {
+public class Resposta implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -21,7 +24,9 @@ public class Resposta {
 	@Enumerated(EnumType.STRING)
 	private Opcao opcao;
 	
-	private int ordemResposta;
+	@OneToOne(optional=false) 
+	@JoinColumn(name="idPergunta")
+	private Pergunta pergunta;
 	
 	@ManyToOne
 	@JoinColumn(name="idRespostaFormulario")
@@ -29,11 +34,11 @@ public class Resposta {
 		
 	public Resposta() {}
 	
-	public Resposta(int id, Opcao opcao, int ordemResposta, RespostaFormulario respostaFormulario) {
+	public Resposta(int id, Opcao opcao, Pergunta pergunta, RespostaFormulario respostaFormulario) {
 		super();
 		this.id = id;
 		this.opcao = opcao;		
-		this.ordemResposta = ordemResposta;
+		this.pergunta = pergunta;
 		this.respostaFormulario = respostaFormulario;
 	}
 	public int getId() {
@@ -49,12 +54,12 @@ public class Resposta {
 		this.opcao = opcao;
 	}
 
-	public int getOrdemResposta() {
-		return ordemResposta;
+	public Pergunta getPergunta() {
+		return pergunta;
 	}
 
-	public void setOrdemResposta(int ordemResposta) {
-		this.ordemResposta = ordemResposta;
+	public void setPergunta(Pergunta pergunta) {
+		this.pergunta = pergunta;
 	}
 
 	public RespostaFormulario getRespostaFormulario() {
@@ -64,6 +69,37 @@ public class Resposta {
 	public void setRespostaFormulario(RespostaFormulario respostaFormulario) {
 		this.respostaFormulario = respostaFormulario;
 	}
+
+/*	@Override
+	public String toString() {
+		return "Resposta [id=" + id + ", opcao=" + opcao + ", pergunta=" +pergunta + ", respostaFormulario="
+				+ respostaFormulario + "]";
+	}
+
 	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Resposta other = (Resposta) obj;
+		if (id != other.id)
+			return false;
+		if (opcao != other.opcao)
+			return false;
+		if (pergunta != other.pergunta)
+			return false;
+		if (respostaFormulario == null) {
+			if (other.respostaFormulario != null)
+				return false;
+		} else if (!respostaFormulario.equals(other.respostaFormulario))
+			return false;
+		return true;
+	}
+	*/
 
 }
