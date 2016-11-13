@@ -19,13 +19,13 @@ public class RespostaFormularioDaoImpl extends BaseDaoImpl<RespostaFormulario, L
 
 	@Override
 	public List<RespostaFormulario> listaTodos(Session session) throws HibernateException {
-		Query consulta = session.createQuery("from respostaFormulario");
+		Query consulta = session.createQuery("from RespostaFormulario");
 		return consulta.list();
 	}
 
 	@Override
 	public List<RespostaFormulario> pesquisaPorFiltro(String filtro, Session session) throws HibernateException {
-		Query consulta = session.createQuery("form respostaFormulario r where r.nome like :nome");
+		Query consulta = session.createQuery("form RespostaFormulario r where r.nome like :nome");
 		consulta.setParameter("nome", "%" + filtro + "%");
 		return consulta.list();
 	}

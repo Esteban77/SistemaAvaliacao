@@ -19,13 +19,13 @@ public class CupomBeneficioDaoImpl extends BaseDaoImpl<CupomBeneficio, Long> imp
 
 	@Override
 	public List<CupomBeneficio> listaTodos(Session session) throws HibernateException {
-		Query consulta = session.createQuery("from cupomBeneficio");
+		Query consulta = session.createQuery("from CupomBeneficio");
 		return consulta.list();
 	}
 
 	@Override
 	public List<CupomBeneficio> pesquisaPorFiltro(String filtro, Session session) throws HibernateException {
-		Query consulta = session.createQuery("form cupomBeneficio c where c.nome like :nome");
+		Query consulta = session.createQuery("form CupomBeneficio c where c.nome like :nome");
 		consulta.setParameter("nome", "%" + filtro + "%");
 		return consulta.list();
 	}
