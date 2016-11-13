@@ -40,16 +40,15 @@
 	     </div>
 	     <br>
       <div>
-	      <form class="form-horizontal">
+	      <form class="form-horizontal" id="formularioPergunta">
 	      	<div class="form-group">
 	      		<label for="pergunta" class="col-sm-2 control-label">Pergunta</label>
 	      		<div class="col-sm-8">
-	      			<input class="form-control" type="text" id="pergunta" placeholder="Digite sua pergunta">
+	      			<input class="form-control" type="text" name="pergunta" id="pergunta" placeholder="Digite sua pergunta">
 	      		</div>	
-	      		<input type="button" class="btn btn-success" value="Adicionar" onclick="inserirLinhaTabela()"  />
+	      		<input type="submit" class="btn btn-success" value="Adicionar" onclick="inserirLinhaTabela()"  />
 	      	</div>
 	      </form>
-
 		     <table id="minhaTabela" class ="table">
 	            <tr>
 
@@ -102,16 +101,10 @@
 
             // Insere uma linha no fim da tabela.
             var newRow = table.insertRow(numOfRows);
-            
- 
-            // Faz um loop para criar as colunas
-          // for (var j = 0; j <= numOfCols; j++) {
-                //Insere uma coluna na nova linha 
-            //   newCell = newRow.insertCell(j);
                  //Insere um conteúdo na coluna
                 newRow.innerHTML = "<td><h4 style='text-align:center'>" + pergunta.value + "</h4><td>"+
                 					"<td ><button class='btn btn-danger' onClick='removerLinha(this)' >Remover</button><td>";
-            //}
+           
         }
         
         // Função responsável em receber um objeto e extrair as informações necessárias para a remoção da linha.
@@ -163,8 +156,7 @@
         	var ctx = document.getElementById("GraficoPizza").getContext("2d");
             var PizzaChart = new Chart(ctx).Doughnut(data, options);
         	});
-       
-        	 
+              	 
 </script>
 	
 </html>

@@ -20,7 +20,7 @@ public class Pergunta implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private Long id;
 	
 	@Transient  //nao persistir
 	private Opcao opcoes;
@@ -34,7 +34,8 @@ public class Pergunta implements Serializable {
 	@JoinColumn(name="idTipoDeFormulario")
 	private TipoDeFormulario tipoDeFormulario;
 	
-	public Pergunta(int id, Opcao opcoes, String pergunta, TipoDeFormulario tipoDeFormulario) {
+
+	public Pergunta(Long id, Opcao opcoes, String pergunta, TipoDeFormulario tipoDeFormulario) {
 		super();
 		this.id = id;
 		this.opcoes = opcoes;
@@ -44,10 +45,10 @@ public class Pergunta implements Serializable {
 	public Pergunta() {
 		super();		
 	}
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public Opcao getOpcoes() {

@@ -40,7 +40,12 @@ public class CupomBeneficio implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="idEmpresa")
 	private Empresa empresa;
+
 	
+	public CupomBeneficio() {
+		super();
+	}
+
 	public CupomBeneficio(int id, Date dataInicio, Date dataEfetivacao, boolean darBeneficio, boolean beneficioDado,
 			int pontos, Consumidor consumidor, Empresa empresa) {
 		super();
@@ -52,9 +57,6 @@ public class CupomBeneficio implements Serializable{
 		this.pontos = pontos;
 		this.consumidor = consumidor;
 		this.empresa = empresa;
-	}
-	public CupomBeneficio() {
-		super();		
 	}
 	public int getId() {
 		return id;

@@ -38,7 +38,7 @@ public class Empresa extends Pessoa implements Serializable {
 //	@Sort(type = SortType.COMPARATOR)
 
 	
-	public Empresa(Long id, String nome, String email, String telefone, String login, String senha, String cnpj) {
+	public Empresa(Long id, String nome, String telefone, String login, String senha, String cnpj) {
 		super(id, nome, telefone, login, senha);
 		this.cnpj = cnpj;
 	}

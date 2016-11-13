@@ -2,7 +2,6 @@ package entidade;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -48,6 +47,10 @@ public class RespostaFormulario implements Serializable{
 	@OneToMany(mappedBy="respostaFormulario", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	private Set<Resposta> respostas;
 		
+	public RespostaFormulario() {
+		super();
+	}
+
 	public RespostaFormulario(int id, Set<Resposta> respostas, Date data, String comentario, TipoDeFormulario tipoDeFormulario, int numeroPedido, boolean anonimo, Consumidor consumidor) {
 		super();
 		this.id = id;
@@ -60,10 +63,6 @@ public class RespostaFormulario implements Serializable{
 		this.consumidor = consumidor;
 	}
 	
-	public RespostaFormulario() {
-		super();
-		
-	}
 
 	public int getId() {
 		return id;

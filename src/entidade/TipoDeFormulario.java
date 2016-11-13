@@ -35,6 +35,7 @@ public class TipoDeFormulario implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="idEmpresa")
 	private Empresa empresa;
+	
 			
 	public TipoDeFormulario(int id, List<Pergunta> perguntas, Empresa empresa) {
 		super();
