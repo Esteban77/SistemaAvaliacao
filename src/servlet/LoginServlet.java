@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		Connection conn = (Connection) request.getAttribute("conexao");
+		Connection conn = (Connection) request.getAttribute("conexao");
 		String username=request.getParameter("nomeUsuario");
 		String senha=request.getParameter("senha");
 		HttpSession session = request.getSession();
@@ -43,11 +43,11 @@ public class LoginServlet extends HttpServlet {
 		Empresa empresa = new EmpresaDaoImpl().buscarEmpresa(username, senha,HibernateUtil.getSession());
 	
 		if (empresa!=null) {
-			session.setAttribute("idPessoa", empresa.getId());
-			session.setAttribute("pessoa", empresa);
+			session.setAttribute("idEmpresa", empresa.getId());
+			session.setAttribute("empresa", empresa);
 			response.sendRedirect("jsp/menuEmpresa.jsp");
 		} else {
-			response.sendRedirect("html/home.html");
+			response.sendRedirect("jsp/home.html");
 		}
 	}
 

@@ -32,7 +32,7 @@ public class IncluirEmpresa implements Acao {
 		
 		session.close();
 		
-		return "jsp/menuEmpresa.jsp";
+		return "SistemaAvaliacao/jsp/menuEmpresa.jsp";
 	}
 
 }
