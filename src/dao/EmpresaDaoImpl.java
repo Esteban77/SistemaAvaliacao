@@ -30,4 +30,11 @@ public class EmpresaDaoImpl extends BaseDaoImpl<Empresa, Long> implements Empres
 		return consulta.list();
 	}
 
+	public Empresa buscarEmpresa(String login, String senha, Session session) throws HibernateException {
+		
+		Query consulta = session.createQuery("from pessoa e where e.login like "+login+" and e.senha like "+senha);
+
+		Empresa empresa = (Empresa) consulta.uniqueResult();
+		return empresa;
+	}
 }
