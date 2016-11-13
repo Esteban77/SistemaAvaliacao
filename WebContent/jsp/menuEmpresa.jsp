@@ -32,7 +32,7 @@
 			<li class="active"><a data-toggle="pill" href="#meuFormulario">Criar
 					Formulário</a></li>
 			<li><a data-toggle="pill" href="#estatisticas" id="grafico2">Estatistícas</a></li>
-			<li><a data-toggle="pill" href="#meuDesconto">Meu Desconto</a></li>
+			<li><a data-toggle="pill" href="#meuBeneficio">Benefícios</a></li>
 		</ul>
 		</nav>
 
@@ -117,26 +117,27 @@
 				</div>
 			</div>
 
-			<div id="meuDesconto" class="tab-pane fade container">
-				<h3>Meu Desconto</h3>
-				<p>Defina o tipo de desconto que deseja oferecer a seus clientes</p>
+			<div id="meuBeneficio" class="tab-pane fade container">
+				<h3>Benefícios</h3>
+				<p>Defina o tipo de beneficio que deseja oferecer a seus clientes</p>
+						
+						<form class="form-horizontal" id="formularioPergunta">
+							<div class="form-group">
+									<label for="beneficio" class="col-sm-2 control-label">Benefício</label>
+									<div class="col-sm-8">
+										<input class="form-control" type="text" name="beneficio"
+										id="beneficio" placeholder="Digite o nome do beneficio que deseja conceder a seus clientes">
+									</div>
+								<button type="button" class="btn btn-success" value="salvar"
+								onclick="" >Salvar</button>
+							</div>
+							<hr>
+						</form>	
 			</div>
 		</div>
 
 	</div>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
 
 <script language="javascript">
         // Função responsável por inserir linhas na tabela
