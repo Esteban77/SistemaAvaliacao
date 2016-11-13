@@ -33,21 +33,22 @@
 		          <h4 class="modal-title">Entrar em sua conta</h4>
 		        </div>
 		        <div class="modal-body">
-		          <form role="form" action="../jsp/menuEmpresa.jsp">
+		          <form role="form" action="/SistemaAvaliacao-desenvolvimento-20161009121410/svtlogar" method="post">
 		          	<div class="form-group">
 		          		<label for="nomeUsuario" ><span class="glyphicon glyphicon-user"></span> Nome de Usuário</label>
-		          		<input type="text" class="form-control" id="nomeUsuario">
+		          		<input name="nomeUsuario" type="text" class="form-control" id="nomeUsuario">
 		          	</div>
 		          	<div class="form-group">
 		          		<label for="senha"><span class="glyphicon glyphicon-lock"></span> Senha</label>
-		          		<input type="password" class="form-control" id="senha">
+		          		<input type="password" class="form-control" name="senha" id="senha">
 		          	</div>
-		          </form>
+		          
 		        </div>
 		        <div class="modal-footer">
-		    		<a type="submit" class="btn btn-success"  href="../jsp/menuEmpresa.jsp">Entrar</a>
+		    		<button type="submit" class="btn btn-success">Entrar</button>
 		          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		        </div>
+		        </form>
 		      </div>
     		</div>
   		</div>
@@ -61,29 +62,34 @@
 		          <h4 class="modal-title">Registrar-se</h4>
 		        </div>
 		        <div class="modal-body">
-		          <form action="" role="form">
+		          <form action="/SistemaAvaliacao-desenvolvimento-20161009121410/FrontController?Acao=IncluirEmpresa" method="post" role="form">
 		          	<div class="form-group">
 		          		<label for="nomeEmpresa"><span class="glyphicon glyphicon-user"></span> Nome Empresa</label>
-		          		<input type="text" class="form-control" placeholder="Entre com o nome">
+		          		<input name="nomeEmpresa" type="text" class="form-control" placeholder="Entre com o nome">
 		          	</div>
 		          	<div class="form-group">
 		          		<label for="cnpj"><span class="glyphicon glyphicon-pencil"></span> CNPJ</label>
-		          		<input type="text" class="form-control" placeholder="Entre com CNPJ">
+		          		<input name="cnpj" type="text" class="form-control" placeholder="Entre com CNPJ">
+		          	</div>
+		          	<div class="form-group">
+		          		<label for="telefone"><span class="glyphicon glyphicon-pencil"></span> Telefone</label>
+		          		<input name="telefone" type="text" class="form-control" placeholder="Entre com o telefone">
 		          	</div>
 		          	<div class="form-group">
 		          		<label for="nomeUsuario" ><span class="glyphicon glyphicon-user"></span> Nome de Usuário</label>
-		          		<input type="text" class="form-control" id="nomeUsuario">
+		          		<input name="nomeUsuario" type="text" class="form-control" id="nomeUsuario">
 		          	</div>
 		          	<div class="form-group">
 		          		<label for="senha"><span class="glyphicon glyphicon-lock"></span> Senha</label>
-		          		<input type="password" class="form-control" id="senha">
+		          		<input name="senha" type="password" class="form-control" id="senha">
 		          	</div>
-		          </form>
+	
 		        </div>
 		        <div class="modal-footer">
-		        <a type="submit" class="btn btn-success"  href="../jsp/menuEmpresa.jsp">Confirmar</a>
+		          <button type="submit" class="btn btn-success" >Confirmar</button>
 		          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		        </div>
+		       </form> 
 		      </div>
     		</div>
   		</div>
