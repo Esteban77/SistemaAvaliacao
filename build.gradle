@@ -62,5 +62,5 @@ def gitBranch() {
 }
 
 war {
-    baseName = 'SistemaAvaliacao-'+gitBranch()+'-'+getDate()
+    baseName = 'SistemaAvaliacao'
 }
