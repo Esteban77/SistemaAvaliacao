@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		Empresa empresa = new EmpresaDaoImpl().buscarEmpresa(username, senha,HibernateUtil.getSession());
-	
+		
 		if (empresa!=null) {
 			session.setAttribute("idEmpresa", empresa.getId());
 			session.setAttribute("empresa", empresa);

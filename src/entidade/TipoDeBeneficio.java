@@ -17,7 +17,7 @@ public class TipoDeBeneficio implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private Long id;
 	
 	@Column(length=100, nullable=false) 
 	private String nomeBeneficio;
@@ -28,7 +28,7 @@ public class TipoDeBeneficio implements Serializable {
 	
 
 
-	public TipoDeBeneficio(int id, String nomeBeneficio, Empresa empresa) {
+	public TipoDeBeneficio(Long id, String nomeBeneficio, Empresa empresa) {
 		super();
 		this.id = id;
 		this.nomeBeneficio = nomeBeneficio;
@@ -39,10 +39,10 @@ public class TipoDeBeneficio implements Serializable {
 		super();		
 	}
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getNomeBeneficio() {
@@ -65,42 +65,5 @@ public class TipoDeBeneficio implements Serializable {
 		return "TipoDeBeneficio [id=" + id + ", nomeBeneficio=" + nomeBeneficio + ", empresa=" + empresa + "]";
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((empresa == null) ? 0 : empresa.hashCode());
-		result = prime * result + id;
-		result = prime * result + ((nomeBeneficio == null) ? 0 : nomeBeneficio.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		TipoDeBeneficio other = (TipoDeBeneficio) obj;
-		if (empresa == null) {
-			if (other.empresa != null)
-				return false;
-		} else if (!empresa.equals(other.empresa))
-			return false;
-		if (id != other.id)
-			return false;
-		if (nomeBeneficio == null) {
-			if (other.nomeBeneficio != null)
-				return false;
-		} else if (!nomeBeneficio.equals(other.nomeBeneficio))
-			return false;
-		return true;
-	}
-	
-	
-	
-	
 	
 }

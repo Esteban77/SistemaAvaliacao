@@ -25,7 +25,7 @@ public class RespostaFormulario implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;	
+	private Long id;	
 	
 	@Temporal(TemporalType.DATE)
 	private Date data;
@@ -51,7 +51,7 @@ public class RespostaFormulario implements Serializable{
 		super();
 	}
 
-	public RespostaFormulario(int id, Set<Resposta> respostas, Date data, String comentario, TipoDeFormulario tipoDeFormulario, int numeroPedido, boolean anonimo, Consumidor consumidor) {
+	public RespostaFormulario(Long id, Set<Resposta> respostas, Date data, String comentario, TipoDeFormulario tipoDeFormulario, int numeroPedido, boolean anonimo, Consumidor consumidor) {
 		super();
 		this.id = id;
 		this.respostas = respostas;
@@ -64,11 +64,11 @@ public class RespostaFormulario implements Serializable{
 	}
 	
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public Set<Resposta> getRespostas() {
@@ -129,66 +129,7 @@ public class RespostaFormulario implements Serializable{
 				+ tipoDeFormulario + ", respostas=" + respostas + "]";
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (anonimo ? 1231 : 1237);
-		result = prime * result + ((comentario == null) ? 0 : comentario.hashCode());
-		result = prime * result + ((consumidor == null) ? 0 : consumidor.hashCode());
-		result = prime * result + ((data == null) ? 0 : data.hashCode());
-		result = prime * result + id;
-		result = prime * result + numeroPedido;
-		result = prime * result + ((respostas == null) ? 0 : respostas.hashCode());
-		result = prime * result + ((tipoDeFormulario == null) ? 0 : tipoDeFormulario.hashCode());
-		return result;
-	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		RespostaFormulario other = (RespostaFormulario) obj;
-		if (anonimo != other.anonimo)
-			return false;
-		if (comentario == null) {
-			if (other.comentario != null)
-				return false;
-		} else if (!comentario.equals(other.comentario))
-			return false;
-		if (consumidor == null) {
-			if (other.consumidor != null)
-				return false;
-		} else if (!consumidor.equals(other.consumidor))
-			return false;
-		if (data == null) {
-			if (other.data != null)
-				return false;
-		} else if (!data.equals(other.data))
-			return false;
-		if (id != other.id)
-			return false;
-		if (numeroPedido != other.numeroPedido)
-			return false;
-		if (respostas == null) {
-			if (other.respostas != null)
-				return false;
-		} else if (!respostas.equals(other.respostas))
-			return false;
-		if (tipoDeFormulario == null) {
-			if (other.tipoDeFormulario != null)
-				return false;
-		} else if (!tipoDeFormulario.equals(other.tipoDeFormulario))
-			return false;
-		return true;
-	}
-	
-	
-	
 	
 
 }

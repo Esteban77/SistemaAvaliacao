@@ -19,7 +19,7 @@ public class Resposta implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private Long id;
 	
 	@Enumerated(EnumType.STRING)
 	private Opcao opcao;
@@ -34,17 +34,17 @@ public class Resposta implements Serializable{
 		
 	public Resposta() {}
 	
-	public Resposta(int id, Opcao opcao, Pergunta pergunta, RespostaFormulario respostaFormulario) {
+	public Resposta(Long id, Opcao opcao, Pergunta pergunta, RespostaFormulario respostaFormulario) {
 		super();
 		this.id = id;
 		this.opcao = opcao;		
 		this.pergunta = pergunta;
 		this.respostaFormulario = respostaFormulario;
 	}
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public Opcao getOpcao() {

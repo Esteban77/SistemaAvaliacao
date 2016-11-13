@@ -24,7 +24,7 @@
 </head>
 <body>
 	<div class="container-fluid">
-
+	<c:set var="empresa" value="${empresa}"/>	
 		<nav class="navbar nav navbar-inverse"> <!-- Centered Pills -->
 		<ul class="nav nav-pills nav-justified">
 			<li><a data-toggle="pill" href="#listaFormularios">Meu
@@ -132,6 +132,25 @@
 								onclick="" >Salvar</button>
 							</div>
 							<hr>
+							<br><br>
+					<div class="row">
+							<table class="table table-bordered">
+								<thead>
+									<th>Empresa</th>
+									<th>Tipo de Benefício</th>								
+								</thead>
+								<tbody>
+									<c:forEach var="tipoDeBeneficio" items="${empresa.tipoDeBeneficio}">
+										<tr>
+											<td>${tipoDeBeneficio.empresa.nome}</td>
+											<td>${tipoDeBeneficio.nomeBeneficio}</td>
+											<td><a href="/SistemaAvaliacao/FrontController?acao=RemoverBeneficio&idBeneficio=${tipoDeBeneficio.id}"class="btn btn-danger" role="button" ><span class="glyphicon glyphicon-trash"></span> Remover</a></td>
+											<td><a href="/SistemaAvaliacao/FrontController?acao=ObterBeneficio&idBeneficio=${tipoDeBeneficio.id}"class="btn btn-info" role="button" ><span class="glyphicon glyphicon-retweet"></span> Alterar</a></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+					</div>
 						</form>	
 			</div>
 		</div>
