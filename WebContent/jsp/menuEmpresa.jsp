@@ -44,28 +44,68 @@
 
 			<div id="meuFormulario" class="tab-pane fade in active container">
 				<div>
-					<h2>Meu Formulario</h2>
+					<h2>Meus Formulario</h2>
 					<p>Crie seu formulário.</p>
 				</div>
+				<button type="button" class="btn btn-success" data-toggle="modal" href="#modalFormulario">Novo Formulário</button>
 				<br>
-				<div>
-					<form class="form-horizontal" id="formularioPergunta">
-						<div class="form-group">
-							<label for="pergunta" class="col-sm-2 control-label">Pergunta</label>
-							<div class="col-sm-8">
-								<input class="form-control" type="text" name="pergunta"
-									id="pergunta" placeholder="Digite sua pergunta">
+				
+				<!-- Inicio modal -->
+				<div class="modal fade" id="modalFormulario" role="dialog" data-backdrop="static">
+					<div class="modal-dialog modal-lg">
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header" style="padding: 35px 50px;">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Crie seu Formulário</h4>
+									<br><br>
+									<div class="form-group">
+										<div class="form-group">
+											<label class="col-sm-2 control-label" for="nomeFormulario" name="nomeFormulario">Nome do Formulário</label>
+											<div class="col-sm-4">
+												<input class="form-control" type="text" name="nomeFormulario"
+													id="nomeFormulario" placeholder="Digite o nome do formulário">
+											</div>
+										</div>
+										<div class="form-group">
+									      <label class="col-sm-2 control-label"for="beneficios">Beneficio</label>
+									      <div class="col-sm-4">
+									      <select class="form-control" id="beneficio">
+									        <option>Batata</option>
+									     </select>
+									     </div>
+									    </div>
+									 </div>
+								</div>
+								<div class="modal-body">
+									<form class="form-horizontal" id="formularioPergunta">
+										<div class="form-group">
+											<label for="pergunta" class="col-sm-2 control-label">Pergunta</label>
+											<div class="col-sm-8">
+												<input class="form-control" type="text" name="pergunta"
+													id="pergunta" placeholder="Digite sua pergunta">
+											</div>
+											<button type="button" class="btn btn-success" value="Adicionar"
+												onclick="inserirLinhaTabela()" >Adicionar</button>
+										</div>
+										<hr>
+									</form>	
+								</div>
+								<div>
+									<table id="minhaTabela" class="table">
+										<tr>
+										
+										</tr>
+									</table>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-success">Salvar</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
 							</div>
-							<input type="submit" class="btn btn-success" value="Adicionar"
-								onclick="inserirLinhaTabela()" />
 						</div>
-					</form>
-					<table id="minhaTabela" class="table">
-						<tr>
-
-						</tr>
-					</table>
-				</div>
+					</div>
+					<!-- Fim do modal -->
 			</div>
 
 			<div id="estatisticas" class="tab-pane fade  container box">
@@ -113,8 +153,11 @@
             // Insere uma linha no fim da tabela.
             var newRow = table.insertRow(numOfRows);
                  //Insere um conteúdo na coluna
-                newRow.innerHTML = "<td><h4 style='text-align:center'>" + pergunta.value + "</h4><td>"+
-                					"<td ><button class='btn btn-danger' onClick='removerLinha(this)' >Remover</button><td>";
+                newRow.innerHTML = "<td style='text-align:left' width='75%'><h4>" + pergunta.value + "</h4>"+
+               						"<label class='radio-inline'><input type='radio' name='optradio'>Ótimo</label><label class='radio-inline'> <input type='radio' name='optradio'>Bom</label>"+
+               						"<label class='radio-inline'><input type='radio' name='optradio'>Ruin</label><label class='radio-inline'> <input type='radio' name='optradio'>Péssimo</label></td>"+
+                					"<td width='25%'><button class='btn btn-info' onClick='removerLinha(this)' >Alterar</button> <button class='btn btn-danger' onClick='removerLinha(this)' >Remover</button><td>";
+                					
            
         }
         
