@@ -3,140 +3,173 @@
 <head>
 <meta charset="utf-8">
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
 <link rel="stylesheet" href="../css/estilos.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
 <title>Pagina Inicial</title>
 </head>
-	<body>
-		<nav class="navbar navbar-inverse  navbar-fixed-top">
-		  <div class="container-fluid">
-		    <div class="navbar-header">
-		      <a class="navbar-brand" href="#">Sap</a>
-		    </div>
-		    	<ul class="nav navbar-nav navbar-right">
-		      		<li><a href="#modalLogin" data-toggle="modal">Entrar <span class="glyphicon glyphicon-log-out" ></span></a></li>
-		      		<li><a href="#modalCadastro" data-toggle="modal">Registrar-se <span class="glyphicon glyphicon-user" ></span></a></li>
-		      	</ul>
-		   </div>
-		</nav>
-		
-		<div class="modal fade" id="modalLogin" role="dialog">
-    		<div class="modal-dialog">
-		      <!-- Modal content-->
-		      <div class="modal-content">
-		        <div class="modal-header" style="padding:35px 50px;">
-		          <button type="button" class="close" data-dismiss="modal">&times;</button>
-		          <h4 class="modal-title">Entrar em sua conta</h4>
-		        </div>
-		        <div class="modal-body">
-		          <form role="form" action="/SistemaAvaliacao/svtlogar" method="post">
-		          	<div class="form-group">
-		          		<label for="nomeUsuario" ><span class="glyphicon glyphicon-user"></span> Nome de Usuário</label>
-		          		<input name="nomeUsuario" type="text" class="form-control" id="nomeUsuario">
-		          	</div>
-		          	<div class="form-group">
-		          		<label for="senha"><span class="glyphicon glyphicon-lock"></span> Senha</label>
-		          		<input type="password" class="form-control" name="senha" id="senha">
-		          	</div>
-		          
-		        </div>
-		        <div class="modal-footer">
-		    		<button type="submit" class="btn btn-success">Entrar</button>
-		          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        </div>
-		        </form>
-		      </div>
-    		</div>
-  		</div>
-  		
-  		<div class="modal fade" id="modalCadastro" role="dialog">
-    		<div class="modal-dialog">
-		      <!-- Modal content-->
-		      <div class="modal-content">
-		        <div class="modal-header" style="padding:35px 50px;">
-		          <button type="button" class="close" data-dismiss="modal">&times;</button>
-		          <h4 class="modal-title">Registrar-se</h4>
-		        </div>
-		        <div class="modal-body">
-		          <form action="/SistemaAvaliacao/FrontController?Acao=IncluirEmpresa" method="post" role="form">
-		          	<div class="form-group">
-		          		<label for="nomeEmpresa"><span class="glyphicon glyphicon-user"></span> Nome Empresa</label>
-		          		<input name="nomeEmpresa" type="text" class="form-control" placeholder="Entre com o nome">
-		          	</div>
-		          	<div class="form-group">
-		          		<label for="cnpj"><span class="glyphicon glyphicon-pencil"></span> CNPJ</label>
-		          		<input name="cnpj" type="text" class="form-control" placeholder="Entre com CNPJ">
-		          	</div>
-		          	<div class="form-group">
-		          		<label for="telefone"><span class="glyphicon glyphicon-pencil"></span> Telefone</label>
-		          		<input name="telefone" type="text" class="form-control" placeholder="Entre com o telefone">
-		          	</div>
-		          	<div class="form-group">
-		          		<label for="nomeUsuario" ><span class="glyphicon glyphicon-user"></span> Nome de Usuário</label>
-		          		<input name="nomeUsuario" type="text" class="form-control" id="nomeUsuario">
-		          	</div>
-		          	<div class="form-group">
-		          		<label for="senha"><span class="glyphicon glyphicon-lock"></span> Senha</label>
-		          		<input name="senha" type="password" class="form-control" id="senha">
-		          	</div>
-	
-		        </div>
-		        <div class="modal-footer">
-		          <button type="submit" class="btn btn-success" >Confirmar</button>
-		          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        </div>
-		       </form> 
-		      </div>
-    		</div>
-  		</div>
-  		
-		<div class="jumbotron text-center div1" id="topo">
-			<h2 class="margin">SAP</h2>
-			<p>SAP é um sistema de avaliação de pedidos que visa ajudar as empresas a melhorarem seus produtos.
-			Cadastre sua empresa em nosso site e aproveite nosso serviço para evoluir sua empresa a partir dos feedbacks
-			dos seus clientes,aqui você pode criar seu próprio formulário de avaliação.</p> 
-			<p>Nosso sistema de avaliação tem como foco o ramo de fast food mais especificamente em seus serviços de Delivery.</p>
-		</div>
-		
-		<div class="container-fluid text-center div2">
-		 	<div class="row">
-    			<div class="col-sm-6">
-					<span class="glyphicon glyphicon-signal logo"></span>
-					<br>
-					<h4 class="margin">Através de um gráfico você pode verificar como está a qualidade de seu produto</h4>
-				</div>
-				<div class="col-sm-6">
-					<span class="glyphicon glyphicon-qrcode logo"></span>
-					<br>
-					<h4 class="margin">Um QR code será gerado apartir do formulário criado</h4>
-				</div>
-			</div>	
-		</div>
-	
-		<div class="container-fluid text-center div2" >
-			<h2>Objetivo</h2>
-			<br>
-			<p>Nosso objetivo é ajudar as empresas de fast food alcançarem melhores qualidades em seus produtos e serviços.</p>
-		</div>
-		<div class="container-fluid text-center" id="contato">
-			<h2>Contato</h2>
-			<br>
-			<div>
-				<p>Entre em contato para mais informações ou sugerir algo</p>
+<body>
+	<nav class="navbar navbar-inverse  navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Sap</a>
 			</div>
-			<div>
-				<p><span class="glyphicon glyphicon-phone"></span> +55 12345678 </p>
-				<p><span class="glyphicon glyphicon-envelope"></span> avalie@sap.com </p>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#modalLogin" data-toggle="modal">Entrar <span
+						class="glyphicon glyphicon-log-out"></span></a></li>
+				<li><a href="#modalCadastro" data-toggle="modal">Registrar-se
+						<span class="glyphicon glyphicon-user"></span>
+				</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="modal fade" id="modalLogin" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header" style="padding: 35px 50px;">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Entrar em sua conta</h4>
+				</div>
+				<div class="modal-body">
+					<form role="form" action="/SistemaAvaliacao/svtlogar" method="post">
+						<div class="form-group">
+							<label for="nomeUsuario"><span
+								class="glyphicon glyphicon-user"></span> Nome de Usuário</label> <input
+								name="nomeUsuario" type="text" class="form-control"
+								id="nomeUsuario">
+						</div>
+						<div class="form-group">
+							<label for="senha"><span class="glyphicon glyphicon-lock"></span>
+								Senha</label> <input type="password" class="form-control" name="senha"
+								id="senha">
+						</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-success">Entrar</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+				</form>
 			</div>
 		</div>
-		<footer class="text-center">
-			<a href="#topo">SAP</a>
-			<br><br>
-			<p>página beta</p>
-		</footer>
-	</body>
+	</div>
+
+	<div class="modal fade" id="modalCadastro" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header" style="padding: 35px 50px;">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Registrar-se</h4>
+				</div>
+				<div class="modal-body">
+					<form
+						action="/SistemaAvaliacao/FrontController?Acao=IncluirEmpresa"
+						method="post" role="form">
+						<div class="form-group">
+							<label for="nomeEmpresa"><span
+								class="glyphicon glyphicon-user"></span> Nome Empresa</label> <input
+								name="nomeEmpresa" type="text" class="form-control"
+								placeholder="Entre com o nome">
+						</div>
+						<div class="form-group">
+							<label for="cnpj"><span
+								class="glyphicon glyphicon-pencil"></span> CNPJ</label> <input
+								name="cnpj" type="text" class="form-control"
+								placeholder="Entre com CNPJ">
+						</div>
+						<div class="form-group">
+							<label for="telefone"><span
+								class="glyphicon glyphicon-pencil"></span> Telefone</label> <input
+								name="telefone" type="text" class="form-control"
+								placeholder="Entre com o telefone">
+						</div>
+						<div class="form-group">
+							<label for="nomeUsuario"><span
+								class="glyphicon glyphicon-user"></span> Nome de Usuário</label> <input
+								name="nomeUsuario" type="text" class="form-control"
+								id="nomeUsuario">
+						</div>
+						<div class="form-group">
+							<label for="senha"><span class="glyphicon glyphicon-lock"></span>
+								Senha</label> <input name="senha" type="password" class="form-control"
+								id="senha">
+						</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-success">Confirmar</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="jumbotron text-center div1" id="topo">
+		<h2 class="margin">SAP</h2>
+		<p>SAP é um sistema de avaliação de pedidos que visa ajudar as
+			empresas a melhorarem seus produtos. Cadastre sua empresa em nosso
+			site e aproveite nosso serviço para evoluir sua empresa a partir dos
+			feedbacks dos seus clientes,aqui você pode criar seu próprio
+			formulário de avaliação.</p>
+		<p>Nosso sistema de avaliação tem como foco o ramo de fast food
+			mais especificamente em seus serviços de Delivery.</p>
+	</div>
+
+	<div class="container-fluid text-center div2">
+		<div class="row">
+			<div class="col-sm-6">
+				<span class="glyphicon glyphicon-signal logo"></span> <br>
+				<h4 class="margin">Através de um gráfico você pode verificar
+					como está a qualidade de seu produto</h4>
+			</div>
+			<div class="col-sm-6">
+				<span class="glyphicon glyphicon-qrcode logo"></span> <br>
+				<h4 class="margin">Um QR code será gerado apartir do formulário
+					criado</h4>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid text-center div2">
+		<h2>Objetivo</h2>
+		<br>
+		<p>Nosso objetivo é ajudar as empresas de fast food alcançarem
+			melhores qualidades em seus produtos e serviços.</p>
+	</div>
+	<div class="container-fluid text-center" id="contato">
+		<h2>Contato</h2>
+		<br>
+		<div>
+			<p>Entre em contato para mais informações ou sugerir algo</p>
+		</div>
+		<div>
+			<p>
+				<span class="glyphicon glyphicon-phone"></span> +55 12345678
+			</p>
+			<p>
+				<span class="glyphicon glyphicon-envelope"></span> avalie@sap.com
+			</p>
+		</div>
+	</div>
+	<footer class="text-center">
+		<a href="#topo">SAP</a> <br>
+		<br>
+		<p>página beta</p>
+	</footer>
+</body>
 </html>
