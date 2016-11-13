@@ -3,6 +3,7 @@ package entidade;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +26,7 @@ public class Empresa extends Pessoa implements Serializable {
 	private String cnpj;
 	
 	@OneToMany(mappedBy="empresa", fetch=FetchType.EAGER)
-	private Set<TipoDeBeneficio> tiposDeBeneficio = new HashSet<>();
+	private Set<TipoDeBeneficio> tiposDeBeneficio = new TreeSet<>();
 //	@OrderColumn(name = "id")
 //	@Sort(type = SortType.COMPARATOR)
 	
@@ -33,7 +34,7 @@ public class Empresa extends Pessoa implements Serializable {
 //	@Sort(type = SortType.NATURAL)	
 	
 	@OneToMany(mappedBy="empresa",fetch=FetchType.EAGER)
-	private Set<TipoDeFormulario> tiposDeFormulario= new HashSet<>();
+	private Set<TipoDeFormulario> tiposDeFormulario= new TreeSet<>();
 //	@Sort(type = SortType.COMPARATOR)
 
 	

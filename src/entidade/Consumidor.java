@@ -2,6 +2,7 @@ package entidade;
 
 import java.io.Serializable;
 import java.util.Set;
+import java.util.TreeSet;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,7 +27,7 @@ public class Consumidor extends Pessoa implements Serializable{
 	
 	@OneToMany(mappedBy="consumidor",fetch=FetchType.EAGER)
 	@OrderBy(value="id")
-	private Set<RespostaFormulario> respostasFormulario;
+	private Set<RespostaFormulario> respostasFormulario= new TreeSet<>();
 	
 	
 	public Consumidor() {
