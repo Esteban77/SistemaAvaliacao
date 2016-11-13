@@ -19,21 +19,22 @@ public class EmpresaDaoImpl extends BaseDaoImpl<Empresa, Long> implements Empres
 
 	@Override
 	public List<Empresa> listaTodos(Session session) throws HibernateException {
-		Query consulta = session.createQuery("from empresa");
+		Query consulta = session.createQuery("from Empresa");
 		return consulta.list();
 	}
 
 	@Override
 	public List<Empresa> pesquisaPorFiltro(String filtro, Session session) throws HibernateException {
-		Query consulta = session.createQuery("from empresa e where e.nome like :nome");
+		Query consulta = session.createQuery("from Empresa e where e.nome like :nome");
 		consulta.setParameter("nome", "%"+filtro+"%");
 		return consulta.list();
 	}
 
 	public Empresa buscarEmpresa(String login, String senha, Session session) throws HibernateException {
 		
-		Query consulta = session.createQuery("from pessoa e where e.login like "+login+" and e.senha like "+senha);
-
+		Query consulta = session.createQuery("from Pessoa e where e.login like :login and e.senha= :senha");
+		consulta.setParameter("login", login);
+		consulta.setParameter("senha", senha);
 		Empresa empresa = (Empresa) consulta.uniqueResult();
 		return empresa;
 	}
