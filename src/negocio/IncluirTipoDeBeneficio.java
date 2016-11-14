@@ -35,6 +35,7 @@ public class IncluirTipoDeBeneficio implements Acao{
 		TipoDeBeneficio tipoReturn = tipoDeBeneficioDaoImpl.pesquisaPorId(tipoDeBeneficio.getId(), session);
 		session.close();
 		
+		request.getSession().setAttribute("empresa", empresa);
 		if(tipoReturn!=null){
 			JSONObject objeto = new JSONObject();
 			objeto.put("id", tipoReturn.getId());

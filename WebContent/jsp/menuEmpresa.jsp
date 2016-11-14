@@ -18,6 +18,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="Chart.min.js"></script>
+<script src="../js/ajax.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Menu Empresa</title>
@@ -70,8 +71,11 @@
 										<div class="form-group">
 									      <label class="col-sm-2 control-label"for="beneficios">Beneficio</label>
 									      <div class="col-sm-4">
-									      <select class="form-control" id="beneficio">
-									        <option>Batata</option>
+									      <select class="form-control" id="beneficioLista">
+									        <option selected="selected">Todos</option>
+											<c:forEach var="beneficioUnidade" items="${empresa.tiposDeBeneficio}">
+												<option>${beneficioUnidade.nomeBeneficio}</option>
+											</c:forEach>
 									     </select>
 									     </div>
 									    </div>
@@ -135,15 +139,16 @@
 					<div class="row">
 							<table class="table table-bordered" id="tabelaBeneficio">
 								<thead>
-									<th>Empresa</th>
+									<th>ID</th>
 									<th>Tipo de Benefício</th>								
 								</thead>
 								<tbody> 
 									<c:forEach var="tipoDeBeneficio" items="${empresa.tiposDeBeneficio}">
- 										<tr>
-											<td>${tipoDeBeneficio.empresa.nome}</td>
+ 										<tr id="${tipoDeBeneficio.id}">
+											<td>${tipoDeBeneficio.id}</td>
 											<td>${tipoDeBeneficio.nomeBeneficio}</td>
-											<td><a href="/SistemaAvaliacao/FrontController?acao=RemoverBeneficio&idBeneficio=${tipoDeBeneficio.id}"class="btn btn-danger" role="button" ><span class="glyphicon glyphicon-trash"></span> Remover</a></td>
+											<td><button type="button" class="btn btn-danger" value= "${tipoDeBeneficio.id}" id="removerBeneficio">Remover</button></td>
+<%-- 											<td><a href="/SistemaAvaliacao/FrontController?acao=RemoverBeneficio&idBeneficio=${tipoDeBeneficio.id}"class="btn btn-danger" role="button" ><span class="glyphicon glyphicon-trash"></span> Remover</a></td> --%>
 											<td><a href="/SistemaAvaliacao/FrontController?acao=ObterBeneficio&idBeneficio=${tipoDeBeneficio.id}"class="btn btn-info" role="button" ><span class="glyphicon glyphicon-retweet"></span> Alterar</a></td>
 										</tr> 
 									</c:forEach> 

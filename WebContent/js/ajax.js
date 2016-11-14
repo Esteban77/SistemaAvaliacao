@@ -25,7 +25,7 @@ $(document).ready(function() {
 
 	});	*/
 	
-		$('#salvarBeneficio').click()(function(event) { 			
+		$('#salvarBeneficio').click(function() { 			
 			var beneficio = $('#beneficio').val();			
 			//Chama a URL do Servlet
 			$.getJSON('/SistemaAvaliacao/FrontController?acao=IncluirTipoDeBeneficio',	{'beneficio': beneficio}, 		
@@ -34,6 +34,24 @@ $(document).ready(function() {
 					if(statusTxt == "success"){
 						var beneficio = responseTxt;
 						$('#tabelaBeneficio > tbody').append('<tr><td>'+beneficio.id+'</td><td>'+beneficio.nome+'</td></tr>');
+					}if(statusTxt == "error"){
+//						alert("Error: " + xhr.status + ": " + xhr.statusText);
+					}
+				});
+
+	});	
+		
+		$('#removerBeneficio').click(function() { 			
+			var idBeneficio = $('#removerBeneficio').val();			
+			//Chama a URL do Servlet
+			$.getJSON('/SistemaAvaliacao/FrontController?acao=RemoverBeneficio',	{'idBeneficio': idBeneficio}, 		
+				//Funcao de callback
+				function(responseTxt, statusTxt, xhr) { 
+					if(statusTxt == "success"){
+						if(responseTxt=="true"){
+//							$(this).parent().parent().remove();
+							$('#tabelaBeneficio > tbody').remove(idBeneficio);
+						}
 					}if(statusTxt == "error"){
 //						alert("Error: " + xhr.status + ": " + xhr.statusText);
 					}

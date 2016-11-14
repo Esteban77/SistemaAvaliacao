@@ -19,7 +19,7 @@ public class FrontController extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException{
    		try {
 			request.setCharacterEncoding("UTF-8");    	
-			String parametro = request.getParameter("Acao");
+			String parametro = request.getParameter("acao");
 			String nomeDaClasse = "negocio."+parametro;
 			Class classe = Class.forName(nomeDaClasse);
 			Acao acao = (Acao) classe.newInstance();

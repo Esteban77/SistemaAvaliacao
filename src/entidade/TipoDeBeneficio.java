@@ -33,6 +33,7 @@ public class TipoDeBeneficio implements Serializable {
 		this.id = id;
 		this.nomeBeneficio = nomeBeneficio;
 		this.empresa = empresa;
+		this.empresa.getTiposDeBeneficio().add(this);
 	}
 	
 	public TipoDeBeneficio() {
