@@ -17,9 +17,6 @@ import javax.persistence.Table;
 @PrimaryKeyJoinColumn(name="idPessoa")
 public class Empresa extends Pessoa implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	@Column(unique=true)
@@ -54,6 +51,24 @@ public class Empresa extends Pessoa implements Serializable {
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
+
+	public Set<TipoDeBeneficio> getTiposDeBeneficio() {
+		return tiposDeBeneficio;
+	}
+
+	public void setTiposDeBeneficio(Set<TipoDeBeneficio> tiposDeBeneficio) {
+		this.tiposDeBeneficio = tiposDeBeneficio;
+	}
+
+	public Set<TipoDeFormulario> getTiposDeFormulario() {
+		return tiposDeFormulario;
+	}
+
+	public void setTiposDeFormulario(Set<TipoDeFormulario> tiposDeFormulario) {
+		this.tiposDeFormulario = tiposDeFormulario;
+	}
+	
+	
 
 /*	@Override
 	public String toString() {

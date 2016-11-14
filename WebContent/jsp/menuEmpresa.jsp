@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -128,27 +128,26 @@
 										<input class="form-control" type="text" name="beneficio"
 										id="beneficio" placeholder="Digite o nome do beneficio que deseja conceder a seus clientes">
 									</div>
-								<button type="button" class="btn btn-success" value="salvar"
-								onclick="" >Salvar</button>
+								<button type="button" class="btn btn-success" value="salvar" id="salvarBeneficio">Salvar</button>
 							</div>
 							<hr>
 							<br><br>
 					<div class="row">
-							<table class="table table-bordered">
+							<table class="table table-bordered" id="tabelaBeneficio">
 								<thead>
 									<th>Empresa</th>
 									<th>Tipo de Benefício</th>								
 								</thead>
-								<tbody>
-									<c:forEach var="tipoDeBeneficio" items="${empresa.tipoDeBeneficio}">
-										<tr>
+								<tbody> 
+									<c:forEach var="tipoDeBeneficio" items="${empresa.tiposDeBeneficio}">
+ 										<tr>
 											<td>${tipoDeBeneficio.empresa.nome}</td>
 											<td>${tipoDeBeneficio.nomeBeneficio}</td>
 											<td><a href="/SistemaAvaliacao/FrontController?acao=RemoverBeneficio&idBeneficio=${tipoDeBeneficio.id}"class="btn btn-danger" role="button" ><span class="glyphicon glyphicon-trash"></span> Remover</a></td>
 											<td><a href="/SistemaAvaliacao/FrontController?acao=ObterBeneficio&idBeneficio=${tipoDeBeneficio.id}"class="btn btn-info" role="button" ><span class="glyphicon glyphicon-retweet"></span> Alterar</a></td>
-										</tr>
-									</c:forEach>
-								</tbody>
+										</tr> 
+									</c:forEach> 
+ 								</tbody> 
 							</table>
 					</div>
 						</form>	

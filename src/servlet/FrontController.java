@@ -25,8 +25,13 @@ public class FrontController extends HttpServlet {
 			Acao acao = (Acao) classe.newInstance();
 			String pagina = acao.executar(request, response);
 			
-			request.getServletContext().getRequestDispatcher(pagina).forward(request, response);
-			
+			if(pagina=="true"){
+				
+			}else if(pagina=="false"){
+				throw new ServletException("A lógica de persistencia causou uma excessão");
+			}else{
+				request.getServletContext().getRequestDispatcher(pagina).forward(request, response);
+			}			
 		} catch (Exception e) {
 			throw new ServletException(
 	             "A lógica de negócio causou uma excessão", e);
