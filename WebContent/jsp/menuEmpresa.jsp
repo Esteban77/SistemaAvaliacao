@@ -30,10 +30,10 @@
 		<ul class="nav nav-pills nav-justified">
 			<li><a data-toggle="pill" href="#listaFormularios">Meu
 					Formulario</a></li>
-			<li class="active"><a data-toggle="pill" href="#meuFormulario">Criar
+			<li class="active"><a data-toggle="pill" href="#meuFormulario" id="meusFormularios">Criar
 					Formulário</a></li>
 			<li><a data-toggle="pill" href="#estatisticas" id="grafico2">Estatistícas</a></li>
-			<li><a data-toggle="pill" href="#meuBeneficio">Benefícios</a></li>
+			<li><a data-toggle="pill" href="#meuBeneficio" id="meusBeneficios">Benefícios</a></li>
 		</ul>
 		</nav>
 
@@ -57,7 +57,14 @@
 									<th>Nome do Formulário</th>								
 								</thead>
 								<tbody> 
-				
+<%-- 									<c:forEach var="tipoDeFormulario" items="${empresa.tiposDeFormulario}"> --%>
+<%--  										<tr id="${tipoDeFormulario.id}"> --%>
+<%-- 											<td>${tipoDeFormulario.id}</td> --%>
+<%-- 											<td>${tipoDeFormulario.nomeFormulario}</td> --%>
+<%-- 											<td><button type="button" class="btn btn-danger" value= "${tipoDeFormulario.id}" id="removerFormulario${tipoDeFormulario.id}"">Remover</button></td> --%>
+<%-- 											<td><a href="/SistemaAvaliacao/FrontController?acao=ObterFormulario&idFormulario=${tipoDeFormulario.id}"class="btn btn-info" role="button" ><span class="glyphicon glyphicon-retweet"></span> Alterar</a></td> --%>
+<!-- 										</tr>  -->
+<%-- 									</c:forEach>  --%>
  								</tbody> 
 							</table>
 					</div>
@@ -153,14 +160,14 @@
 									<th>Tipo de Benefício</th>								
 								</thead>
 								<tbody> 
-									<c:forEach var="tipoDeBeneficio" items="${empresa.tiposDeBeneficio}">
- 										<tr id="${tipoDeBeneficio.id}">
-											<td>${tipoDeBeneficio.id}</td>
-											<td>${tipoDeBeneficio.nomeBeneficio}</td>
-											<td><button type="button" class="btn btn-danger" value= "${tipoDeBeneficio.id}" id="removerBeneficio">Remover</button></td>
-											<td><a href="/SistemaAvaliacao/FrontController?acao=ObterBeneficio&idBeneficio=${tipoDeBeneficio.id}"class="btn btn-info" role="button" ><span class="glyphicon glyphicon-retweet"></span> Alterar</a></td>
-										</tr> 
-									</c:forEach> 
+<%-- 									<c:forEach var="tipoDeBeneficio" items="${empresa.tiposDeBeneficio}"> --%>
+<%--  										<tr id="${tipoDeBeneficio.id}"> --%>
+<%-- 											<td>${tipoDeBeneficio.id}</td> --%>
+<%-- 											<td>${tipoDeBeneficio.nomeBeneficio}</td> --%>
+<%-- 											<td><button type="button" class="btn btn-danger" value= "${tipoDeBeneficio.id}" id="removerBeneficio" onclick="removeBeneficio(this)">Remover</button></td> --%>
+<%-- 											<td><a href="/SistemaAvaliacao/FrontController?acao=ObterBeneficio&idBeneficio=${tipoDeBeneficio.id}"class="btn btn-info" role="button" ><span class="glyphicon glyphicon-retweet"></span> Alterar</a></td> --%>
+<!-- 										</tr>  -->
+<%-- 									</c:forEach>  --%>
  								</tbody> 
 							</table>
 					</div>
