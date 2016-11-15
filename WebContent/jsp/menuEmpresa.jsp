@@ -99,8 +99,7 @@
 												<input class="form-control" type="text" name="pergunta"
 													id="pergunta" placeholder="Digite sua pergunta">
 											</div>
-											<button id="adicionarPergunta"type="button" class="btn btn-success" value="Adicionar"
-												>Adicionar</button>
+											<button id="adicionarPergunta" type="button" class="btn btn-success">Adicionar</button>
 										</div>
 										<hr>
 									</form>
