@@ -60,7 +60,7 @@ public class Pergunta implements Serializable {
 	public String getNomePergunta() {
 		return nomePergunta;
 	}
-	public void setNpmePergunta(String pergunta) {
+	public void setNomePergunta(String pergunta) {
 		this.nomePergunta = pergunta;
 	}
 	

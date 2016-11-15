@@ -30,10 +30,10 @@
 		<ul class="nav nav-pills nav-justified">
 			<li><a data-toggle="pill" href="#listaFormularios">Meu
 					Formulario</a></li>
-			<li class="active"><a data-toggle="pill" href="#meuFormulario">Criar
+			<li class="active"><a data-toggle="pill" href="#meuFormulario" id="meusFormularios">Criar
 					Formulário</a></li>
 			<li><a data-toggle="pill" href="#estatisticas" id="grafico2">Estatistícas</a></li>
-			<li><a data-toggle="pill" href="#meuBeneficio">Benefícios</a></li>
+			<li><a data-toggle="pill" href="#meuBeneficio" id="meusBeneficios">Benefícios</a></li>
 		</ul>
 		</nav>
 
@@ -54,10 +54,17 @@
 							<table class="table table-bordered" id="tabelaFormulario">
 								<thead>
 									<th>ID</th>
-									<th>Tipo de Benefício</th>								
+									<th>Nome do Formulário</th>								
 								</thead>
 								<tbody> 
-				
+<%-- 									<c:forEach var="tipoDeFormulario" items="${empresa.tiposDeFormulario}"> --%>
+<%--  										<tr id="${tipoDeFormulario.id}"> --%>
+<%-- 											<td>${tipoDeFormulario.id}</td> --%>
+<%-- 											<td>${tipoDeFormulario.nomeFormulario}</td> --%>
+<%-- 											<td><button type="button" class="btn btn-danger" value= "${tipoDeFormulario.id}" id="removerFormulario${tipoDeFormulario.id}"">Remover</button></td> --%>
+<%-- 											<td><a href="/SistemaAvaliacao/FrontController?acao=ObterFormulario&idFormulario=${tipoDeFormulario.id}"class="btn btn-info" role="button" ><span class="glyphicon glyphicon-retweet"></span> Alterar</a></td> --%>
+<!-- 										</tr>  -->
+<%-- 									</c:forEach>  --%>
  								</tbody> 
 							</table>
 					</div>
@@ -83,10 +90,10 @@
 									      <div class="col-sm-4">
 									      <select class="form-control" id="beneficioLista">
 									        <option selected="selected">Todos</option>
-											<c:forEach var="beneficioUnidade" items="${empresa.tiposDeBeneficio}">
-												<option>${beneficioUnidade.nomeBeneficio}</option>
-											</c:forEach>
-									     </select>
+<%-- 											<c:forEach var="beneficioUnidade" items="${empresa.tiposDeBeneficio}"> --%>
+<%-- 												<option>${beneficioUnidade.nomeBeneficio}</option> --%>
+<%-- 											</c:forEach> --%>
+ 									     </select> 
 									     </div>
 									    </div>
 									 </div>
@@ -152,14 +159,14 @@
 									<th>Tipo de Benefício</th>								
 								</thead>
 								<tbody> 
-									<c:forEach var="tipoDeBeneficio" items="${empresa.tiposDeBeneficio}">
- 										<tr id="${tipoDeBeneficio.id}">
-											<td>${tipoDeBeneficio.id}</td>
-											<td>${tipoDeBeneficio.nomeBeneficio}</td>
-											<td><button type="button" class="btn btn-danger" value= "${tipoDeBeneficio.id}" id="removerBeneficio">Remover</button></td>
-											<td><a href="/SistemaAvaliacao/FrontController?acao=ObterBeneficio&idBeneficio=${tipoDeBeneficio.id}"class="btn btn-info" role="button" ><span class="glyphicon glyphicon-retweet"></span> Alterar</a></td>
-										</tr> 
-									</c:forEach> 
+<%-- 									<c:forEach var="tipoDeBeneficio" items="${empresa.tiposDeBeneficio}"> --%>
+<%--  										<tr id="${tipoDeBeneficio.id}"> --%>
+<%-- 											<td>${tipoDeBeneficio.id}</td> --%>
+<%-- 											<td>${tipoDeBeneficio.nomeBeneficio}</td> --%>
+<%-- 											<td><button type="button" class="btn btn-danger" value= "${tipoDeBeneficio.id}" id="removerBeneficio" onclick="removeBeneficio(this)">Remover</button></td> --%>
+<%-- 											<td><a href="/SistemaAvaliacao/FrontController?acao=ObterBeneficio&idBeneficio=${tipoDeBeneficio.id}"class="btn btn-info" role="button" ><span class="glyphicon glyphicon-retweet"></span> Alterar</a></td> --%>
+<!-- 										</tr>  -->
+<%-- 									</c:forEach>  --%>
  								</tbody> 
 							</table>
 					</div>
