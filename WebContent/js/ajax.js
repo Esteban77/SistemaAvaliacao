@@ -101,10 +101,7 @@ $(document).ready(function() {
 					}
 				});
 
-	});	
-		
-		
-		
+	});		
 		
 		
 });
