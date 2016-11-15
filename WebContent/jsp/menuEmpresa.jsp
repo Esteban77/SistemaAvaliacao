@@ -50,7 +50,17 @@
 				</div>
 				<button type="button" class="btn btn-success" data-toggle="modal" href="#modalFormulario">Novo Formulário</button>
 				<br>
+					<div class="row">
+							<table class="table table-bordered" id="tabelaFormulario">
+								<thead>
+									<th>ID</th>
+									<th>Tipo de Benefício</th>								
+								</thead>
+								<tbody> 
 				
+ 								</tbody> 
+							</table>
+					</div>
 				<!-- Inicio modal -->
 				<div class="modal fade" id="modalFormulario" role="dialog" data-backdrop="static">
 					<div class="modal-dialog modal-lg">
@@ -89,11 +99,11 @@
 												<input class="form-control" type="text" name="pergunta"
 													id="pergunta" placeholder="Digite sua pergunta">
 											</div>
-											<button type="button" class="btn btn-success" value="Adicionar"
-												onclick="inserirLinhaTabela()" >Adicionar</button>
+											<button id="adicionarPergunta"type="button" class="btn btn-success" value="Adicionar"
+												>Adicionar</button>
 										</div>
 										<hr>
-									</form>	
+									</form>
 								</div>
 								<div>
 									<table id="minhaTabela" class="table">
@@ -103,7 +113,7 @@
 									</table>
 								</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-success">Salvar</button>
+									<button id="salvarFormulario" type="button" class="btn btn-success">Salvar</button>
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 								</div>
 							</div>
@@ -148,7 +158,6 @@
 											<td>${tipoDeBeneficio.id}</td>
 											<td>${tipoDeBeneficio.nomeBeneficio}</td>
 											<td><button type="button" class="btn btn-danger" value= "${tipoDeBeneficio.id}" id="removerBeneficio">Remover</button></td>
-<%-- 											<td><a href="/SistemaAvaliacao/FrontController?acao=RemoverBeneficio&idBeneficio=${tipoDeBeneficio.id}"class="btn btn-danger" role="button" ><span class="glyphicon glyphicon-trash"></span> Remover</a></td> --%>
 											<td><a href="/SistemaAvaliacao/FrontController?acao=ObterBeneficio&idBeneficio=${tipoDeBeneficio.id}"class="btn btn-info" role="button" ><span class="glyphicon glyphicon-retweet"></span> Alterar</a></td>
 										</tr> 
 									</c:forEach> 

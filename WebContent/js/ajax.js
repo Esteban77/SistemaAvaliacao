@@ -58,6 +58,35 @@ $(document).ready(function() {
 				});
 
 	});	
-	
+		
+	 var perguntas = new Array();
+		
+		
+		$('#adicionarPergunta').click(function() { 
+			perguntas.push($('#pergunta').val());
+		});	
 
-});
+
+		$('#salvarFormulario').click(function() { 			
+			var nomeFormulario = $('#nomeFormulario').val();
+			var beneficio = $('#beneficioLista').val();
+
+			//Chama a URL do Servlet
+			$.getJSON('/SistemaAvaliacao/FrontController?acao=IncluirFormulario',	{'nomeFormulario': nomeFormulario,'beneficio': beneficio,'perguntas': perguntas}, 		
+				//Funcao de callback
+				function(responseTxt, statusTxt, xhr) { 
+					if(statusTxt == "success"){
+						var formulario = responseTxt;
+						$('#tabelaFormulario > tbody').append('<tr><td>'+formulario.id+'</td><td>'+formulario.nome+'</td></tr>');
+					}if(statusTxt == "error"){
+//						alert("Error: " + xhr.status + ": " + xhr.statusText);
+					}
+				});
+
+	});	
+		
+		
+		
+		
+		
+		});
