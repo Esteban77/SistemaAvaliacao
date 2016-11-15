@@ -73,10 +73,10 @@
 									      <div class="col-sm-4">
 									      <select class="form-control" id="beneficioLista">
 									        <option selected="selected">Todos</option>
-											<c:forEach var="beneficioUnidade" items="${empresa.tiposDeBeneficio}">
-												<option>${beneficioUnidade.nomeBeneficio}</option>
-											</c:forEach>
-									     </select>
+<%-- 											<c:forEach var="beneficioUnidade" items="${empresa.tiposDeBeneficio}"> --%>
+<%-- 												<option>${beneficioUnidade.nomeBeneficio}</option> --%>
+<%-- 											</c:forEach> --%>
+ 									     </select> 
 									     </div>
 									    </div>
 									 </div>

@@ -67,6 +67,12 @@ public class Empresa extends Pessoa implements Serializable {
 	public void setTiposDeFormulario(Set<TipoDeFormulario> tiposDeFormulario) {
 		this.tiposDeFormulario = tiposDeFormulario;
 	}
+
+	@Override
+	public String toString() {
+		return "Empresa [cnpj=" + cnpj + ", tiposDeBeneficio=" + tiposDeBeneficio + ", tiposDeFormulario="
+				+ tiposDeFormulario + "]";
+	}
 	
 	
 

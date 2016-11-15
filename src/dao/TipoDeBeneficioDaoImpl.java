@@ -35,8 +35,8 @@ public class TipoDeBeneficioDaoImpl extends BaseDaoImpl<TipoDeBeneficio, Long> i
 
 	@Override
 	public List<TipoDeBeneficio> pesquisaPorEmpresa(Long idEmpresa, Session session) {
-		Query consulta = session.createQuery("from TipoDeBeneficio tb where tb.idEmpresa= :idEmpresa");
-		consulta.setParameter("idEmpresa", idEmpresa);
+		Query consulta = session.createQuery("from TipoDeBeneficio tb where tb.empresa.id= :id");
+		consulta.setParameter("id", idEmpresa);
 		return consulta.list();
 	}
 

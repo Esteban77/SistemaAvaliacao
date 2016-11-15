@@ -1,5 +1,5 @@
 $(document).ready(function() {           
-	
+
 	
 /*	$('#cpf').focusout(function(event) {  
 		var cpf = $('#cpf').val();
@@ -59,5 +59,24 @@ $(document).ready(function() {
 
 	});	
 	
+		$('#beneficioLista').click(function() { 					
+			//Chama a URL do Servlet
+			$.getJSON('/SistemaAvaliacao/FrontController?acao=ObterTiposDeBeneficio',	 		
+				//Funcao de callback
+				function(responseTxt, statusTxt, xhr) { 
+					if(statusTxt == "success"){
+	                     $.each(responseTxt, function(key, value) {
+	                    	    $('#beneficioLista').append($("<option/>", {
+	                    	        value: value.id,
+	                    	        text: value.nome
+	                    	    }));
+	                    	});
+ 					}if(statusTxt == "error"){
+						alert("Error: " + xhr.status + ": " + xhr.statusText);
+					}
+				});
+
+	});	
+		
 
 });
