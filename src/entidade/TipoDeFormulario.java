@@ -48,6 +48,14 @@ public class TipoDeFormulario implements Serializable{
 		super();		
 	}
 	
+	public String getNomeFormulario() {
+		return nomeFormulario;
+	}
+
+	public void setNomeFormulario(String nomeFormulario) {
+		this.nomeFormulario = nomeFormulario;
+	}
+
 	public Long getId() {
 		return id;
 	}
