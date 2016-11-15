@@ -41,7 +41,7 @@ public class TipoDeFormulario implements Serializable{
 		super();
 		this.id = id;
 		this.perguntas = perguntas;	
-		this.empresa = empresa;
+		this.empresa = empresa;	
 	}
 	
 	public TipoDeFormulario() {

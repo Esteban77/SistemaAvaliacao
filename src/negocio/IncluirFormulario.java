@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Session;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import dao.EmpresaDaoImpl;
@@ -42,19 +43,22 @@ public class IncluirFormulario implements Acao{
 		
 		
 		perguntas = request.getParameter("perguntas");
-		List<String> lista = new ArrayList<String>(Arrays.asList(perguntas.split(",")));
-		
-		for(String s :lista){
-			pergunta = new Pergunta();
-			pergunta.setNpmePergunta(s);
-			listPerguntas.add(pergunta);
-		}
+		JSONArray lista = new JSONArray(perguntas);
 		
 		formulario.setId(null);
 		formulario.setNomeFormulario(request.getParameter("nomeFormulario"));
-		formulario.setPerguntas(listPerguntas);
+//		formulario.setPerguntas(listPerguntas);
 		formulario.setEmpresa(empresa);
+		formularioDao.salvarOuAlterar(formulario, session);
 		
+				
+		for(Object s :lista){
+			pergunta = new Pergunta();
+			pergunta.setNomePergunta(s.toString());
+			pergunta.setTipoDeFormulario(formulario);
+			listPerguntas.add(pergunta);
+		}
+		formulario.setPerguntas(listPerguntas);	
 		formularioDao.salvarOuAlterar(formulario, session);
 		
 		TipoDeFormulario formRetorno = formularioDao.pesquisaPorId(formulario.getId(), session);

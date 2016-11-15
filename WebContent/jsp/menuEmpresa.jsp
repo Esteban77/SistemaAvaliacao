@@ -54,7 +54,7 @@
 							<table class="table table-bordered" id="tabelaFormulario">
 								<thead>
 									<th>ID</th>
-									<th>Tipo de Benefício</th>								
+									<th>Nome do Formulário</th>								
 								</thead>
 								<tbody> 
 				

@@ -90,7 +90,7 @@ $(document).ready(function() {
 			var nomeFormulario = $('#nomeFormulario').val();
 			var beneficio = $('#beneficioLista').val();
 			//Chama a URL do Servlet
-			$.getJSON('/SistemaAvaliacao/FrontController?acao=IncluirFormulario',	{'nomeFormulario': nomeFormulario,'beneficio': beneficio,'perguntas': perguntas}, 		
+			$.getJSON('/SistemaAvaliacao/FrontController?acao=IncluirFormulario',	{'nomeFormulario': nomeFormulario,'beneficio': beneficio,'perguntas': JSON.stringify(perguntas)}, 		
 				//Funcao de callback
 				function(responseTxt, statusTxt, xhr) { 
 					if(statusTxt == "success"){
