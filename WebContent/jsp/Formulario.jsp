@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<c:set var="formulario" value="${formulario}"/>	
+<title>Formulario</title>
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -23,10 +24,12 @@
 	<script src="../js/ajax.js"></script>
 </head>
 <body>
-	<c:set var="formulario" value="${formulario}"/>	
-	<div class="container">
+	<div class="container col-md-4 col-md-push-4">
+	<h3>Ajude-nos a melhorar nossos produtos</h3>
+		<p>Sua opinião é muito importante. Com ela podemos entregar o melhor produto para você</p> 
+		<hr>
 		<form class="form" id="formularioResposta">
-			<c:forEach var="pergunta" items="${formulario.perguntas}"> 
+			<c:forEach var="pergunta" items="${formulario}"> 
 					<div class="form-group">
 						<label class="coltrol-label">${pergunta.nomePergunta}</label>
 						<div class="form-group">
@@ -38,7 +41,9 @@
 		               	</div>
 					</div>
 			</c:forEach>
-			<button type="submit" class="btn btn-default" id="enviarFormulario">Enviar</button>
+			<div class="from-group" style="text-align: center">
+				<button type="button" class="btn btn-default" id="enviar">Enviar</button>
+			</div>
 		</form>
 	</div>
 </body>

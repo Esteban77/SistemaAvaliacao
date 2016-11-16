@@ -7,6 +7,8 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
+import entidade.Pergunta;
+
 public interface BaseDAO<T, ID> {
 	
 	//Transacoes
@@ -20,4 +22,5 @@ public interface BaseDAO<T, ID> {
 	List<T> listaTodos(Session session) throws HibernateException;
 	
 	List<T> pesquisaPorFiltro(String filtro, Session session) throws HibernateException;
+
 }

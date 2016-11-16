@@ -118,24 +118,15 @@ $(document).ready(function() {
 				});
 
 	});		
-		
-		$('#enviarFormulario').click(function() { 			
-			var valoresRadio = $("#formularioResposta").find("input[type='radio']:checked").val();
-			
-			//Chama a URL do Servlet
-			$.getJSON('/SistemaAvaliacao/FrontController?acao=IncluirFormulario',	{'nomeFormulario': nomeFormulario,'beneficio': beneficio,'perguntas': JSON.stringify(perguntas)}, 		
-				//Funcao de callback
-				function(responseTxt, statusTxt, xhr) { 
-					if(statusTxt == "success"){
-						var formulario = responseTxt;
-						$('#tabelaFormulario > tbody').append('<tr><td>'+formulario.id+'</td><td>'+formulario.nome+'</td><td><button type="button" class="btn btn-danger" value= "'+formulario.id+'" id="removerFormulario" onclick="removeFormulario(this)">Remover</button></td></tr>');
-					}if(statusTxt == "error"){
-//						alert("Error: " + xhr.status + ": " + xhr.statusText);
-					}
-				});
 
-	});	
-		
+	
+		$('#enviar').click(function(){
+			
+			var valoresRadio = $('#formularioResposta').find("input[type='radio']:checked").val();
+			alert(valoresRadio.val());
+			
+		});
+
 });
 
 function removeBeneficio(handler) {

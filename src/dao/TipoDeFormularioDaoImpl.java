@@ -17,7 +17,6 @@ public class TipoDeFormularioDaoImpl extends BaseDaoImpl<TipoDeFormulario, Long>
 	@Override
 	public TipoDeFormulario pesquisaPorId(Long id, Session session) throws HibernateException {
 		TipoDeFormulario formulario = (TipoDeFormulario) session.get(TipoDeFormulario.class, id);
-		
 		return formulario;
 	}
 
