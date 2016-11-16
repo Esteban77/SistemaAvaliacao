@@ -230,13 +230,13 @@
                 value: randomnb(),
                 color: "#32CD32",
                 //highlight: "#5AD3D1",
-                label: "Muito Bom"
+                label: "Otimo"
             },
             {
                 value: randomnb(),
                 color: "#FFFF00",
                 //highlight: "#FFC870",
-                label: "Ruin"
+                label: "Ruim"
             },
             {
             	value: randomnb(),
