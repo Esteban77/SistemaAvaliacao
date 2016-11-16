@@ -38,6 +38,7 @@
 		               	</div>
 					</div>
 			</c:forEach>
+			<button type="submit" class="btn btn-default">Enviar</button>
 		</form>
 	</div>
 </body>
