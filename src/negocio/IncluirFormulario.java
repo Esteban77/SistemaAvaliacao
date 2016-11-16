@@ -47,7 +47,7 @@ public class IncluirFormulario implements Acao{
 		
 		formulario.setId(null);
 		formulario.setNomeFormulario(request.getParameter("nomeFormulario"));
-//		formulario.setPerguntas(listPerguntas);
+
 		formulario.setEmpresa(empresa);
 		formularioDao.salvarOuAlterar(formulario, session);
 		

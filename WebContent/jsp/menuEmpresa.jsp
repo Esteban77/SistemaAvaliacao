@@ -119,7 +119,7 @@
 									</table>
 								</div>
 								<div class="modal-footer">
-									<button id="salvarFormulario" type="button" class="btn btn-success">Salvar</button>
+									<button id="salvarFormulario" type="button" data-dismiss="modal" class="btn btn-success">Salvar</button>
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 								</div>
 							</div>
