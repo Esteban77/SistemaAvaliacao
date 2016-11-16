@@ -118,7 +118,13 @@ $(document).ready(function() {
 				});
 
 	});		
-		
+	
+		$('button').click(function(){
+			
+			var valoresRadio = $('#formularioResposta').find("input[type='radio']:checked").val();
+			alert(valoresRadio.val());
+			
+		});
 });
 
 function removeBeneficio(handler) {

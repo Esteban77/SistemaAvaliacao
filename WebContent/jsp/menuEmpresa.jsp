@@ -28,9 +28,9 @@
 	<c:set var="empresa" value="${empresa}"/>	
 		<nav class="navbar nav navbar-inverse"> <!-- Centered Pills -->
 		<ul class="nav nav-pills nav-justified">
-			<li><a data-toggle="pill" href="#listaFormularios">Meu
+			<li class="active"><a data-toggle="pill" href="#listaFormularios">Meu
 					Formulario</a></li>
-			<li class="active"><a data-toggle="pill" href="#meuFormulario" id="meusFormularios">Criar
+			<li><a data-toggle="pill" href="#meuFormulario" id="meusFormularios">Criar
 					Formulário</a></li>
 			<li><a data-toggle="pill" href="#estatisticas" id="grafico2">Estatistícas</a></li>
 			<li><a data-toggle="pill" href="#meuBeneficio" id="meusBeneficios">Benefícios</a></li>
@@ -38,12 +38,12 @@
 		</nav>
 
 		<div class="tab-content">
-			<div id="listaFormularios" class="tab-pane fade container">
+			<div id="listaFormularios" class="tab-pane fade in active container">
 				<h3>Meu Formulario</h3>
 				<p>Veja os resultados de seu formulário</p>
 			</div>
 
-			<div id="meuFormulario" class="tab-pane fade in active container">
+			<div id="meuFormulario" class="tab-pane fade container">
 				<div>
 					<h2>Meus Formulario</h2>
 					<p>Crie seu formulário.</p>

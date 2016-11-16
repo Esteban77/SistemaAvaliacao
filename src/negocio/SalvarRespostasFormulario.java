@@ -27,10 +27,12 @@ public class SalvarRespostasFormulario  implements Acao{
 			RespostaFormularioDaoImpl respostaDao = new RespostaFormularioDaoImpl();
 			List<RespostaFormulario> respostas = new ArrayList<>();
 			Resposta respostaOpcao = new Resposta();
+			
 			Long idPergunta = Long.parseLong(request.getParameter("idPergunta"));
+			String opcao = request.getParameter("opcoes" + idPergunta);
 			
 			resposta.setId(null);
-			respostaOpcao.set
+			
 			
 		return null;
 	}

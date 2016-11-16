@@ -1,6 +1,7 @@
 package negocio;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,8 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
 
 import dao.HibernateUtil;
+import dao.PerguntaDaoImpl;
 import dao.TipoDeFormularioDaoImpl;
-import entidade.TipoDeFormulario;
+import entidade.Pergunta;
 
 public class ChamarFormulario implements Acao{
 
@@ -23,14 +25,17 @@ public class ChamarFormulario implements Acao{
         //Long idEmpresa = (Long) request.getSession().getAttribute("idEmpresa");
         
 		//Empresa empresa = new EmpresaDaoImpl().pesquisaPorId(idEmpresa, session);		
-		TipoDeFormulario formulario = new TipoDeFormulario();
+		//TipoDeFormulario formulario = new TipoDeFormulario();
 		
 		Long idFormulario = Long.parseLong(request.getParameter("idTipoFormulario"));
-		formulario = tipoDeFormularioDaoImpl.pesquisaPorId(idFormulario, session);
+		//formulario = tipoDeFormularioDaoImpl.pesquisaPorId(idFormulario, session);
 	
+		PerguntaDaoImpl perguntadao = new PerguntaDaoImpl();
+		List<Pergunta> perguntas = perguntadao.pesquisaPorIdFormulario(idFormulario, session);
+		
 		session.close();
 		
-		request.setAttribute("formulario", formulario);
+		request.setAttribute("formulario", perguntas);
 		
 		return "/jsp/Formulario.jsp";
 	}
