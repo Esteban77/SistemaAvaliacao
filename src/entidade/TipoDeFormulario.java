@@ -29,7 +29,7 @@ public class TipoDeFormulario implements Serializable{
 	
 	private String nomeFormulario;
 	
-	@OneToMany(mappedBy="tipoDeFormulario",cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="tipoDeFormulario",cascade = CascadeType.ALL)
 	private List<Pergunta> perguntas;
 	
 	@ManyToOne

@@ -6,9 +6,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Session;
+import org.json.JSONArray;
 
 import dao.HibernateUtil;
 import dao.RespostaFormularioDaoImpl;
+import entidade.Pergunta;
 import entidade.Resposta;
 import entidade.RespostaFormulario;
 
@@ -25,13 +27,17 @@ public class SalvarRespostasFormulario  implements Acao{
 			Session session = HibernateUtil.getSession();
 			RespostaFormulario resposta = new RespostaFormulario();
 			RespostaFormularioDaoImpl respostaDao = new RespostaFormularioDaoImpl();
-			List<RespostaFormulario> respostas = new ArrayList<>();
+			String respostas;
 			Resposta respostaOpcao = new Resposta();
 			
-			Long idPergunta = Long.parseLong(request.getParameter("idPergunta"));
-			String opcao = request.getParameter("opcoes" + idPergunta);
+
+			respostas = request.getParameter("respostas");
+			JSONArray jsonRespostas = new JSONArray(respostas);
 			
-			resposta.setId(null);
+			for(Object s :jsonRespostas){
+				System.out.println(s.toString());
+			}
+			
 			
 			
 		return null;

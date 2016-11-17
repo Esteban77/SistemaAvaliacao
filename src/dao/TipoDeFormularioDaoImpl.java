@@ -19,6 +19,13 @@ public class TipoDeFormularioDaoImpl extends BaseDaoImpl<TipoDeFormulario, Long>
 		TipoDeFormulario formulario = (TipoDeFormulario) session.get(TipoDeFormulario.class, id);
 		return formulario;
 	}
+	
+	@Override
+	public TipoDeFormulario pesquisaPorFormulario(Long id, Session session) throws HibernateException {
+		Query consulta = session.createQuery("from TipoDeFormulario tf join fetch tf.perguntas where tf.id=:id");
+		consulta.setParameter("id",id);
+		return (TipoDeFormulario) consulta.uniqueResult();
+	}
 
 	@Override
 	public List<TipoDeFormulario> listaTodos(Session session) throws HibernateException {

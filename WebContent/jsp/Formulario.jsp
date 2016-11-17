@@ -21,28 +21,32 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="../js/ajax.js"></script>
+	<script src="../SistemaAvaliacao/js/ajax.js"></script>
+	<link rel="stylesheet" href="../SistemaAvaliacao/css/estilos.css">
+	
 </head>
-<body>
-	<div class="container col-md-4 col-md-push-4">
+<body id="corpoFormuario">	
+	<div class="container col-md-4 col-md-push-4" id="divForm">
 	<h3>Ajude-nos a melhorar nossos produtos</h3>
 		<p>Sua opinião é muito importante. Com ela podemos entregar o melhor produto para você</p> 
 		<hr>
-		<form class="form" id="formularioResposta">
+		<form class="formu" id="formularioResposta">
 			<c:forEach var="pergunta" items="${formulario}"> 
 					<div class="form-group">
 						<label class="coltrol-label">${pergunta.nomePergunta}</label>
 						<div class="form-group">
-							<input type="hidden" name="idPergunta" value="${pergunta.id}">
-							<label class="radio-inline"><input value="otimo" type="radio" name="opcoes${pergunta.id}">Ótimo</label>
-							<label class="radio-inline"><input value="bom" type="radio" name="opcoes${pergunta.id}">Bom</label>
-			               	<label class="radio-inline"><input value="ruin" type="radio" name="opcoes${pergunta.id}">Ruim</label>
-			               	<label class="radio-inline"><input value="pessimo" type="radio" name="opcoes${pergunta.id}">Péssimo</label>
+							<input type="hidden" name="idPergunta" class="form" id="idPergunta" value="${pergunta.id}">
+							<label class="radio-inline"><input class="form" value="otimo" type="radio" name="opcoes${pergunta.id}">Ótimo</label>
+							<label class="radio-inline"><input class="form" value="bom" type="radio" name="opcoes${pergunta.id}">Bom</label>
+			               	<label class="radio-inline"><input class="form" value="ruin" type="radio" name="opcoes${pergunta.id}">Ruim</label>
+			               	<label class="radio-inline"><input class="form" value="pessimo" type="radio" name="opcoes${pergunta.id}">Péssimo</label>
 		               	</div>
 					</div>
 			</c:forEach>
-			<div class="from-group" style="text-align: center">
-				<button type="button" class="btn btn-default" id="enviar">Enviar</button>
+			<input type="text" name="textarea" class="form" id="textarea" value="${pergunta.id}">
+			<br>
+			<div class="from-group">
+				<button type="button" class="btn btn-default btn-sm btn-block" id="enviar">Enviar</button>
 			</div>
 		</form>
 	</div>

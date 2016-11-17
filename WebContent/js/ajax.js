@@ -121,13 +121,38 @@ $(document).ready(function() {
 
 	
 		$('#enviar').click(function(){
+			var respostas = new Array();
+			var idPergunta1;
+//			var textarea= $('#textarea')
 			
-			var valoresRadio = $('#formularioResposta').find("input[type='radio']:checked").val();
-			alert(valoresRadio.val());
-			
-		});
-
+			$('input').each(function(){
+				if($(this).attr("name")=="idPergunta"){
+//					alert($(this).attr("name"));
+					idPergunta1 = $(this).val();
+				}				
+				if($(this).is(':checked')){
+//					alert("true");
+					respostas.push({
+						idPergunta: idPergunta1,
+						resposta: $(this).val()
+					});
+				}
+				
+			});
+					$.getJSON('/SistemaAvaliacao/FrontController?acao=SalvarRespostasFormulario',	{'respostas': JSON.stringify(respostas)/*, 'textarea': textarea*/}, 		
+							//Funcao de callback
+							function(responseTxt, statusTxt, xhr) { 
+						if(statusTxt == "success"){
+							var repostas = responseTxt;
+						}if(statusTxt == "error"){
+//							alert("Error: " + xhr.status + ": " + xhr.statusText);
+						}
+							});
+				
+			});
+		
 });
+
 
 function removeBeneficio(handler) {
 	var idBeneficio = $(handler).val();	
@@ -164,3 +189,33 @@ function removeFormulario(handler) {
 			}
 		});
 }
+
+/*	$('#enviar').click(function(){
+			
+			var respostas = new Array();
+			var idPergunta1;
+			$('#formularioResposta').each(function(){
+				$(this).find('input[id="idPergunta"]').each(function(){
+					idPergunta1 = $("#idPergunta").val();
+					});				
+				if($(this).find('input[type="radio"]:checked').length > 0){
+					$(this).find('input[type="radio"]:checked').each(function(){
+						respostas.push({
+							idPergunta: idPergunta1,
+							resposta: $(this).val()
+						});
+					});
+					
+					$.getJSON('/SistemaAvaliacao/FrontController?acao=SalvarRespostasFormulario',	{'respostas': JSON.stringify(respostas)}, 		
+							//Funcao de callback
+							function(responseTxt, statusTxt, xhr) { 
+						if(statusTxt == "success"){
+							var repostas = responseTxt;
+						}if(statusTxt == "error"){
+//							alert("Error: " + xhr.status + ": " + xhr.statusText);
+						}
+							});
+				}
+			});
+		});*/
+
