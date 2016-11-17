@@ -119,11 +119,33 @@ $(document).ready(function() {
 
 	});		
 	
-		$('button').click(function(){
+		$('#enviar').click(function(){
 			
-			var valoresRadio = $('#formularioResposta').find("input[type='radio']:checked").val();
-			alert(valoresRadio.val());
-			
+			var respostas = new Array();
+			var idPergunta1;
+			$('#formularioResposta').each(function(){
+				$(this).find('input[id="idPergunta"]').each(function(){
+					idPergunta1 = $("#idPergunta").val();
+					});				
+				if($(this).find('input[type="radio"]:checked').length > 0){
+					$(this).find('input[type="radio"]:checked').each(function(){
+						respostas.push({
+							idPergunta: idPergunta1,
+							resposta: $(this).val()
+						});
+					});
+					
+					$.getJSON('/SistemaAvaliacao/FrontController?acao=SalvarRespostasFormulario',	{'respostas': JSON.stringify(respostas)}, 		
+							//Funcao de callback
+							function(responseTxt, statusTxt, xhr) { 
+						if(statusTxt == "success"){
+							var repostas = responseTxt;
+						}if(statusTxt == "error"){
+//							alert("Error: " + xhr.status + ": " + xhr.statusText);
+						}
+							});
+				}
+			});
 		});
 });
 
