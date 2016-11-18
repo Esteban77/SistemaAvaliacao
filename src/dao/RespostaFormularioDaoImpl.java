@@ -8,6 +8,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import entidade.RespostaFormulario;
+import entidade.TipoDeFormulario;
 
 public class RespostaFormularioDaoImpl extends BaseDaoImpl<RespostaFormulario, Long> implements RespostaFormularioDao, Serializable{
 
@@ -28,6 +29,13 @@ public class RespostaFormularioDaoImpl extends BaseDaoImpl<RespostaFormulario, L
 		Query consulta = session.createQuery("form RespostaFormulario r where r.nome like :nome");
 		consulta.setParameter("nome", "%" + filtro + "%");
 		return consulta.list();
+	}
+
+	@Override
+	public RespostaFormulario pesquisaPorRespostaFormulario(Long id, Session session) throws HibernateException {
+		Query consulta = session.createQuery("from RespostaFormulario rf join fetch rf.respostas where rf.id=:id");
+		consulta.setParameter("id",id);
+		return (RespostaFormulario) consulta.uniqueResult();
 	}
 
 }

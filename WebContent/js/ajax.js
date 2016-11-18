@@ -123,7 +123,7 @@ $(document).ready(function() {
 		$('#enviar').click(function(){
 			var respostas = new Array();
 			var idPergunta1;
-//			var textarea= $('#textarea')
+			var comentario= $('#comentario').val();
 			
 			$('input').each(function(){
 				if($(this).attr("name")=="idPergunta"){
@@ -139,7 +139,7 @@ $(document).ready(function() {
 				}
 				
 			});
-					$.getJSON('/SistemaAvaliacao/FrontController?acao=SalvarRespostasFormulario',	{'respostas': JSON.stringify(respostas)/*, 'textarea': textarea*/}, 		
+					$.getJSON('/SistemaAvaliacao/FrontController?acao=SalvarRespostasFormulario',	{'respostas': JSON.stringify(respostas), 'comentario': comentario}, 		
 							//Funcao de callback
 							function(responseTxt, statusTxt, xhr) { 
 						if(statusTxt == "success"){

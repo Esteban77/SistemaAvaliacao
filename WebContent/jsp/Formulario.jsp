@@ -36,14 +36,17 @@
 						<label class="coltrol-label">${pergunta.nomePergunta}</label>
 						<div class="form-group">
 							<input type="hidden" name="idPergunta" class="form" id="idPergunta" value="${pergunta.id}">
-							<label class="radio-inline"><input class="form" value="otimo" type="radio" name="opcoes${pergunta.id}">Ótimo</label>
-							<label class="radio-inline"><input class="form" value="bom" type="radio" name="opcoes${pergunta.id}">Bom</label>
-			               	<label class="radio-inline"><input class="form" value="ruin" type="radio" name="opcoes${pergunta.id}">Ruim</label>
-			               	<label class="radio-inline"><input class="form" value="pessimo" type="radio" name="opcoes${pergunta.id}">Péssimo</label>
+							<label class="radio-inline"><input class="form" value="OTIMO" type="radio" name="opcoes${pergunta.id}">Ótimo</label>
+							<label class="radio-inline"><input class="form" value="BOM" type="radio" name="opcoes${pergunta.id}">Bom</label>
+			               	<label class="radio-inline"><input class="form" value="RUIM" type="radio" name="opcoes${pergunta.id}">Ruim</label>
+			               	<label class="radio-inline"><input class="form" value="PESSIMO" type="radio" name="opcoes${pergunta.id}">Péssimo</label>
 		               	</div>
 					</div>
 			</c:forEach>
-			<input type="text" name="textarea" class="form" id="textarea" value="${pergunta.id}">
+			<div class="form-group">
+  				<label for="comment">Comentário:</label>
+  			<textarea class="form-control" rows="5" id="comentario"></textarea>
+			</div>
 			<br>
 			<div class="from-group">
 				<button type="button" class="btn btn-default btn-sm btn-block" id="enviar">Enviar</button>
