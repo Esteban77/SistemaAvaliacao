@@ -37,11 +37,12 @@ public class TipoDeFormulario implements Serializable{
 	private Empresa empresa;
 	
 			
-	public TipoDeFormulario(Long id, List<Pergunta> perguntas, Empresa empresa) {
+	public TipoDeFormulario(Long id, String nomeFormulario, List<Pergunta> perguntas, Empresa empresa) {
 		super();
 		this.id = id;
 		this.perguntas = perguntas;	
 		this.empresa = empresa;	
+		this.nomeFormulario = nomeFormulario;
 	}
 	
 	public TipoDeFormulario() {

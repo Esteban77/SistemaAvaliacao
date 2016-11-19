@@ -14,20 +14,19 @@ public class PerguntaDaoImpl extends BaseDaoImpl<Pergunta, Long> implements Perg
 
 	@Override
 	public Pergunta pesquisaPorId(Long id, Session session) throws HibernateException {
-		Pergunta pergunta = (Pergunta) session.get(TipoDeFormulario.class, id);
+		Pergunta pergunta = (Pergunta) session.get(Pergunta.class, id);
 		return pergunta;
 		
 	}
 
 	@Override
 	public List<Pergunta> listaTodos(Session session) throws HibernateException {
-		// TODO Auto-generated method stub
-		return null;
+		Query consulta = session.createQuery("from Pergunta");
+		return consulta.list();
 	}
 
 	@Override
-	public List<Pergunta> pesquisaPorIdFormulario(Long idFormulario, Session session) throws HibernateException {
-		
+	public List<Pergunta> pesquisaPorIdFormulario(Long idFormulario, Session session) throws HibernateException {		
 		Query consulta = session.createQuery("from Pergunta p where p.tipoDeFormulario.id= :id");
 		consulta.setParameter("id", idFormulario);
 		return consulta.list();

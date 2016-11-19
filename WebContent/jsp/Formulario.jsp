@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -36,7 +36,7 @@
 						<label class="coltrol-label">${pergunta.nomePergunta}</label>
 						<div class="form-group">
 							<input type="hidden" name="idPergunta" class="form" id="idPergunta" value="${pergunta.id}">
-							<label class="radio-inline"><input class="form" value="OTIMO" type="radio" name="opcoes${pergunta.id}">Ótimo</label>
+							<label class="radio-inline"><input class="form" value="OTIMO" type="radio" name="opcoes${pergunta.id}" checked>Ótimo</label>
 							<label class="radio-inline"><input class="form" value="BOM" type="radio" name="opcoes${pergunta.id}">Bom</label>
 			               	<label class="radio-inline"><input class="form" value="RUIM" type="radio" name="opcoes${pergunta.id}">Ruim</label>
 			               	<label class="radio-inline"><input class="form" value="PESSIMO" type="radio" name="opcoes${pergunta.id}">Péssimo</label>
