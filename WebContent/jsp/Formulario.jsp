@@ -22,6 +22,8 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="../SistemaAvaliacao/js/ajax.js"></script>
+	<script src="../SistemaAvaliacao/js/funcoesFormularioCliente.js"></script>
+	
 	<link rel="stylesheet" href="../SistemaAvaliacao/css/estilos.css">
 	
 </head>
@@ -52,6 +54,55 @@
 				<button type="button" class="btn btn-default btn-sm btn-block" id="enviar">Enviar</button>
 			</div>
 		</form>
+	</div>
+	
+	<div class="modal fade" id="modalConsumidor" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header" style="padding: 35px 50px;">
+				<h3>Entre com seus dados para receber os benefios da empresa (você deve prencher ALGUNS formlários para receber o cupom de benfício)</h3>
+					<p>Selecione a opção "anônimo" se desejar responder ao formulario anônimamente. Nesse caso o formulario nao sera creditado a você</p>
+					<div class="checkbox">
+						<label class="control-label"><input type="checkbox">anônimo</label>
+					</div>
+				</div>
+				<div class="modal-body">
+					<form role="form" action="">
+					
+						<div class="form-group">
+							<label for="Cpf"><span
+								class="glyphicon glyphicon-pencil"></span> CPF</label> <input
+								name="cpf" type="text" class="form-control"
+								placeholder="Digite seu CPF">
+						</div>
+						
+						<div class="form-group">
+							<label for="senha"><span class="glyphicon glyphicon-lock"></span>
+								Senha</label> <input type="password" class="form-control" name="senha"
+								id="senha" placeholder="Digite sua senha">
+						</div>
+						
+						<div class="form-group">
+							<label for="nomeCompleto"><span
+								class="glyphicon glyphicon-user"></span> Nome Completo</label> <input
+								name="nomeConsumidor" type="text" class="form-control"
+								id="nomeConsumidor" placeholder="Digite seu nome completo">
+						</div>
+						
+						<div class="form-group">
+							<label for="telefone"><span
+								class="glyphicon glyphicon-pencil"></span> Telefone</label> <input
+								name="telefone" type="text" class="form-control"
+								placeholder="Digite seu telefone telefone">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button id="confirmar" type="button" class="btn btn-success">Confirmar</button>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
