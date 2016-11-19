@@ -132,9 +132,58 @@
 				<h3>Estatisticas</h3>
 				<p>Veja suas etatisticas</p>
 
+				<div class="formPesquisa">
+					<form class="form-inline" action="">
+					
+						<label class="control-label">Data Inicial</label>
+						<div  class="input-group date" data-provide="datepicker">
+							<div>
+								
+							</div>
+							<input name="dataInicio" type="text" class="form-control">
+						    <div class="input-group-addon">
+						        <span class="glyphicon glyphicon-th"></span>
+						    </div>
+						</div>
+						<label class="control-label">Data Final</label>
+						<div  class="input-group date" data-provide="datepicker">
+							<input name="dataFinal" type="text" class="form-control">
+						    <div class="input-group-addon">
+						        <span class="glyphicon glyphicon-th"></span>
+						    </div>
+						</div>
+						
+						<div class="form-group">
+							<label class="control-label">Formulário</label>
+							<div class="form-group">
+							<select class="form-control" id="selectFormularios" name="selectFormularios">
+							    
+							    <option>Formulários</option>
+							    
+ 							 </select>
+ 							 </div>
+						</div>
+						
+						<div class="form-group">
+							<label class="control-label">Perguntas</label>
+							<div class="form-group">
+							<select class="form-control" id="slectPerguntas" name="selectPerguntas">
+							    
+							    <option>Perguntas</option>
+					
+ 							 </select>
+ 							 </div>
+						</div>
+						<div class="form-group">
+							<button class="btn btn-info" type="submit" name="buscar">Buscar</button>
+						</div>
+					</form>
+				</div>
+				<br><br>
 				<div class="box-chart">
 					<canvas id="GraficoPizza" style="width:100%"></canvas>
 				</div>
+				
 			</div>
 
 			<div id="meuBeneficio" class="tab-pane fade container">
