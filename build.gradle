@@ -3,7 +3,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse-wtp'
 
 
-compileJava.options.encoding = 'UTF-8'
+compileJava.options.encoding = 'ISO-8859-1'
 buildDir = 'gradle_build'
 
 repositories {
