@@ -8,8 +8,7 @@ import static org.junit.Assert.fail;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Query;
-
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.junit.Test;
 
@@ -29,7 +28,7 @@ public class TipoDeFormularioDaoImplTest {
 	private TipoDeFormularioDao tipoDeFormularioDao;
 	private Empresa empresa;
 	
-//	@Test
+	@Test
 	public final void testPesquisaPorId() {
 		System.out.println("teste pesquisar por id");
 		session = HibernateUtil.getSession();
@@ -49,7 +48,7 @@ public class TipoDeFormularioDaoImplTest {
 		session.close();
 	}
 
-//	@Test
+	@Test
 	public final void testListaTodos() {
 		System.out.println("listar todos...");
 		session = HibernateUtil.getSession();
@@ -58,17 +57,17 @@ public class TipoDeFormularioDaoImplTest {
 		session.close();
 	}
 
-//	@Test
+	@Test
 	public final void testPesquisaPorFiltro() {
 		fail("Not yet implemented"); // TODO
 	}
 
-//	@Test
+	@Test
 	public final void testPesquisaPorEmpresa() {
 		fail("Not yet implemented"); // TODO
 	}
 
-//	@Test
+	@Test
 	public final void testSalvar() {
 		System.out.println("teste salvar...");
 		EmpresaDaoImplTest empresaDaoImpl = new EmpresaDaoImplTest();
@@ -89,7 +88,7 @@ public class TipoDeFormularioDaoImplTest {
 		
 	}
 
-//	@Test
+	@Test
 	public final void testExcluir() {
 		System.out.println("Alterar excluir...");
 		session = HibernateUtil.getSession();
@@ -103,15 +102,16 @@ public class TipoDeFormularioDaoImplTest {
 	public TipoDeFormulario getTipoDeFormulario(){
 		session = HibernateUtil.getSession();
 		Long id;
-		Query consulta = (Query) session.createQuery("Select max(f.id) from TipoDeFormulario f");
-		id = (Long) ((org.hibernate.Query) consulta).uniqueResult();
+		Query consulta = session.createQuery("Select max(f.id) from TipoDeFormulario f");
+		id =  (Long) consulta.uniqueResult();
 		if(id == null){
 			testSalvar();
 		}else{
 			tipoDeFormularioDao = new TipoDeFormularioDaoImpl();
 			tipoDeFormulario = tipoDeFormularioDao.pesquisaPorId(id, session);
+			session.close();
 		}
-		session.close();
+		
 		return tipoDeFormulario;		
 	}
 	

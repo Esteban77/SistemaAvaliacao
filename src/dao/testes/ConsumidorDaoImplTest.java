@@ -101,8 +101,9 @@ public class ConsumidorDaoImplTest {
 		}else{
 			consumidorDao = new ConsumidorDaoImpl();
 			consumidor = consumidorDao.pesquisaPorId(id, session);
+			session.close();
 		}
-		session.close();
+		
 		return consumidor;		
 	}
 
