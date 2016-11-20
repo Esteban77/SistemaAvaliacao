@@ -36,6 +36,7 @@ public class ChamarFormulario implements Acao{
 		session.close();
 		
 		request.setAttribute("formulario", perguntas);
+		request.setAttribute("idForm", idFormulario);
 		
 		return "/jsp/Formulario.jsp";
 	}

@@ -2,6 +2,7 @@ package negocio;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,11 +29,16 @@ public class SalvarRespostasFormulario  implements Acao{
 			Session session = HibernateUtil.getSession();
 			RespostaFormulario respostaFormulario = new RespostaFormulario();
 			RespostaFormularioDaoImpl respostaDao = new RespostaFormularioDaoImpl();
+			String idRespostaF = request.getParameter("idResposta");
+			Long idResposta = Long.parseLong(idRespostaF);
+			respostaFormulario = respostaDao.pesquisaPorId(idResposta, session);
 			String respostas;
 			String comentario;
+			String data;
 			
 			respostas = request.getParameter("respostas");
 			comentario = request.getParameter("comentario");
+			data = request.getParameter("data");
 			JSONArray jsonRespostas = new JSONArray(respostas);
 			PerguntaDaoImpl perguntaDao = new PerguntaDaoImpl();
 			List<Resposta> listRespostas = new ArrayList<>();
@@ -56,17 +62,20 @@ public class SalvarRespostasFormulario  implements Acao{
 				resposta.setRespostaFormulario(respostaFormulario);
 				listRespostas.add(resposta);
 			}		
-			respostaFormulario.setId(null);
+			Date date = new Date();
+			date.getDate();
 			respostaFormulario.setComentario(comentario);
-//			respostaFormulario.setData();
-//			respostaFormulario.setConsumidor();
-//			respostaFormulario.setAnonimo();
-//			respostaFormulario.setNumeroPedido();
-//			respostaFormulario.setTipoDeFormulario(tipoDeFormulario);
+			respostaFormulario.setData(date);
 			respostaFormulario.setRespostas(listRespostas);
+			respostaDao.salvarOuAlterar(respostaFormulario, session);			
 			session.close();
-						
-		return null;
+			
+			if(respostaFormulario.getRespostas()!=null || !respostaFormulario.getRespostas().isEmpty()){
+				return "true";
+			}else{
+				return "false";
+			}					
+		
 	}
 
 }

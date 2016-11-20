@@ -130,7 +130,7 @@
 
 			<div id="estatisticas" class="tab-pane fade  container box">
 				<h3>Estatisticas</h3>
-				<p>Veja suas etatisticas</p>
+				<p>Veja suas estatisticas</p>
 
 				<div class="formPesquisa">
 					<form class="form-inline" action="">
@@ -140,6 +140,7 @@
 							<div>
 								
 							</div>
+							<input  class="form-control" type="date" name="datainicio" pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" min="1950-01-01" max="2016-02-18" required>
 							<input name="dataInicio" type="text" class="form-control">
 						    <div class="input-group-addon">
 						        <span class="glyphicon glyphicon-th"></span>

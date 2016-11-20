@@ -6,7 +6,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<c:set var="formulario" value="${formulario}"/>	
 <title>Formulario</title>
 
 <link rel="stylesheet"
@@ -21,18 +20,21 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="../SistemaAvaliacao/js/ajax.js"></script>
+ 
 	<script src="../SistemaAvaliacao/js/funcoesFormularioCliente.js"></script>
-	
 	<link rel="stylesheet" href="../SistemaAvaliacao/css/estilos.css">
 	
 </head>
 <body id="corpoFormuario">	
+<c:set var="formulario" value="${formulario}"/>	
+<c:set var="idF" value="${idForm}"/>
 	<div class="container col-md-4 col-md-push-4" id="divForm">
 	<h3>Ajude-nos a melhorar nossos produtos</h3>
 		<p>Sua opinião é muito importante. Com ela podemos entregar o melhor produto para você</p> 
 		<hr>
 		<form class="formu" id="formularioResposta">
+		<input type="hidden" name="idRespostaFormulario" id="idRespostaFormulario" value="">
+		<input type="hidden" name="idConsumidor" id="idConsumidor" value="">
 			<c:forEach var="pergunta" items="${formulario}"> 
 					<div class="form-group">
 						<label class="coltrol-label">${pergunta.nomePergunta}</label>
@@ -56,52 +58,67 @@
 		</form>
 	</div>
 	
-	<div class="modal fade" id="modalConsumidor" role="dialog">
+	<div class="modal fade" id="modalConsumidor" role="dialog" data-backdrop="static">
 		<div class="modal-dialog">
 			<!-- Modal content-->
 			<div class="modal-content">
+			<form role="form" method="post" id="formConsumidor">
+			<input type="hidden" name="idTipoFormulario" id="idTipoFormulario" value="${idF}">
 				<div class="modal-header" style="padding: 35px 50px;">
-				<h3>Entre com seus dados para receber os benefios da empresa (você deve prencher ALGUNS formlários para receber o cupom de benfício)</h3>
+				<h5>Entre com seus dados para receber os beneficios da empresa (você deve prencher ALGUNS formulários para receber o cupom de benefício)</h5>
 					<p>Selecione a opção "anônimo" se desejar responder ao formulario anônimamente. Nesse caso o formulario nao sera creditado a você</p>
 					<div class="checkbox">
-						<label class="control-label"><input type="checkbox">anônimo</label>
+						<label class="control-label"><input type="checkbox" id="anonimo" name="anonimo" value="anonimo">anônimo</label>
+						<label class="control-label"><input placeholder="Número do pedido" type="text" name="pedido" id="pedido" required>Número do Pedido</label>
 					</div>
 				</div>
-				<div class="modal-body">
-					<form role="form" action="">
-					
+				<div class="modal-body" id="modalCampos">
 						<div class="form-group">
 							<label for="Cpf"><span
 								class="glyphicon glyphicon-pencil"></span> CPF</label> <input
-								name="cpf" type="text" class="form-control"
-								placeholder="Digite seu CPF">
+								name="cpf" type="number" class="form-control obrigatorio" id="cpf"
+								placeholder="Digite seu CPF"  maxlength="11" required>
+						</div>
+						<div class="form-group">
+							<label for="login"><span
+								class="glyphicon glyphicon-user"></span> Login</label> <input
+								name="login" type="text" class="form-control obrigatorio"
+								id="login" placeholder="Digite seu login" required>
 						</div>
 						
 						<div class="form-group">
 							<label for="senha"><span class="glyphicon glyphicon-lock"></span>
-								Senha</label> <input type="password" class="form-control" name="senha"
-								id="senha" placeholder="Digite sua senha">
+								Senha</label> <input type="password" class="form-control obrigatorio" name="senha"
+								id="senha" placeholder="Digite sua senha" max="999999" min="0" required>
 						</div>
 						
 						<div class="form-group">
 							<label for="nomeCompleto"><span
 								class="glyphicon glyphicon-user"></span> Nome Completo</label> <input
-								name="nomeConsumidor" type="text" class="form-control"
-								id="nomeConsumidor" placeholder="Digite seu nome completo">
+								name="nomeConsumidor" type="text" class="form-control obrigatorio"
+								id="nomeConsumidor" placeholder="Digite seu nome completo" pattern="[a-zA-Z]+$" required>
 						</div>
 						
 						<div class="form-group">
 							<label for="telefone"><span
 								class="glyphicon glyphicon-pencil"></span> Telefone</label> <input
-								name="telefone" type="text" class="form-control"
-								placeholder="Digite seu telefone telefone">
+								name="telefone" type="tel" class="form-control obrigatorio" id="telefone"
+								placeholder="Digite seu telefone" pattern="^\d{4}-\d{3}-\d{4}$" required>
 						</div>
-					</form>
+						
+						<div class="form-group">
+							<label for="email"><span
+								class="glyphicon glyphicon-pencil"></span> Email</label> <input
+								name="email" type="email" class="form-control obrigatorio" id="email"
+								placeholder="Digite seu email" required>
+						</div>
+					
 				</div>
-				<div class="modal-footer">
-					<button id="confirmar" type="button" class="btn btn-success">Confirmar</button>
-				</div>
-			</div>
+					<div class="modal-footer">
+					<button id="confirmar" type="submit" value="Confirmar" class="btn btn-success">Confirmar</button>
+					</div>
+			</form>
+			</div>		
 		</div>
 	</div>
 </body>
