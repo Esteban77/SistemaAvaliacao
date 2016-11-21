@@ -23,7 +23,7 @@ $(document).ready(function() {
 					}
 				});
 
-	});	*/
+	});	*/	
 	
 		$('#salvarBeneficio').click(function() { 			
 			var beneficio = $('#beneficio').val();			
@@ -40,6 +40,45 @@ $(document).ready(function() {
 				});
 
 		});	
+		
+		$('#selectFormularios').change(function() {
+	        var parent = $(this).val();
+	        $.getJSON('/SistemaAvaliacao/FrontController?acao=ObterPerguntas', {"idTipoFormulario":parent},	 		
+					//Funcao de callback
+					function(responseTxt, statusTxt, xhr) { 
+						if(statusTxt == "success"){
+							$('#selectPerguntas').find('option:not(:first)').remove();
+		                     $.each(responseTxt, function(key, value) {
+		                    	    $('#selectPerguntas').append($("<option/>", {
+		                    	        value: value.id,
+		                    	        text: value.nome
+		                    	    }));
+		                    	});
+	 					}if(statusTxt == "error"){
+							alert("Error: " + xhr.status + ": " + xhr.statusText);
+						}
+					});	
+	        
+		});
+		
+		$('#minhasEstatisticas').click(function() { 
+			$.getJSON('/SistemaAvaliacao/FrontController?acao=ObterTiposDeFormulario',	 		
+					//Funcao de callback
+					function(responseTxt, statusTxt, xhr) { 
+						if(statusTxt == "success"){
+							$('#selectFormularios').find('option:not(:first)').remove();
+		                     $.each(responseTxt, function(key, value) {
+		                    	    $('#selectFormularios').append($("<option/>", {
+		                    	        value: value.id,
+		                    	        text: value.nome
+		                    	    }));
+		                    	});
+	 					}if(statusTxt == "error"){
+							alert("Error: " + xhr.status + ": " + xhr.statusText);
+						}
+					});		
+			
+		});
 		
 		$('#meusBeneficios').click(function() { 
 			$.getJSON('/SistemaAvaliacao/FrontController?acao=ObterTiposDeBeneficio',	 		
@@ -161,32 +200,4 @@ function removeFormulario(handler) {
 		});
 }
 
-/*	$('#enviar').click(function(){
-			
-			var respostas = new Array();
-			var idPergunta1;
-			$('#formularioResposta').each(function(){
-				$(this).find('input[id="idPergunta"]').each(function(){
-					idPergunta1 = $("#idPergunta").val();
-					});				
-				if($(this).find('input[type="radio"]:checked').length > 0){
-					$(this).find('input[type="radio"]:checked').each(function(){
-						respostas.push({
-							idPergunta: idPergunta1,
-							resposta: $(this).val()
-						});
-					});
-					
-					$.getJSON('/SistemaAvaliacao/FrontController?acao=SalvarRespostasFormulario',	{'respostas': JSON.stringify(respostas)}, 		
-							//Funcao de callback
-							function(responseTxt, statusTxt, xhr) { 
-						if(statusTxt == "success"){
-							var repostas = responseTxt;
-						}if(statusTxt == "error"){
-//							alert("Error: " + xhr.status + ": " + xhr.statusText);
-						}
-							});
-				}
-			});
-		});*/
 

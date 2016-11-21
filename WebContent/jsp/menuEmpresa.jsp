@@ -32,7 +32,7 @@
 					Formulario</a></li>
 			<li><a data-toggle="pill" href="#meuFormulario" id="meusFormularios">Criar
 					Formulário</a></li>
-			<li><a data-toggle="pill" href="#estatisticas" id="grafico2">Estatistícas</a></li>
+			<li><a data-toggle="pill" href="#estatisticas" id="minhasEstatisticas">Estatistícas</a></li>
 			<li><a data-toggle="pill" href="#meuBeneficio" id="meusBeneficios">Benefícios</a></li>
 		</ul>
 		</nav>
@@ -134,17 +134,13 @@
 
 				<div class="formPesquisa">
 					<form class="form-inline" action="">
-					
+					<input  class="form-control" type="date" name="datainicio" pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" min="1950-01-01" max="2016-12-31" required>
 						<label class="control-label">Data Inicial</label>
 						<div  class="input-group date" data-provide="datepicker">
-							<div>
-								
-							</div>
-							<input  class="form-control" type="date" name="datainicio" pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" min="1950-01-01" max="2016-02-18" required>
 							<input name="dataInicio" type="text" class="form-control">
 						    <div class="input-group-addon">
 						        <span class="glyphicon glyphicon-th"></span>
-						    </div>
+							</div>						
 						</div>
 						<label class="control-label">Data Final</label>
 						<div  class="input-group date" data-provide="datepicker">
@@ -157,10 +153,8 @@
 						<div class="form-group">
 							<label class="control-label">Formulário</label>
 							<div class="form-group">
-							<select class="form-control" id="selectFormularios" name="selectFormularios">
-							    
-							    <option>Formulários</option>
-							    
+							<select class="form-control" id="selectFormularios" name="selectFormularios">							    
+							   <option selected="selected">Todos</option>							    
  							 </select>
  							 </div>
 						</div>
@@ -168,10 +162,8 @@
 						<div class="form-group">
 							<label class="control-label">Perguntas</label>
 							<div class="form-group">
-							<select class="form-control" id="slectPerguntas" name="selectPerguntas">
-							    
-							    <option>Perguntas</option>
-					
+							<select class="form-control" id="selectPerguntas" name="selectPerguntas">
+							  <option selected="selected">Todos</option>					
  							 </select>
  							 </div>
 						</div>
@@ -295,7 +287,7 @@
             }
         ]
         
-        $("#grafico2").on('shown.bs.tab',function (e) {
+        $("#minhasEstatisticas").on('shown.bs.tab',function (e) {
         	var ctx = document.getElementById("GraficoPizza").getContext("2d");
             var PizzaChart = new Chart(ctx).Doughnut(data, options);
         	});

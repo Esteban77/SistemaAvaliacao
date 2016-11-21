@@ -38,4 +38,11 @@ public class PerguntaDaoImpl extends BaseDaoImpl<Pergunta, Long> implements Perg
 		return null;
 	}
 
+	@Override
+	public List<Pergunta> pesquisaPorIdEmpresa(Long idEmpresa, Session session) throws HibernateException {
+		Query consulta = session.createQuery("select p from Pergunta p join fetch p.tipoDeFormulario tf where tf.empresa.id= :id");
+		consulta.setParameter("id", idEmpresa);
+		return consulta.list();
+	}
+
 }

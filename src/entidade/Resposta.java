@@ -24,7 +24,7 @@ public class Resposta implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private Opcao opcao;
 	
-	@OneToOne(optional=false) 
+	@ManyToOne
 	@JoinColumn(name="idPergunta")
 	private Pergunta pergunta;
 	

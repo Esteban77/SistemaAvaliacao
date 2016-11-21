@@ -45,8 +45,8 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Entrar em sua conta</h4>
 				</div>
-				<div class="modal-body">
-					<form role="form" action="/SistemaAvaliacao/svtlogar" method="post">
+				<form role="form" action="/SistemaAvaliacao/svtlogar" method="post">
+				<div class="modal-body">					
 						<div class="form-group">
 							<label for="nomeUsuario"><span
 								class="glyphicon glyphicon-user"></span> Nome de Usuário</label> <input
@@ -76,10 +76,8 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Registrar-se</h4>
 				</div>
-				<div class="modal-body">
-					<form
-						action="/SistemaAvaliacao/FrontController?Acao=IncluirEmpresa"
-						method="post" role="form">
+				<form action="/SistemaAvaliacao/FrontController?acao=IncluirEmpresa" method="post" role="form">
+				<div class="modal-body">					
 						<div class="form-group">
 							<label for="nomeEmpresa"><span
 								class="glyphicon glyphicon-user"></span> Nome Empresa</label> <input
@@ -109,11 +107,11 @@
 								Senha</label> <input name="senha" type="password" class="form-control"
 								id="senha">
 						</div>
-				</div>
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-success">Confirmar</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-success">Confirmar</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
 				</form>
 			</div>
 		</div>

@@ -31,7 +31,7 @@ public class PerguntaDaoImplTest {
 		
 	}
 
-	@Test
+//	@Test
 	public void testPesquisaPorId() {
 		System.out.println("teste pesquisar por id");
 		session = HibernateUtil.getSession();
@@ -43,7 +43,7 @@ public class PerguntaDaoImplTest {
 		session.close();
 	}
 
-	@Test
+//	@Test
 	public void testListaTodos() {
 		System.out.println("listar todos...");
 		session = HibernateUtil.getSession();
@@ -52,7 +52,7 @@ public class PerguntaDaoImplTest {
 		session.close();
 	}
 
-	@Test
+//	@Test
 	public void testPesquisaPorIdFormulario() {
 		System.out.println("teste Pequisar por id formulario");
 		session = HibernateUtil.getSession();
@@ -62,13 +62,24 @@ public class PerguntaDaoImplTest {
 		assertFalse(listPerguntas.isEmpty());
 		session.close();
 	}
+	
+	@Test
+	public void testPesquisaPorIdEmpresa() {
+		System.out.println("teste Pequisar por id empresa");
+		session = HibernateUtil.getSession();
+		TipoDeFormularioDaoImplTest tipoFormularioTeste = new TipoDeFormularioDaoImplTest();
+		tipoDeFormulario = tipoFormularioTeste.getTipoDeFormulario();
+		List<Pergunta> listPerguntas = perguntaDao.pesquisaPorIdEmpresa(tipoDeFormulario.getEmpresa().getId(), session);
+		assertFalse(listPerguntas.isEmpty());
+		session.close();
+	}
 
 //	@Test
 	public void testPesquisaPorFiltro() {
 		fail("Not yet implemented");
 	}
 
-	@Test
+//	@Test
 	public void testSalvar() {
 		System.out.println("teste salvar");
 		session = HibernateUtil.getSession();
@@ -80,7 +91,7 @@ public class PerguntaDaoImplTest {
 		session.close();
 	}
 	
-	@Test
+//	@Test
 	public void testAlterar() {
 		System.out.println("teste Alterar...");
 		session = HibernateUtil.getSession();
@@ -91,7 +102,7 @@ public class PerguntaDaoImplTest {
 		session.close();
 	}
 
-	@Test
+//	@Test
 	public void testExcluir() {
 		System.out.println("teste excluir...");
 		session = HibernateUtil.getSession();

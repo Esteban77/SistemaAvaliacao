@@ -9,5 +9,6 @@ import entidade.Pergunta;
 
 public interface PerguntaDao extends BaseDAO<Pergunta, Long>{
 	List<Pergunta> pesquisaPorIdFormulario(Long idFormulario, Session session) throws HibernateException;
+	List<Pergunta> pesquisaPorIdEmpresa(Long idEmpresa, Session session) throws HibernateException;
 
 }
