@@ -153,21 +153,58 @@ $(document).ready(function() {
 					if(statusTxt == "success"){
 						var formulario = responseTxt;
 						$('#tabelaFormulario > tbody').append('<tr><td>'+formulario.id+'</td><td>'+formulario.nome+'</td><td><button type="button" class="btn btn-danger" value= "'+formulario.id+'" id="removerFormulario" onclick="removeFormulario(this)">Remover</button></td></tr>');
+						perguntas = new Array();
 					}if(statusTxt == "error"){
 //						alert("Error: " + xhr.status + ": " + xhr.statusText);
 					}
 				});
-			perguntas = new Array();
+			
 			//perguntas.clear();
 	});	
 		
-		var resultadosArray = new Array();	
+		
+		var resultadosArray = new Array();
+		var ctx;
+		var PizzaChart;
+
+		var options = {
+		    responsive:true
+		};
+
+		var data1 = [
+			{
+				value: resultadosArray[0],
+				color: "#7CFC00",
+				label: "Bom"
+			},
+			{
+		        value: resultadosArray[1],
+		        color: "#32CD32",
+		        //highlight: "#5AD3D1",
+		        label: "Otimo"
+		    },
+		    {
+		        value: resultadosArray[2],
+		        color:"#F7464A",
+		        //highlight: "#FF5A5E",
+		        label: "Péssimo"
+		    },    
+		    {
+		        value: resultadosArray[3],
+		        color: "#FFFF00",
+		        //highlight: "#FFC870",
+		        label: "Ruim"
+		    }    
+		]
+
+		$("#minhasEstatisticas").on('shown.bs.tab',function (e) {
+			ctx = document.getElementById("GraficoPizza").getContext("2d");
+		    PizzaChart = new Chart(ctx).Pie(data1, options);
+			});
+
+			
 		$('#formConsulta').submit(function(e){
 			e.preventDefault();
-/*			var dataInicial = $('dataInicio').val();
-			var dataFinal = $('dataFinal').val();
-			var tipoDeForm = $('selectFormularios').val();
-			var pergunta = $('selectPerguntas').val();*/
 			
 			 $.ajax({
 		            type: $(this).attr('method'),
@@ -175,21 +212,22 @@ $(document).ready(function() {
 		            data: $(this).serialize(),
 		            dataType: "json",
 		            success: function (data,status) {
-		            	$.each(responseTxt, function(key, value) {
-		            		resultadosArray.push(value.id);
-	                    });	            	
+		            	i = 0;
+		            	$.each(data, function(key, value) {
+		            		resultadosArray.push(value.qtd);
+		            		data1[i].value = value.qtd;
+		            		i++;
+	                    });
+		            	PizzaChart= new Chart(ctx).Pie(data1, options);
+		   			  resultadosArray = new Array();
 		            },
 		            error: function (xhr, desc, err){	            
 		            	alert("erro");
 		            }
+		            
 		        });			 
-			  PizzaChart=new Chart(ctx).Doughnut(data, options);
-			  resultadosArray = new Array();
+			 
 		});
-
-	
-
-		
 });
 
 
@@ -230,46 +268,6 @@ function removeFormulario(handler) {
 }
 
 var randomnb = function(){ return Math.round(Math.random()*300)};
-var numBom;
-var numOtimo;
-var numPessimo;
-var numRuim;
-var ctx;
-var PizzaChart;
 
-var options = {
-    responsive:true
-};
-
-var data = [
-	{
-		value: resultadosArray[0],
-		color: "#7CFC00",
-		label: "Bom"
-	},
-	{
-        value: resultadosArray[1],
-        color: "#32CD32",
-        //highlight: "#5AD3D1",
-        label: "Otimo"
-    },
-    {
-        value: resultadosArray[2],
-        color:"#F7464A",
-        //highlight: "#FF5A5E",
-        label: "Péssimo"
-    },    
-    {
-        value: resultadosArray[3],
-        color: "#FFFF00",
-        //highlight: "#FFC870",
-        label: "Ruim"
-    }    
-]
-
-$("#minhasEstatisticas").on('shown.bs.tab',function (e) {
-	var ctx = document.getElementById("GraficoPizza").getContext("2d");
-    var PizzaChart = new Chart(ctx).Doughnut(data, options);
-	});
 
 

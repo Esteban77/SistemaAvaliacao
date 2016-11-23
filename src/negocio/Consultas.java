@@ -53,10 +53,10 @@ public class Consultas implements Acao{
 	
 	private JSONArray gerarArray (List<Object[]> listObject){
 		JSONArray jsonArray = new JSONArray();
-		Integer numBom =0;
-		Integer numOtimo =0;
-		Integer numPessimo=0;
-		Integer numRuim=0;
+		Long numBom =0L;
+		Long numOtimo =0L;
+		Long numPessimo=0L;
+		Long numRuim=0L;
 		JSONObject jobBom = new JSONObject();
 		JSONObject jobOtimo = new JSONObject();
 		JSONObject jobPessimo = new JSONObject();
@@ -69,16 +69,16 @@ public class Consultas implements Acao{
 			
 			switch (op) {
 			case "BOM":
-				numBom = (Integer) obj[0];				
+				numBom = (Long) obj[0];				
 				break;
 			case "OTIMO":
-				numOtimo = (Integer) obj[0];			
+				numOtimo = (Long) obj[0];			
 			break;
 			case "PESSIMO":
-				numPessimo = (Integer) obj[0];			
+				numPessimo = (Long) obj[0];			
 			break;
 			case "RUIM":
-				numRuim = (Integer) obj[0];			
+				numRuim = (Long) obj[0];			
 			break;
 			}
 			

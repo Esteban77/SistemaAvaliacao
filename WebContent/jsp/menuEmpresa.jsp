@@ -254,7 +254,7 @@
                 objTable.deleteRow(indexTR);
          } 
         
-        var randomnb = function(){ return Math.round(Math.random()*300)};
+/*        var randomnb = function(){ return Math.round(Math.random()*300)};
         var numBom;
         var numOtimo;
         var numPessimo;
@@ -294,7 +294,7 @@
         	var ctx = document.getElementById("GraficoPizza").getContext("2d");
             var PizzaChart = new Chart(ctx).Doughnut(data, options);
         	});
-              	 
+         */
 </script>
 
 </html>
