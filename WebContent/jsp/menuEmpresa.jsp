@@ -133,18 +133,17 @@
 				<p>Veja suas estatisticas</p>
 
 				<div class="formPesquisa">
-					<form class="form-inline" action="">
-					<input  class="form-control" type="date" name="datainicio" pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" min="1950-01-01" max="2016-12-31" required>
+					<form class="form-inline" role="form" method="post" id="formConsulta">
 						<label class="control-label">Data Inicial</label>
 						<div  class="input-group date" data-provide="datepicker">
-							<input name="dataInicio" type="text" class="form-control">
+							<input name="dataInicio" id="dataInicio" type="date" class="form-control"pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" min="1950-01-01" max="2016-12-31" required>
 						    <div class="input-group-addon">
 						        <span class="glyphicon glyphicon-th"></span>
 							</div>						
 						</div>
 						<label class="control-label">Data Final</label>
 						<div  class="input-group date" data-provide="datepicker">
-							<input name="dataFinal" type="text" class="form-control">
+							<input name="dataFinal" id="dataFinal" type="date" class="form-control"pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" min="1950-01-01" max="2016-12-31" required>
 						    <div class="input-group-addon">
 						        <span class="glyphicon glyphicon-th"></span>
 						    </div>
@@ -153,7 +152,7 @@
 						<div class="form-group">
 							<label class="control-label">Formulário</label>
 							<div class="form-group">
-							<select class="form-control" id="selectFormularios" name="selectFormularios">							    
+							<select class="form-control" id="selectFormularios" name="Formularios">							    
 							   <option selected="selected">Todos</option>							    
  							 </select>
  							 </div>
@@ -168,7 +167,7 @@
  							 </div>
 						</div>
 						<div class="form-group">
-							<button class="btn btn-info" type="submit" name="buscar">Buscar</button>
+							<button class="btn btn-info" type="submit" name="buscar" id="buscar">Buscar</button>
 						</div>
 					</form>
 				</div>
@@ -256,7 +255,11 @@
          } 
         
         var randomnb = function(){ return Math.round(Math.random()*300)};
-
+        var numBom;
+        var numOtimo;
+        var numPessimo;
+        var numRuim;
+        
         var options = {
             responsive:true
         };

@@ -1,5 +1,6 @@
 package negocio;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -71,6 +72,14 @@ public class SalvarRespostasFormulario  implements Acao{
 			session.close();
 			
 			if(respostaFormulario.getRespostas()!=null || !respostaFormulario.getRespostas().isEmpty()){
+				JSONObject objeto = new JSONObject();
+				objeto.put("resposta", "Formulário enviado com Sucesso");
+				try {
+					response.getWriter().write(objeto.toString());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				return "true";
 			}else{
 				return "false";

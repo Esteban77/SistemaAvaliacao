@@ -25,7 +25,7 @@ public class ConsumidorDaoImpl extends BaseDaoImpl<Consumidor, Long> implements 
 
 	@Override
 	public List<Consumidor> pesquisaPorFiltro(String filtro, Session session) throws HibernateException {
-		Query consulta = session.createQuery("form Consumidor c where c.nome like :nome");
+		Query consulta = session.createQuery("from Consumidor c where c.nome like :nome");
 		consulta.setParameter("nome", "%" + filtro + "%");
 		return consulta.list();
 	}

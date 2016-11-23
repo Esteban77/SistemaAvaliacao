@@ -69,7 +69,7 @@
 					<p>Selecione a opção "anônimo" se desejar responder ao formulario anônimamente. Nesse caso o formulario nao sera creditado a você</p>
 					<div class="checkbox">
 						<label class="control-label"><input type="checkbox" id="anonimo" name="anonimo" value="anonimo">anônimo</label>
-						<label class="control-label"><input placeholder="Número do pedido" type="text" name="pedido" id="pedido" required>Número do Pedido</label>
+						<label class="control-label"><input placeholder="Número do pedido" type="text" name="pedido" id="pedido" maxlength="11" required>Número do Pedido</label>
 					</div>
 				</div>
 				<div class="modal-body" id="modalCampos">

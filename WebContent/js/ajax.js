@@ -48,12 +48,14 @@ $(document).ready(function() {
 					function(responseTxt, statusTxt, xhr) { 
 						if(statusTxt == "success"){
 							$('#selectPerguntas').find('option:not(:first)').remove();
+							if(responseTxt.id!="Todos"){
 		                     $.each(responseTxt, function(key, value) {
 		                    	    $('#selectPerguntas').append($("<option/>", {
 		                    	        value: value.id,
 		                    	        text: value.nome
 		                    	    }));
 		                    	});
+							}
 	 					}if(statusTxt == "error"){
 							alert("Error: " + xhr.status + ": " + xhr.statusText);
 						}
@@ -155,8 +157,35 @@ $(document).ready(function() {
 //						alert("Error: " + xhr.status + ": " + xhr.statusText);
 					}
 				});
-
-	});		
+			perguntas = new Array();
+			//perguntas.clear();
+	});	
+		
+		var resultadosArray = new Array();	
+		$('#formConsulta').submit(function(e){
+			e.preventDefault();
+/*			var dataInicial = $('dataInicio').val();
+			var dataFinal = $('dataFinal').val();
+			var tipoDeForm = $('selectFormularios').val();
+			var pergunta = $('selectPerguntas').val();*/
+			
+			 $.ajax({
+		            type: $(this).attr('method'),
+		            url: "/SistemaAvaliacao/FrontController?acao=Consultas",
+		            data: $(this).serialize(),
+		            dataType: "json",
+		            success: function (data,status) {
+		            	$.each(responseTxt, function(key, value) {
+		            		resultadosArray.push(value.id);
+	                    });	            	
+		            },
+		            error: function (xhr, desc, err){	            
+		            	alert("erro");
+		            }
+		        });			 
+			  PizzaChart=new Chart(ctx).Doughnut(data, options);
+			  resultadosArray = new Array();
+		});
 
 	
 
@@ -199,5 +228,48 @@ function removeFormulario(handler) {
 			}
 		});
 }
+
+var randomnb = function(){ return Math.round(Math.random()*300)};
+var numBom;
+var numOtimo;
+var numPessimo;
+var numRuim;
+var ctx;
+var PizzaChart;
+
+var options = {
+    responsive:true
+};
+
+var data = [
+	{
+		value: resultadosArray[0],
+		color: "#7CFC00",
+		label: "Bom"
+	},
+	{
+        value: resultadosArray[1],
+        color: "#32CD32",
+        //highlight: "#5AD3D1",
+        label: "Otimo"
+    },
+    {
+        value: resultadosArray[2],
+        color:"#F7464A",
+        //highlight: "#FF5A5E",
+        label: "Péssimo"
+    },    
+    {
+        value: resultadosArray[3],
+        color: "#FFFF00",
+        //highlight: "#FFC870",
+        label: "Ruim"
+    }    
+]
+
+$("#minhasEstatisticas").on('shown.bs.tab',function (e) {
+	var ctx = document.getElementById("GraficoPizza").getContext("2d");
+    var PizzaChart = new Chart(ctx).Doughnut(data, options);
+	});
 
 

@@ -33,7 +33,6 @@ public class Resposta implements Serializable{
 	private RespostaFormulario respostaFormulario;
 		
 	public Resposta() {}
-	
 	public Resposta(Long id, Opcao opcao, Pergunta pergunta, RespostaFormulario respostaFormulario) {
 		super();
 		this.id = id;

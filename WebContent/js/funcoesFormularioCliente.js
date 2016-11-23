@@ -60,7 +60,7 @@ $(document).ready(function(){
 						//Funcao de callback
 						function(responseTxt, statusTxt, xhr) { 
 					if(statusTxt == "success"){
-						var repostas = responseTxt;
+						alert(responseTxt.resposta);
 					}if(statusTxt == "error"){
 //						alert("Error: " + xhr.status + ": " + xhr.statusText);
 					}
