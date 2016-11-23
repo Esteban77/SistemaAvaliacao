@@ -30,7 +30,8 @@ public class SalvarConsumidor implements Acao{
 		RespostaFormulario respostaFormulario = new RespostaFormulario();
 		RespostaFormularioDaoImpl respostaDao = new RespostaFormularioDaoImpl();
 		TipoDeFormularioDaoImpl tipoDeFormularioDao = new TipoDeFormularioDaoImpl();
-				
+		
+//		String idCons = request.getParameter("idConsumidor");
 		String anonimo = request.getParameter("anonimo");
 		String pedido = request.getParameter("pedido");
 		String cpf = request.getParameter("cpf");
@@ -51,7 +52,9 @@ public class SalvarConsumidor implements Acao{
 			respostaFormulario.setNumeroPedido(Integer.parseInt(pedido));
 			respostaFormulario.setTipoDeFormulario(tipoDeFormulario);			
 		}else{
+//			Long idConsumidor = Long.parseLong("idCons");
 			ConsumidorDaoImpl consumidorDao = new ConsumidorDaoImpl();
+//			consumidor.setId(idConsumidor);
 			consumidor.setId(null);
 			consumidor.setCpf(cpf);
 			consumidor.setEmail(email);

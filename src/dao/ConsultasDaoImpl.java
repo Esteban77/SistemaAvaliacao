@@ -1,12 +1,14 @@
 package dao;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import entidade.Consumidor;
 import negocio.Consultas;
 
 public class ConsultasDaoImpl extends BaseDaoImpl<Consultas, Long> implements ConsultasDao, Serializable{
@@ -32,10 +34,34 @@ public class ConsultasDaoImpl extends BaseDaoImpl<Consultas, Long> implements Co
 	}
 
 	@Override
-	public List<Object[]> resultadoPorEmpresa(Long idEmpresa, Session session) throws HibernateException {
-		Query consulta = session.createQuery("select count(*), r.opcao from Resposta r join r.respostaFormulario rF join rF.tipoDeFormulario tf where tf.empresa.id= :id group by r.opcao order by r.opcao");
+	public List<Object[]> resultadoPorEmpresa(Long idEmpresa,  Date dataIni, Date dataFinal,Session session) throws HibernateException {
+		Query consulta = session.createQuery("select count(*), r.opcao from Resposta r join r.respostaFormulario rF join rF.tipoDeFormulario tf where (rF.data between :dataI and :dataF) and tf.empresa.id= :id group by r.opcao order by r.opcao");
 		consulta.setParameter("id", idEmpresa);
+		consulta.setParameter("dataI", dataIni);
+		consulta.setParameter("dataF", dataFinal);
 		return consulta.list();
 	}
+
+	@Override
+	public List<Object[]> resultadoPorFormulario(Long idFormulario, Date dataIni, Date dataFinal, Session session)
+			throws HibernateException {
+		Query consulta = session.createQuery("select count(*), r.opcao from Resposta r join r.respostaFormulario rF where (rF.data between :dataI and :dataF) and rF.tipoDeFormulario.id= :id group by r.opcao order by r.opcao");
+		consulta.setParameter("id", idFormulario);
+		consulta.setParameter("dataI", dataIni);
+		consulta.setParameter("dataF", dataFinal);
+		return consulta.list();
+	}
+
+	@Override
+	public List<Object[]> resultadoPorFormularioPergunta(Long idFormulario, Long idPergunta, Date dataIni,
+			Date dataFinal, Session session) throws HibernateException {
+		Query consulta = session.createQuery("select count(*), r.opcao from Resposta r join r.respostaFormulario rF where (rF.data between :dataI and :dataF) and rF.tipoDeFormulario.id= :idF and r.pergunta.id= :idP group by r.opcao order by r.opcao");
+		consulta.setParameter("idF", idFormulario);
+		consulta.setParameter("idP", idPergunta);
+		consulta.setParameter("dataI", dataIni);
+		consulta.setParameter("dataF", dataFinal);
+		return consulta.list();
+	}
+
 
 }

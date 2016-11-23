@@ -1,5 +1,30 @@
 $(document).ready(function(){
 	
+	
+		$('#cpf').focusout(function(event) {  
+			var cpf = $('#cpf').val();
+			
+			//Chama a URL do Servlet
+			$.post("/SistemaAvaliacao/FrontController?acao=ConsultaCpf",	{'cpf': cpf}, 
+					//Funcao de callback
+					function(responseTxt, statusTxt, xhr) { 
+						if(statusTxt == "success"){
+							if(responseTxt=="true"){
+								$('#cpfFalse').text("CPF já cadastrado. Digite novamente.");
+								$('#salvar').prop('disabled',true);
+							}else{
+								$('#cpfFalse').text("");
+								$('#salvar').prop('disabled',false);
+							}
+//							$('#resultado').text(responseTxt);
+//							alert('response: ' + responseTxt + '\nstatusTxt: ' + statusTxt + '\nxhr: ' + xhr);
+						}if(statusTxt == "error"){
+//							alert("Error: " + xhr.status + ": " + xhr.statusText);
+						}
+					});
+
+		});	
+	
 	$(window).load(function(){
         $("#modalConsumidor").modal();
         $('#modalConsumidor').attr("data-backdrop", "static");
@@ -22,7 +47,7 @@ $(document).ready(function(){
 		 $.ajax({
 	            type: $(this).attr('method'),
 	            url: "/SistemaAvaliacao/FrontController?acao=SalvarConsumidor",
-	            data: $(this).serialize(),
+	            data: $(this).serialize(), "idConsumidor": idConsumidor,
 	            dataType: "json",
 	            success: function (data,status) {
 	            	 $("#idRespostaFormulario").val(data.idRespostaFormulario);

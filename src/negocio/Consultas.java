@@ -3,6 +3,8 @@ package negocio;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,8 +35,11 @@ public class Consultas implements Acao{
         String formulario = request.getParameter("Formularios");
         String pergunta = request.getParameter("selectPerguntas");
         
+        Date dataIni = java.sql.Date.valueOf(dataInicial);
+        Date dataFin = java.sql.Date.valueOf(dataFinal);
+        
         if(formulario.equals("Todos")){
-        	List<Object[]> listObject = consultaDao.resultadoPorEmpresa(idEmpresa, session);
+        	List<Object[]> listObject = consultaDao.resultadoPorEmpresa(idEmpresa,dataIni, dataFin, session);
         	JSONArray jsonArray = gerarArray(listObject);
         	
         	try {
@@ -43,12 +48,36 @@ public class Consultas implements Acao{
     			// TODO Auto-generated catch block
     			e.printStackTrace();
     		} 
-        }else{
+        	return "true";
+        }else if(pergunta.equals("Todos")){
+        	Long idFormulario = Long.parseLong(formulario);
+        	List<Object[]> listObject = consultaDao.resultadoPorFormulario(idFormulario, dataIni, dataFin, session);
+        	JSONArray jsonArray = gerarArray(listObject);
         	
-        }   
+        	try {
+    			response.getWriter().write(jsonArray.toString());
+    		} catch (IOException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		} 
+        	return "true";
+        }else{
+        	Long idFormulario = Long.parseLong(formulario);
+        	Long idPergunta = Long.parseLong(pergunta);
+        	List<Object[]> listObject = consultaDao.resultadoPorFormularioPergunta(idFormulario, idPergunta, dataIni, dataFin, session);
+        	JSONArray jsonArray = gerarArray(listObject);
+        	
+        	try {
+    			response.getWriter().write(jsonArray.toString());
+    		} catch (IOException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		} 
+        	return "true";
+        }
         
         
-		return "true";
+		
 	}
 	
 	private JSONArray gerarArray (List<Object[]> listObject){

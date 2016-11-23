@@ -175,6 +175,9 @@
 				<div class="box-chart">
 					<canvas id="GraficoPizza" style="width:100%"></canvas>
 				</div>
+				<div class="box-chart">
+					<canvas id="GraficoBarra" style="width:100%;"></canvas>
+				</div>
 				
 			</div>
 

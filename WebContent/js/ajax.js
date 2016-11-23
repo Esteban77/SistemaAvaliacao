@@ -1,30 +1,5 @@
 $(document).ready(function() {   
 	
-	
-/*	$('#cpf').focusout(function(event) {  
-		var cpf = $('#cpf').val();
-		
-		//Chama a URL do Servlet
-		$.post('/Projetoweb/ConsultasFront',	{'cpf': cpf}, 
-				//Funcao de callback
-				function(responseTxt, statusTxt, xhr) { 
-					if(statusTxt == "success"){
-						if(responseTxt=="true"){
-							$('#cpfFalse').text("CPF já cadastrado. Digite novamente.");
-							$('#salvar').prop('disabled',true);
-						}else{
-							$('#cpfFalse').text("");
-							$('#salvar').prop('disabled',false);
-						}
-//						$('#resultado').text(responseTxt);
-//						alert('response: ' + responseTxt + '\nstatusTxt: ' + statusTxt + '\nxhr: ' + xhr);
-					}if(statusTxt == "error"){
-//						alert("Error: " + xhr.status + ": " + xhr.statusText);
-					}
-				});
-
-	});	*/	
-	
 		$('#salvarBeneficio').click(function() { 			
 			var beneficio = $('#beneficio').val();			
 			//Chama a URL do Servlet
@@ -181,7 +156,7 @@ $(document).ready(function() {
 		        value: resultadosArray[1],
 		        color: "#32CD32",
 		        //highlight: "#5AD3D1",
-		        label: "Otimo"
+		        label: "Ótimo"
 		    },
 		    {
 		        value: resultadosArray[2],
@@ -228,6 +203,74 @@ $(document).ready(function() {
 		        });			 
 			 
 		});
+		
+		
+		 var optiones = {
+			        responsive:true
+			    };
+
+			    var data = {
+			        labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+			        datasets: [
+			            {
+			                label: "Bom",
+			                fillColor: "rgba(220,220,220,0.5)",
+			                strokeColor: "rgba(220,220,220,0.8)",
+			                highlightFill: "rgba(220,220,220,0.75)",
+			                highlightStroke: "rgba(220,220,220,1)",
+			                data: [randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb()]
+			            },
+			            {
+			                label: "Ótimo",
+			                fillColor: "rgba(151,187,205,0.5)",
+			                strokeColor: "rgba(151,187,205,0.8)",
+			                highlightFill: "rgba(151,187,205,0.75)",
+			                highlightStroke: "rgba(151,187,205,1)",
+			                data: [28, 48, 40, 19, 86, 27, 90, randomnb(), randomnb(), randomnb(), randomnb(), randomnb()]
+			            },
+			            {
+			                label: "Péssimo",
+			                fillColor: "rgba(151,187,205,0.5)",
+			                strokeColor: "rgba(151,187,205,0.8)",
+			                highlightFill: "rgba(151,187,205,0.75)",
+			                highlightStroke: "rgba(151,187,205,1)",
+			                data: [28, 48, 40, 19, 86, 27, 90, randomnb(), randomnb(), randomnb(), randomnb(), randomnb()]
+			            },
+			            {
+			                label: "Ruim",
+			                fillColor: "rgba(151,187,205,0.5)",
+			                strokeColor: "rgba(151,187,205,0.8)",
+			                highlightFill: "rgba(151,187,205,0.75)",
+			                highlightStroke: "rgba(151,187,205,1)",
+			                data: [28, 48, 40, 19, 86, 27, 90, randomnb(), randomnb(), randomnb(), randomnb(), randomnb()]
+			            }
+			        ]
+			    };                
+
+			    $("#minhasEstatisticas").on('shown.bs.tab',function (e) {
+			    	 $.ajax({
+				            type: $(this).attr('method'),
+				            url: "/SistemaAvaliacao/FrontController?acao=Consultas",
+				            data: $(this).serialize(),
+				            dataType: "json",
+				            success: function (data,status) {
+				            	i = 0;
+				            	$.each(data, function(key, value) {
+				            		resultadosArray.push(value.qtd);
+				            		data1[i].value = value.qtd;
+				            		i++;
+			                    });
+				            	PizzaChart= new Chart(ctx).Pie(data1, options);
+				   			  resultadosArray = new Array();
+				            },
+				            error: function (xhr, desc, err){	            
+				            	alert("erro");
+				            }
+				            
+				        });		
+			        var ctx = document.getElementById("GraficoBarra").getContext("2d");
+			        var BarChart = new Chart(ctx).Bar(data, optiones);
+			    });
 });
 
 
