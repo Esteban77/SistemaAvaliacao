@@ -32,8 +32,9 @@ public class ConsumidorDaoImpl extends BaseDaoImpl<Consumidor, Long> implements 
 
 	@Override
 	public Consumidor pesquisaPorCpf(String cpf, Session session) throws HibernateException {
-		Consumidor consumidor = (Consumidor) session.get(Consumidor.class, cpf);
-		return consumidor;
+		Query consulta = session.createQuery("from Consumidor c where c.cpf= :cpfR");
+		consulta.setParameter("cpfR", cpf);
+		return (Consumidor) consulta.uniqueResult();
 	}
 
 }

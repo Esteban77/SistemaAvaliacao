@@ -14,8 +14,6 @@ import dao.HibernateUtil;
 import dao.RespostaFormularioDaoImpl;
 import dao.TipoDeFormularioDaoImpl;
 import entidade.Consumidor;
-import entidade.Opcao;
-import entidade.Pergunta;
 import entidade.RespostaFormulario;
 import entidade.TipoDeFormulario;
 
@@ -31,7 +29,7 @@ public class SalvarConsumidor implements Acao{
 		RespostaFormularioDaoImpl respostaDao = new RespostaFormularioDaoImpl();
 		TipoDeFormularioDaoImpl tipoDeFormularioDao = new TipoDeFormularioDaoImpl();
 		
-//		String idCons = request.getParameter("idConsumidor");
+		String idCons = request.getParameter("idConsumidor");
 		String anonimo = request.getParameter("anonimo");
 		String pedido = request.getParameter("pedido");
 		String cpf = request.getParameter("cpf");
@@ -52,18 +50,20 @@ public class SalvarConsumidor implements Acao{
 			respostaFormulario.setNumeroPedido(Integer.parseInt(pedido));
 			respostaFormulario.setTipoDeFormulario(tipoDeFormulario);			
 		}else{
-//			Long idConsumidor = Long.parseLong("idCons");
 			ConsumidorDaoImpl consumidorDao = new ConsumidorDaoImpl();
-//			consumidor.setId(idConsumidor);
-			consumidor.setId(null);
-			consumidor.setCpf(cpf);
-			consumidor.setEmail(email);
-			consumidor.setLogin(login);
-			consumidor.setNome(nomeConsumidor);
-			consumidor.setSenha(senha);
-			consumidor.setTelefone(telefone);
-			consumidorDao.salvarOuAlterar(consumidor, session);			
-			
+			if(idCons==null || idCons.isEmpty()){				
+				consumidor.setId(null);
+				consumidor.setCpf(cpf);
+				consumidor.setEmail(email);
+				consumidor.setLogin(login);
+				consumidor.setNome(nomeConsumidor);
+				consumidor.setSenha(senha);
+				consumidor.setTelefone(telefone);
+				consumidorDao.salvarOuAlterar(consumidor, session);	
+			}else{
+				Long idConsumidor = Long.parseLong(idCons);
+				consumidor = consumidorDao.pesquisaPorId(idConsumidor, session);
+			}					
 			respostaFormulario.setAnonimo(false);
 			respostaFormulario.setConsumidor(consumidor);
 			respostaFormulario.setId(null);

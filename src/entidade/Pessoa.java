@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="pessoa")
 @Inheritance(strategy=InheritanceType.JOINED)  // cria tabelas separadas para os filhos
-public class Pessoa implements Serializable{
+public abstract class Pessoa implements Serializable{
 	
 private static final long serialVersionUID = 1L;
 	

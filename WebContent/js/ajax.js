@@ -137,7 +137,7 @@ $(document).ready(function() {
 			//perguntas.clear();
 	});	
 		
-		
+		var randomnb = function(){ return Math.round(Math.random()*300)};
 		var resultadosArray = new Array();
 		var ctx;
 		var PizzaChart;
@@ -148,24 +148,24 @@ $(document).ready(function() {
 
 		var data1 = [
 			{
-				value: resultadosArray[0],
+				value: randomnb(),
 				color: "#7CFC00",
 				label: "Bom"
 			},
 			{
-		        value: resultadosArray[1],
+		        value: 0,
 		        color: "#32CD32",
 		        //highlight: "#5AD3D1",
 		        label: "Ótimo"
 		    },
 		    {
-		        value: resultadosArray[2],
+		        value: 0,
 		        color:"#F7464A",
 		        //highlight: "#FF5A5E",
 		        label: "Péssimo"
 		    },    
 		    {
-		        value: resultadosArray[3],
+		        value: 0,
 		        color: "#FFFF00",
 		        //highlight: "#FFC870",
 		        label: "Ruim"
@@ -193,6 +193,7 @@ $(document).ready(function() {
 		            		data1[i].value = value.qtd;
 		            		i++;
 	                    });
+		            	PizzaChart.destroy();
 		            	PizzaChart= new Chart(ctx).Pie(data1, options);
 		   			  resultadosArray = new Array();
 		            },
@@ -264,7 +265,7 @@ $(document).ready(function() {
 				   			  resultadosArray = new Array();
 				            },
 				            error: function (xhr, desc, err){	            
-				            	alert("erro");
+				            	alert("erro no grafico de barras");
 				            }
 				            
 				        });		
@@ -310,7 +311,7 @@ function removeFormulario(handler) {
 		});
 }
 
-var randomnb = function(){ return Math.round(Math.random()*300)};
+
 
 
 

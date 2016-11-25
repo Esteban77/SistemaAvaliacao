@@ -5,21 +5,19 @@ $(document).ready(function(){
 			var cpf = $('#cpf').val();
 			
 			//Chama a URL do Servlet
-			$.post("/SistemaAvaliacao/FrontController?acao=ConsultaCpf",	{'cpf': cpf}, 
+			$.getJSON("/SistemaAvaliacao/FrontController?acao=ConsultaCpf",	{'cpf': cpf}, 
 					//Funcao de callback
-					function(responseTxt, statusTxt, xhr) { 
+					function(data, statusTxt, xhr) { 
 						if(statusTxt == "success"){
-							if(responseTxt=="true"){
-								$('#cpfFalse').text("CPF já cadastrado. Digite novamente.");
-								$('#salvar').prop('disabled',true);
-							}else{
-								$('#cpfFalse').text("");
-								$('#salvar').prop('disabled',false);
-							}
-//							$('#resultado').text(responseTxt);
-//							alert('response: ' + responseTxt + '\nstatusTxt: ' + statusTxt + '\nxhr: ' + xhr);
+							 $("#idConsumidor1").val(data.id);
+							 $("#cpf").val(data.cpf);
+							 $("#login").val(data.login);
+							 $("#senha").val(data.senha);
+							 $("#nomeConsumidor").val(data.nome);
+							 $("#telefone").val(data.telefone);
+							 $("#email").val(data.email);							 
 						}if(statusTxt == "error"){
-//							alert("Error: " + xhr.status + ": " + xhr.statusText);
+							alert("Error: " + xhr.status + ": " + xhr.statusText);
 						}
 					});
 
@@ -42,16 +40,16 @@ $(document).ready(function(){
 	});
 	
 	 $('#formConsumidor').submit(function(e){
-		 $('#modalConsumidor').attr("data-dismiss", "modal");
+		 $('#modalConsumidor').attr("data-dismiss", "modal");		
 		e.preventDefault();
 		 $.ajax({
 	            type: $(this).attr('method'),
 	            url: "/SistemaAvaliacao/FrontController?acao=SalvarConsumidor",
-	            data: $(this).serialize(), "idConsumidor": idConsumidor,
+	            data: $(this).serialize(),
 	            dataType: "json",
 	            success: function (data,status) {
 	            	 $("#idRespostaFormulario").val(data.idRespostaFormulario);
-	            	 $("#idConsumidor").val(data.idConsumidor);
+	            	 $("#idConsumidor2").val(data.idConsumidor);
 	            },
 	            error: function (xhr, desc, err){	            
 	            	alert("erro");
@@ -67,7 +65,7 @@ $(document).ready(function(){
 		var comentario= $('#comentario').val();
 		var idResposta = $("#idRespostaFormulario").val();
 		
-		$('.form').each(function(){
+		$('.formulinho').each(function(){
 			if($(this).attr("name")=="idPergunta"){
 //				alert($(this).attr("name"));
 				idPergunta1 = $(this).val();

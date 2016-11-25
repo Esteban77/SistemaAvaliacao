@@ -34,16 +34,16 @@
 		<hr>
 		<form class="formu" id="formularioResposta">
 		<input type="hidden" name="idRespostaFormulario" id="idRespostaFormulario" value="">
-		<input type="hidden" name="idConsumidor" id="idConsumidor" value="">
+		<input type="hidden" name="idConsumidor" id="idConsumidor2" value="">
 			<c:forEach var="pergunta" items="${formulario}"> 
 					<div class="form-group">
 						<label class="coltrol-label">${pergunta.nomePergunta}</label>
 						<div class="form-group">
-							<input type="hidden" name="idPergunta" class="form" id="idPergunta" value="${pergunta.id}">
-							<label class="radio-inline"><input class="form" value="OTIMO" type="radio" name="opcoes${pergunta.id}" checked>Ótimo</label>
-							<label class="radio-inline"><input class="form" value="BOM" type="radio" name="opcoes${pergunta.id}">Bom</label>
-			               	<label class="radio-inline"><input class="form" value="RUIM" type="radio" name="opcoes${pergunta.id}">Ruim</label>
-			               	<label class="radio-inline"><input class="form" value="PESSIMO" type="radio" name="opcoes${pergunta.id}">Péssimo</label>
+							<input type="hidden" name="idPergunta" class="formulinho" id="idPergunta" value="${pergunta.id}">
+							<label class="radio-inline"><input class="formulinho" value="OTIMO" type="radio" name="opcoes${pergunta.id}" checked>Ótimo</label>
+							<label class="radio-inline"><input class="formulinho" value="BOM" type="radio" name="opcoes${pergunta.id}">Bom</label>
+			               	<label class="radio-inline"><input class="formulinho" value="RUIM" type="radio" name="opcoes${pergunta.id}">Ruim</label>
+			               	<label class="radio-inline"><input class="formulinho" value="PESSIMO" type="radio" name="opcoes${pergunta.id}">Péssimo</label>
 		               	</div>
 					</div>
 			</c:forEach>
@@ -64,6 +64,7 @@
 			<div class="modal-content">
 			<form role="form" method="post" id="formConsumidor">
 			<input type="hidden" name="idTipoFormulario" id="idTipoFormulario" value="${idF}">
+			<input type="hidden" name="idConsumidor"  id="idConsumidor1" value="">
 				<div class="modal-header" style="padding: 35px 50px;">
 				<h5>Entre com seus dados para receber os beneficios da empresa (você deve prencher ALGUNS formulários para receber o cupom de benefício)</h5>
 					<p>Selecione a opção "anônimo" se desejar responder ao formulario anônimamente. Nesse caso o formulario nao sera creditado a você</p>
