@@ -115,14 +115,24 @@ $(document).ready(function() {
 		
 		$('#adicionarPergunta').click(function() { 
 			perguntas.push($('#pergunta').val());
+			$('#tabelaPergunta > tbody').append("<tr><td width='80%' data-nome="+$('#pergunta').val()+"><h4>" +$('#pergunta').val()+ "</h4>"+
+						"<label class='radio-inline'><input type='radio' name='optradio'>Ótimo</label><label class='radio-inline'> <input type='radio' name='optradio'>Bom</label>"+
+   						"<label class='radio-inline'><input type='radio' name='optradio'>Ruin</label><label class='radio-inline'> <input type='radio' name='optradio'>Péssimo</label></td>"+
+    					"<td width='20%'><button class='btn btn-info' >Alterar</button> <button class='btn btn-danger remover-linha'>Remover</button><td><tr>");
 		});	
-
+		$('#tabelaPergunta').on('click', '.remover-linha', function(e){
+				  e.preventDefault;
+				  var removeItem = $(this).parent().parent().find('td').data('nome');
+				  var index = perguntas.indexOf(removeItem);
+				  perguntas.splice(index, 1);
+				  var par = $(this).parent().parent(); //tr
+				  par.remove();
+		});
 
 		$('#salvarFormulario').click(function() { 			
 			var nomeFormulario = $('#nomeFormulario').val();
-			var beneficio = $('#beneficioLista').val();
 			//Chama a URL do Servlet
-			$.getJSON('/SistemaAvaliacao/FrontController?acao=IncluirFormulario',	{'nomeFormulario': nomeFormulario,'beneficio': beneficio,'perguntas': JSON.stringify(perguntas)}, 		
+			$.getJSON('/SistemaAvaliacao/FrontController?acao=IncluirFormulario',	{'nomeFormulario': nomeFormulario,'perguntas': JSON.stringify(perguntas)}, 		
 				//Funcao de callback
 				function(responseTxt, statusTxt, xhr) { 
 					if(statusTxt == "success"){
@@ -327,7 +337,18 @@ function removeFormulario(handler) {
 			}
 		});
 }
+// Função responsável em receber um objeto e extrair as informações necessárias para a remoção da linha.
+function removerLinha(obj) {
 
+        // Capturamos a referência da TR (linha) pai do objeto
+        var objTR = obj.parentNode.parentNode;
+        // Capturamos a referência da TABLE (tabela) pai da linha
+        var objTable = objTR.parentNode;
+        // Capturamos o índice da linha
+        var indexTR = objTR.rowIndex;
+        // Chamamos o método de remoção de linha nativo do JavaScript, passando como parâmetro o índice da linha  
+        objTable.deleteRow(indexTR);
+ } 
 
 
 

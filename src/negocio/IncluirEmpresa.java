@@ -15,7 +15,8 @@ import entidade.Empresa;
 public class IncluirEmpresa implements Acao {
 
 	@Override
-	public String executar(HttpServletRequest request, HttpServletResponse response) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+	public String executar(HttpServletRequest request, HttpServletResponse response)
+			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		
 		Empresa empresa = new Empresa();
 		EmpresaDao empresaDao = new EmpresaDaoImpl();
