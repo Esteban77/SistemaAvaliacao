@@ -1,5 +1,6 @@
 @CHARSET "utf-8";
 
+
 .div1 {
 	color: #ffffff;
 	padding-top: 15px;
@@ -26,7 +27,6 @@
 	margin-bottom: 0;
 	background-color: #2d2d30;
 	border: 0;
-	opacity: 0.9;
 }
 
 .navbar a {
@@ -40,10 +40,15 @@
 footer {
 	padding: 32px;
 	background-color: #2d2d30;
-	color: #fff
+	color: #fff;
 }
 
-.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus
+.nav-pills a{
+	color: #2d2d30;
+}
+.nav-pills>li.active>a, 
+.nav-pills>li.active>a:hover, 
+.nav-pills>li.active>a:focus
 	{
 	color: #ffffff;
 	background-color: #2d2d30;
@@ -59,4 +64,9 @@ footer {
 	width: 100%;
 	margin: 0 auto;
 	padding: 10px;
+}
+#tabelaAddPergunta{
+	margin: 0;
+	padding: 0;
+	
 }
