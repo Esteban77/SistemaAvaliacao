@@ -63,5 +63,15 @@ public class ConsultasDaoImpl extends BaseDaoImpl<Consultas, Long> implements Co
 		return consulta.list();
 	}
 
+	@Override
+	public List<Object[]> resultadoGraficoBarras(Long idEmpresa, Integer ano, Session session)
+			throws HibernateException {
+//		Query consulta = session.createSQLQuery("select count(*), r.opcao, month(rF.data) as mes, year(rF.data) as ano from Resposta r join r.respostaFormulario rF join rF.tipoDeFormulario tf where tf.empresa.id= :id group by mes, ano, r.opcao having ano= :ano");
+		Query consulta = session.createSQLQuery("select count(*),r.opcao, month(rF.data) as mes, year(rF.data) as ano from resposta r inner join respostaFormulario rF on  (r.idrespostaformulario=rF.id) inner join tipodeformulario on rF.idtipodeformulario=tipodeformulario.id where tipodeformulario.idempresa= :id group by mes,ano,r.opcao having ano = :ano");
+		consulta.setParameter("id", idEmpresa);
+		consulta.setParameter("ano", ano);
+		return consulta.list();
+	}
+
 
 }

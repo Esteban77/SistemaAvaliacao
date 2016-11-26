@@ -2,6 +2,7 @@ package dao.testes;
 
 import static org.junit.Assert.assertFalse;
 
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 
@@ -58,7 +59,7 @@ public class ConsultasDaoImplTest {
 		session.close();
 	}
 	
-	@Test
+//	@Test
 	public final void testResultadoPorFormularioPergunta() {
 		System.out.println("resultado por Empresa...");
 		session = HibernateUtil.getSession();
@@ -72,6 +73,26 @@ public class ConsultasDaoImplTest {
 			Long qtd = (Long) obj[0];
 			Opcao opcao =  (Opcao) obj[1];
 			String op = opcao.name();
+			int i =0;
+		}
+		assertFalse(resultPorEmpresa.isEmpty());
+		session.close();
+	}
+	
+	@Test
+	public final void testResultadoGraficoBarras() {
+		System.out.println("resultado para grafico barras...");
+		session = HibernateUtil.getSession();
+		consultaDao = new ConsultasDaoImpl();
+		Integer ano = 2016;
+		Long idEmpresa = 1L;
+		List<Object[]> resultPorEmpresa = consultaDao.resultadoGraficoBarras(idEmpresa,ano, session);
+		for(Object[] obj : resultPorEmpresa){
+			BigInteger qtd = (BigInteger) obj[0];
+			Integer qtdInt = qtd.intValue();
+			String opcao =  (String) obj[1];
+			Integer mes = (Integer) obj[2];
+			Integer ano1 = (Integer) obj[3];
 			int i =0;
 		}
 		assertFalse(resultPorEmpresa.isEmpty());

@@ -205,7 +205,12 @@ $(document).ready(function() {
 			 
 		});
 		
-		
+		var arrayBom = new Array();
+		var arrayOtimo = new Array();
+		var arrayPessimo = new Array();
+		var arrayRuim = new Array();
+		var ctx2;
+		var BarChart;
 		 var optiones = {
 			        responsive:true
 			    };
@@ -219,7 +224,7 @@ $(document).ready(function() {
 			                strokeColor: "rgba(220,220,220,0.8)",
 			                highlightFill: "rgba(220,220,220,0.75)",
 			                highlightStroke: "rgba(220,220,220,1)",
-			                data: [randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb()]
+			                dataI: [randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb()]
 			            },
 			            {
 			                label: "Ótimo",
@@ -227,7 +232,7 @@ $(document).ready(function() {
 			                strokeColor: "rgba(151,187,205,0.8)",
 			                highlightFill: "rgba(151,187,205,0.75)",
 			                highlightStroke: "rgba(151,187,205,1)",
-			                data: [28, 48, 40, 19, 86, 27, 90, randomnb(), randomnb(), randomnb(), randomnb(), randomnb()]
+			                dataI: [28, 48, 40, 19, 86, 27, 90, randomnb(), randomnb(), randomnb(), randomnb(), randomnb()]
 			            },
 			            {
 			                label: "Péssimo",
@@ -235,7 +240,7 @@ $(document).ready(function() {
 			                strokeColor: "rgba(151,187,205,0.8)",
 			                highlightFill: "rgba(151,187,205,0.75)",
 			                highlightStroke: "rgba(151,187,205,1)",
-			                data: [28, 48, 40, 19, 86, 27, 90, randomnb(), randomnb(), randomnb(), randomnb(), randomnb()]
+			                dataI: [28, 48, 40, 19, 86, 27, 90, randomnb(), randomnb(), randomnb(), randomnb(), randomnb()]
 			            },
 			            {
 			                label: "Ruim",
@@ -243,7 +248,7 @@ $(document).ready(function() {
 			                strokeColor: "rgba(151,187,205,0.8)",
 			                highlightFill: "rgba(151,187,205,0.75)",
 			                highlightStroke: "rgba(151,187,205,1)",
-			                data: [28, 48, 40, 19, 86, 27, 90, randomnb(), randomnb(), randomnb(), randomnb(), randomnb()]
+			                dataI: [28, 48, 40, 19, 86, 27, 90, randomnb(), randomnb(), randomnb(), randomnb(), randomnb()]
 			            }
 			        ]
 			    };                
@@ -251,26 +256,38 @@ $(document).ready(function() {
 			    $("#minhasEstatisticas").on('shown.bs.tab',function (e) {
 			    	 $.ajax({
 				            type: $(this).attr('method'),
-				            url: "/SistemaAvaliacao/FrontController?acao=Consultas",
+				            url: "/SistemaAvaliacao/FrontController?acao=ConsultaGraficoBarras",
 				            data: $(this).serialize(),
 				            dataType: "json",
-				            success: function (data,status) {
+				            success: function (resultado,status) {
 				            	i = 0;
-				            	$.each(data, function(key, value) {
-				            		resultadosArray.push(value.qtd);
-				            		data1[i].value = value.qtd;
+				            	$.each(resultado, function(key, value) {
+				            		if(i==0){
+				            			arrayBom = value;
+				            			data.datasets[i].dataI=arrayBom;
+				            		}else if(i==1){
+				            			arrayOtimo = value;
+				            			data.datasets[i].dataI=arrayOtimo;
+				            		}else if(i==2){
+				            			arrayPessimo = value;
+				            			data.datasets[i].dataI=arrayPessimo;
+				            		}else{
+				            			arrayRuim = value;
+				            			data.datasets[i].dataI=arrayRuim;
+				            		}
 				            		i++;
 			                    });
-				            	PizzaChart= new Chart(ctx).Pie(data1, options);
-				   			  resultadosArray = new Array();
+				            	ctx2 = document.getElementById("GraficoBarra").getContext("2d");
+				            	BarChart = new Chart(ctx2).Bar(data, optiones);
+				            	arrayBom = new Array();
+				            	arrayOtimo= new Array();
+				            	arrayPessimo= new Array();
+				            	arrayRuim= new Array();
 				            },
 				            error: function (xhr, desc, err){	            
 				            	alert("erro no grafico de barras");
-				            }
-				            
-				        });		
-			        var ctx = document.getElementById("GraficoBarra").getContext("2d");
-			        var BarChart = new Chart(ctx).Bar(data, optiones);
+				            }				            
+				        });			      
 			    });
 });
 
