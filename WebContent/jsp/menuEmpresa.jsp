@@ -45,24 +45,24 @@
 	<div class="container link">
 		 <!-- Centered Pills -->
 		<ul class="nav nav-pills nav-justified" >
-			<li class="active"><a data-toggle="pill" href="#listaFormularios">Meu
-					Formulario</a></li>
+			<li class="active"><a data-toggle="pill" href="#listaFormularios">Gerenciar
+					Formulários Resposta</a></li>
 			<li><a data-toggle="pill" href="#meuFormulario" id="meusFormularios">Criar
 					Formulário</a></li>
-			<li><a  data-toggle="pill" href="#estatisticas" id="minhasEstatisticas">Estatistícas</a></li>
+			<li><a  data-toggle="pill" href="#estatisticas" id="minhasEstatisticas">Estatísticas</a></li>
 			<li><a  data-toggle="pill" href="#meuBeneficio" id="meusBeneficios">Benefícios</a></li>
 		</ul>
 	</div>	
 
 		<div class="tab-content">
 			<div id="listaFormularios" class="tab-pane fade in active container">
-				<h3>Meu Formulario</h3>
-				<p>Veja os resultados de seu formulário</p>
+				<h3>Formulários Resposta de Consumidores</h3>
+				<p>Veja o resultado das respostas dos seus consumidores, e efetive o Benefício</p>
 			</div>
 
 			<div id="meuFormulario" class="tab-pane fade container">
 				<div>
-					<h2>Meus Formulario</h2>
+					<h2>Meus Formularios</h2>
 					<p>Crie seu formulário.</p>
 				</div>
 				<button type="button" class="btn btn-success" data-toggle="modal" href="#modalFormulario">Novo Formulário</button>
@@ -135,8 +135,8 @@
 			</div>
 
 			<div id="estatisticas" class="tab-pane fade box">
-				<h3>Estatisticas</h3>
-				<p>Veja suas estatisticas</p>
+				<h3>Estatísticas</h3>
+				<p>Veja suas estatísticas</p>
 
 				<div class="formPesquisa">
 					<form class="form-inline" role="form" method="post" id="formConsulta">

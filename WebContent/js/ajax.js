@@ -8,7 +8,7 @@ $(document).ready(function() {
 				function(responseTxt, statusTxt, xhr) { 
 					if(statusTxt == "success"){
 						var beneficio = responseTxt;
-						$('#tabelaBeneficio > tbody').append('<tr><td>'+beneficio.id+'</td><td>'+beneficio.nome+'</td><td><button type="button" class="btn btn-danger" value= "'+beneficio.id+'" id="removerBeneficio" onclick="removeBeneficio(this)">Remover</button></td></tr>');
+						$('#tabelaBeneficio > tbody').append('<tr><td>'+beneficio.id+'</td><td>'+beneficio.nome+'</td><td><button type="button" class="btn btn-danger" value= "'+beneficio.id+'" id="removerBeneficio" onclick="removeBeneficio(this)">Remover</button> <button class="btn btn-info" >Alterar</button></td></tr>');
 					}if(statusTxt == "error"){
 //						alert("Error: " + xhr.status + ": " + xhr.statusText);
 					}
@@ -64,7 +64,7 @@ $(document).ready(function() {
 						if(statusTxt == "success"){
 							$('#tabelaBeneficio > tbody').empty();
 		                     $.each(responseTxt, function(key, value) {
-		                    	 $('#tabelaBeneficio > tbody').append('<tr><td>'+value.id+'</td><td>'+value.nome+'</td><td><button type="button" class="btn btn-danger" value= "'+value.id+'" id="removerBeneficio" onclick="removeBeneficio(this)">Remover</button></td></tr>');
+		                    	 $('#tabelaBeneficio > tbody').append('<tr><td>'+value.id+'</td><td>'+value.nome+'</td><td><button type="button" class="btn btn-danger" value= "'+value.id+'" id="removerBeneficio" onclick="removeBeneficio(this)">Remover</button> <button class="btn btn-info" >Alterar</button></td></tr>');
 		                    	});
 	 					}if(statusTxt == "error"){
 							alert("Error: " + xhr.status + ": " + xhr.statusText);
@@ -80,7 +80,7 @@ $(document).ready(function() {
 						if(statusTxt == "success"){
 							$('#tabelaFormulario > tbody').empty();
 		                     $.each(responseTxt, function(key, value) {
-		                    	 $('#tabelaFormulario > tbody').append('<tr><td>'+value.id+'</td><td>'+value.nome+'</td><td><button type="button" class="btn btn-danger" value= "'+value.id+'" id="removerFormulario" onclick="removeFormulario(this)">Remover</button></td></tr>');
+		                    	 $('#tabelaFormulario > tbody').append('<tr><td>'+value.id+'</td><td>'+value.nome+'</td><td><button type="button" class="btn btn-danger" value= "'+value.id+'" id="removerFormulario" onclick="removeFormulario(this)">Remover</button> <button class="btn btn-info" >Alterar</button> <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-eye-open"></span> Visualizar</button></td></tr>');
 		                    	});
 	 					}if(statusTxt == "error"){
 							alert("Error: " + xhr.status + ": " + xhr.statusText);
@@ -137,7 +137,7 @@ $(document).ready(function() {
 				function(responseTxt, statusTxt, xhr) { 
 					if(statusTxt == "success"){
 						var formulario = responseTxt;
-						$('#tabelaFormulario > tbody').append('<tr><td>'+formulario.id+'</td><td>'+formulario.nome+'</td><td><button type="button" class="btn btn-danger" value= "'+formulario.id+'" id="removerFormulario" onclick="removeFormulario(this)">Remover</button></td></tr>');
+						$('#tabelaFormulario > tbody').append('<tr><td>'+formulario.id+'</td><td>'+formulario.nome+'</td><td><button type="button" class="btn btn-danger" value= "'+formulario.id+'" id="removerFormulario" onclick="removeFormulario(this)">Remover</button> <button class="btn btn-info" >Alterar</button> <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-eye-open"></span> Visualizar</button></td></tr>');
 						perguntas = new Array();
 					}if(statusTxt == "error"){
 //						alert("Error: " + xhr.status + ": " + xhr.statusText);
@@ -208,7 +208,7 @@ $(document).ready(function() {
 		   			  resultadosArray = new Array();
 		            },
 		            error: function (xhr, desc, err){	            
-		            	alert("erro");
+		            	alert("erro no gráfico de Pizza");
 		            }
 		            
 		        });			 
@@ -234,7 +234,7 @@ $(document).ready(function() {
 			                strokeColor: "rgba(220,220,220,0.8)",
 			                highlightFill: "rgba(220,220,220,0.75)",
 			                highlightStroke: "rgba(220,220,220,1)",
-			                dataI: [randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb()]
+			                data: []
 			            },
 			            {
 			                label: "Ótimo",
@@ -242,7 +242,7 @@ $(document).ready(function() {
 			                strokeColor: "rgba(151,187,205,0.8)",
 			                highlightFill: "rgba(151,187,205,0.75)",
 			                highlightStroke: "rgba(151,187,205,1)",
-			                dataI: [28, 48, 40, 19, 86, 27, 90, randomnb(), randomnb(), randomnb(), randomnb(), randomnb()]
+			                data: []
 			            },
 			            {
 			                label: "Péssimo",
@@ -250,7 +250,7 @@ $(document).ready(function() {
 			                strokeColor: "rgba(151,187,205,0.8)",
 			                highlightFill: "rgba(151,187,205,0.75)",
 			                highlightStroke: "rgba(151,187,205,1)",
-			                dataI: [28, 48, 40, 19, 86, 27, 90, randomnb(), randomnb(), randomnb(), randomnb(), randomnb()]
+			                data: []
 			            },
 			            {
 			                label: "Ruim",
@@ -258,7 +258,7 @@ $(document).ready(function() {
 			                strokeColor: "rgba(151,187,205,0.8)",
 			                highlightFill: "rgba(151,187,205,0.75)",
 			                highlightStroke: "rgba(151,187,205,1)",
-			                dataI: [28, 48, 40, 19, 86, 27, 90, randomnb(), randomnb(), randomnb(), randomnb(), randomnb()]
+			                data: []
 			            }
 			        ]
 			    };                
@@ -274,16 +274,16 @@ $(document).ready(function() {
 				            	$.each(resultado, function(key, value) {
 				            		if(i==0){
 				            			arrayBom = value;
-				            			data.datasets[i].dataI=arrayBom;
+				            			data.datasets[i].data=arrayBom;
 				            		}else if(i==1){
 				            			arrayOtimo = value;
-				            			data.datasets[i].dataI=arrayOtimo;
+				            			data.datasets[i].data=arrayOtimo;
 				            		}else if(i==2){
 				            			arrayPessimo = value;
-				            			data.datasets[i].dataI=arrayPessimo;
+				            			data.datasets[i].data=arrayPessimo;
 				            		}else{
 				            			arrayRuim = value;
-				            			data.datasets[i].dataI=arrayRuim;
+				            			data.datasets[i].data=arrayRuim;
 				            		}
 				            		i++;
 			                    });
