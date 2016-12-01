@@ -3,6 +3,7 @@ package entidade;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -27,7 +28,7 @@ public class Pergunta implements Serializable {
 	
 	private String nomePergunta;
 	
-	@OneToMany(mappedBy="pergunta",fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="pergunta", fetch=FetchType.EAGER)
 	private List<Resposta> resposta;
 	
 	@ManyToOne

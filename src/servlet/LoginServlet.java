@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("empresa", empresa);
 			response.sendRedirect("jsp/menuEmpresa.jsp");
 		} else {
-			response.sendRedirect("jsp/home.html");
+			response.sendRedirect("html/home.html");
 		}
 	}
 

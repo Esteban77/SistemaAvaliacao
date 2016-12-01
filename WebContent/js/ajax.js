@@ -222,13 +222,19 @@ $(document).ready(function() {
 		var ctx2;
 		var BarChart;
 		 var optiones = {
-			        responsive:true
+			        responsive:true,
+			        showDatasetLabels : true,
+			        animation: true,
+			        barValueSpacing : 5,
+			        barDatasetSpacing : 1,
+			        tooltipFillColor: "rgba(0,0,0,0.8)",                
+			        multiTooltipTemplate: "<%= datasetLabel %> - <%= value %>"
 			    };
 
 			    var data = {
 			        labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
 			        datasets: [
-			            {
+			           /* {
 			                label: "Bom",
 			                fillColor: "rgba(220,220,220,0.5)",
 			                strokeColor: "rgba(220,220,220,0.8)",
@@ -259,7 +265,39 @@ $(document).ready(function() {
 			                highlightFill: "rgba(151,187,205,0.75)",
 			                highlightStroke: "rgba(151,187,205,1)",
 			                data: []
-			            }
+			            }*/
+			        {
+		                label: "Bom",
+		                fillColor: "rgba(124, 252, 0, 1.0)",
+		                strokeColor: "rgba(124, 252, 0, 1.3)",
+		                highlightFill: "rgba(124, 252, 0, 1.5)",
+		                highlightStroke: "rgba(124, 252, 0, 1.8)",
+		                data: []
+		            },
+		            {
+		                label: "Ótimo",
+		                fillColor: "rgba(50, 205, 50, 1.0)",
+		                strokeColor: "rgba(50, 205, 50, 1.3)",
+		                highlightFill: "rgba(50, 205, 50, 1.5)",
+		                highlightStroke: "rgba(50, 205, 50, 1.8)",
+		                data: []
+		            },
+		            {
+		                label: "Péssimo",
+		                fillColor: "rgba(247, 70, 74, 1.0)",
+		                strokeColor: "rgba(247, 70, 74, 1.3)",
+		                highlightFill: "rgba(247, 70, 74, 1.5)",
+		                highlightStroke: "rgba(247, 70, 74, 1.8)",
+		                data: []
+		            },
+		            {
+		                label: "Ruim",
+		                fillColor: "rgba(255, 255, 0, 1.0)",
+		                strokeColor: "rgba(255, 255, 0, 1.3)",
+		                highlightFill: "rgba(255, 255, 0, 1.5)",
+		                highlightStroke: "rgba(255, 255, 0, 1.8)",
+		                data: []
+		            }
 			        ]
 			    };                
 
@@ -307,7 +345,7 @@ function removeBeneficio(handler) {
 	var par = $(handler).parent().parent(); //tr
 	//Chama a URL do Servlet
 	$.getJSON('/SistemaAvaliacao/FrontController?acao=RemoverBeneficio',	{'idBeneficio': idBeneficio}, 		
-		//Funcao de callback
+		//Funcao de callback			
 		function(responseTxt, statusTxt, xhr) { 
 			if(statusTxt == "success"){
 				if(responseTxt==true){
@@ -317,10 +355,11 @@ function removeBeneficio(handler) {
 			}if(statusTxt == "error"){
 //				alert("Error: " + xhr.status + ": " + xhr.statusText);
 			}
+			
 		});
 }
 
-function removeFormulario(handler) {
+/*function removeFormulario(handler) {
 	var idFormulario = $(handler).val();	
 	var par = $(handler).parent().parent(); //tr
 	//Chama a URL do Servlet
@@ -333,10 +372,34 @@ function removeFormulario(handler) {
 //					$this.closest('tr').remove();
 				}
 			}if(statusTxt == "error"){
-//				alert("Error: " + xhr.status + ": " + xhr.statusText);
+				alert("Não é possível eliminar Formulário já respondido");
 			}
+			alert("Error: " + xhr.status + ": " + xhr.statusText);
 		});
+}*/
+
+function removeFormulario(handler) {
+	var idFormulario = $(handler).val();	
+	var par = $(handler).parent().parent(); //tr
+	 $.ajax({
+         type: "post",
+         url: '/SistemaAvaliacao/FrontController?acao=RemoverTipoDeFormulario',
+         data: {"idFormulario":idFormulario},
+         dataType: "json",
+         success: function (resultado,status) {
+        	 if(status == "success"){
+ 				if(resultado==true){
+ 					par.remove();
+// 					$this.closest('tr').remove();
+ 				}
+        	 }
+         },
+         error: function (xhr, desc, err){	            
+        	 alert("Não é possível eliminar Formulário já respondido");
+         }				            
+     });
 }
+
 // Função responsável em receber um objeto e extrair as informações necessárias para a remoção da linha.
 function removerLinha(obj) {
 

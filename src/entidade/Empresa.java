@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,7 +23,7 @@ public class Empresa extends Pessoa implements Serializable {
 	@Column(unique=true)
 	private String cnpj;
 	
-	@OneToMany(mappedBy="empresa", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="empresa",orphanRemoval=true, fetch=FetchType.EAGER)
 	private Set<TipoDeBeneficio> tiposDeBeneficio = new TreeSet<>();
 //	@OrderColumn(name = "id")
 //	@Sort(type = SortType.COMPARATOR)
@@ -30,7 +31,7 @@ public class Empresa extends Pessoa implements Serializable {
 //	@OrderBy(value="id")
 //	@Sort(type = SortType.NATURAL)	
 	
-	@OneToMany(mappedBy="empresa",fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="empresa",orphanRemoval=true,fetch=FetchType.EAGER)
 	private Set<TipoDeFormulario> tiposDeFormulario= new TreeSet<>();
 //	@Sort(type = SortType.COMPARATOR)
 

@@ -130,7 +130,7 @@ public class ConsultaGraficoBarras implements Acao{
 					numBomJunho = qtdInt;
 					break;
 				case 7:
-					numBomJulho = qtdInt*10;
+					numBomJulho = qtdInt;
 					break;
 				case 8:
 					numBomAgosto = qtdInt;
@@ -176,13 +176,13 @@ public class ConsultaGraficoBarras implements Acao{
 					numOtimoAgosto = qtdInt;
 					break;
 				case 9:
-					numOtimoSetembro = qtdInt*10;
+					numOtimoSetembro = qtdInt;
 					break;
 				case 10:
 					numOtimoOutubro = qtdInt;
 					break;
 				case 11:
-					numOtimoNovembro = qtdInt*10;
+					numOtimoNovembro = qtdInt;
 					break;
 				case 12:
 					numOtimoDezembro = qtdInt;
@@ -222,7 +222,7 @@ public class ConsultaGraficoBarras implements Acao{
 					numPessimoOutubro = qtdInt;
 					break;
 				case 11:
-					numPessimoNovembro = qtdInt*10;
+					numPessimoNovembro = qtdInt;
 					break;
 				case 12:
 					numPessimoDezembro = qtdInt;
@@ -250,13 +250,13 @@ public class ConsultaGraficoBarras implements Acao{
 					numRuimJunho = qtdInt;
 					break;
 				case 7:
-					numRuimJulho = qtdInt*10;
+					numRuimJulho = qtdInt;
 					break;
 				case 8:
 					numRuimAgosto = qtdInt;
 					break;
 				case 9:
-					numRuimSetembro = qtdInt*10;
+					numRuimSetembro = qtdInt;
 					break;
 				case 10:
 					numRuimOutubro = qtdInt;
