@@ -119,6 +119,7 @@ $(document).ready(function() {
 						"<label class='radio-inline'><input type='radio' name='optradio'>Ótimo</label><label class='radio-inline'> <input type='radio' name='optradio'>Bom</label>"+
    						"<label class='radio-inline'><input type='radio' name='optradio'>Ruin</label><label class='radio-inline'> <input type='radio' name='optradio'>Péssimo</label></td>"+
     					"<td width='20%'><button class='btn btn-info' >Alterar</button> <button class='btn btn-danger remover-linha'>Remover</button><td><tr>");
+			$("#pergunta").val("");
 		});	
 		$('#tabelaPergunta').on('click', '.remover-linha', function(e){
 				  e.preventDefault;
@@ -139,9 +140,18 @@ $(document).ready(function() {
 						var formulario = responseTxt;
 						$('#tabelaFormulario > tbody').append('<tr><td>'+formulario.id+'</td><td>'+formulario.nome+'</td><td><button type="button" class="btn btn-danger" value= "'+formulario.id+'" id="removerFormulario" onclick="removeFormulario(this)">Remover</button> <button class="btn btn-info" >Alterar</button> <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-eye-open"></span> Visualizar</button></td></tr>');
 						perguntas = new Array();
+						var table = $('#tabelaPergunta');
+
+						table.find('tr').each(function(indice){
+							var par = $(this).closest('tr'); //tr
+							  par.remove();
+						});
+						$("#nomeFormulario").val("");
+						$("#pergunta").val("");
 					}if(statusTxt == "error"){
 //						alert("Error: " + xhr.status + ": " + xhr.statusText);
 					}
+					
 				});
 			
 			//perguntas.clear();
