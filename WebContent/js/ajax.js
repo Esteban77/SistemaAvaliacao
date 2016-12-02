@@ -9,6 +9,7 @@ $(document).ready(function() {
 					if(statusTxt == "success"){
 						var beneficio = responseTxt;
 						$('#tabelaBeneficio > tbody').append('<tr><td>'+beneficio.id+'</td><td>'+beneficio.nome+'</td><td><button type="button" class="btn btn-danger" value= "'+beneficio.id+'" id="removerBeneficio" onclick="removeBeneficio(this)">Remover</button> <button class="btn btn-info" >Alterar</button></td></tr>');
+						$('#beneficio').val("");
 					}if(statusTxt == "error"){
 //						alert("Error: " + xhr.status + ": " + xhr.statusText);
 					}
