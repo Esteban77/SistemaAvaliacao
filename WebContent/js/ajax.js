@@ -160,6 +160,11 @@ $(document).ready(function() {
 			//perguntas.clear();
 	});	
 		
+		$('#fecharFormulario').click(function() { 
+			$("#nomeFormulario").val("");
+			$("#pergunta").val("");
+		});
+		
 		var randomnb = function(){ return Math.round(Math.random()*300)};
 		var resultadosArray = new Array();
 		var ctx;
