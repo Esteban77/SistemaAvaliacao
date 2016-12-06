@@ -66,7 +66,8 @@
 					<p>Crie seu formulário.</p>
 				</div>
 				<button type="button" class="btn btn-success" data-toggle="modal" href="#modalFormulario">Novo Formulário</button>
-				<br>
+				<hr>
+				<br><br>
 					<div class="row">
 							<table class="table table-bordered" id="tabelaFormulario">
 								<thead>
@@ -133,26 +134,69 @@
 					</div>
 					<!-- Fim do modal -->
 			</div>
+			
+			<div>
+			
+			<!-- Inicio visualizar formulario -->
+				<div class="modal fade" id="modalVisualizarFormulario" role="dialog" data-backdrop="static">
+					<div class="modal-dialog modal-lg">
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header" style="padding: 35px 50px;">
+									
+									<h4 class="modal-title">Crie seu Formulário</h4>
+									<br><br>
+									<div class="form-group">
+										<div class="form-group">
+											<label class="col-sm-2 control-label" for="nomeFormularioVisualizar" name="nomeFormularioVisualizar">Nome do Formulário</label>
+											<div class="col-sm-10">
+												<input class="form-control" type="text" name="nomeFormularioVisualizar"
+													id="nomeFormularioVisualizar">
+											</div>
+										</div>
+									 </div>
+								</div>
+								<div class="modal-body">
+									<form class="form-horizontal" id="visualizarPerguntas">
+										<div class="form-group">
+											<label for="pergunta" class="col-sm-2 control-label">Pergunta</label>
+					
+										</div>
+										<hr>
+									</form>
+								</div>
+								<div id="tabelaVerPerguntas">
+									<table id="tabelaVerPergunta">
+											<tbody> 
+												
+			 								</tbody> 
+									</table>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Fim do modal visualizar formulario-->
+			</div>
 
 			<div id="estatisticas" class="tab-pane fade box">
 				<h3>Estatísticas</h3>
 				<p>Veja suas estatísticas</p>
 
 				<div class="formPesquisa">
+					<fieldset>
 					<form class="form-inline" role="form" method="post" id="formConsulta">
 						<label class="control-label">Data Inicial</label>
 						<div  class="input-group date" data-provide="datepicker">
 							<input name="dataInicio" id="dataInicio" type="date" class="form-control"pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" min="1950-01-01" max="2016-12-31" required>
-						    <div class="input-group-addon">
-						        <span class="glyphicon glyphicon-th"></span>
-							</div>						
+									
 						</div>
 						<label class="control-label">Data Final</label>
 						<div  class="input-group date" data-provide="datepicker">
 							<input name="dataFinal" id="dataFinal" type="date" class="form-control"pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" min="1950-01-01" max="2016-12-31" required>
-						    <div class="input-group-addon">
-						        <span class="glyphicon glyphicon-th"></span>
-						    </div>
+				
 						</div>
 						
 						<div class="form-group">
@@ -176,15 +220,20 @@
 							<button class="btn btn-info" type="submit" name="buscar" id="buscar">Buscar</button>
 						</div>
 					</form>
+					</fieldset>
 				</div>
 				<br><br>
+				<fieldset>
 				<div class="box-chart">
 					<canvas id="GraficoPizza" style="width:100%"></canvas>
 				</div>
+				</fieldset>
+				<br><br>
+				<fieldset>
 				<div class="box-chart">
 					<canvas id="GraficoBarra" style="width:100%;"></canvas>
 				</div>
-				
+				</fieldset>
 			</div>
 
 			<div id="meuBeneficio" class="tab-pane fade container">

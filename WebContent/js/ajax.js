@@ -81,7 +81,7 @@ $(document).ready(function() {
 						if(statusTxt == "success"){
 							$('#tabelaFormulario > tbody').empty();
 		                     $.each(responseTxt, function(key, value) {
-		                    	 $('#tabelaFormulario > tbody').append('<tr><td>'+value.id+'</td><td>'+value.nome+'</td><td><button type="button" class="btn btn-danger" value= "'+value.id+'" id="removerFormulario" onclick="removeFormulario(this)">Remover</button> <button class="btn btn-info" >Alterar</button> <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-eye-open"></span> Visualizar</button></td></tr>');
+		                    	 $('#tabelaFormulario > tbody').append('<tr><td>'+value.id+'</td><td>'+value.nome+'</td><td><button type="button" class="btn btn-danger" value= "'+value.id+'" id="removerFormulario" onclick="removeFormulario(this)">Remover</button> <button class="btn btn-info" >Alterar</button> <button id="visualizar" onclick="visualizarFormulario(this)" value="'+value.id+'"type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-eye-open"></span> Visualizar</button></td></tr>');
 		                    	});
 	 					}if(statusTxt == "error"){
 							alert("Error: " + xhr.status + ": " + xhr.statusText);
@@ -90,6 +90,7 @@ $(document).ready(function() {
 			
 		});
 		
+	
 		
 		$('#beneficioLista').click(function() { 					
 			//Chama a URL do Servlet
@@ -122,6 +123,7 @@ $(document).ready(function() {
     					"<td width='20%'><button class='btn btn-info' >Alterar</button> <button class='btn btn-danger remover-linha'>Remover</button><td><tr>");
 			$("#pergunta").val("");
 		});	
+		
 		$('#tabelaPergunta').on('click', '.remover-linha', function(e){
 				  e.preventDefault;
 				  var removeItem = $(this).parent().parent().find('td').data('nome');
@@ -139,7 +141,7 @@ $(document).ready(function() {
 				function(responseTxt, statusTxt, xhr) { 
 					if(statusTxt == "success"){
 						var formulario = responseTxt;
-						$('#tabelaFormulario > tbody').append('<tr><td>'+formulario.id+'</td><td>'+formulario.nome+'</td><td><button type="button" class="btn btn-danger" value= "'+formulario.id+'" id="removerFormulario" onclick="removeFormulario(this)">Remover</button> <button class="btn btn-info" >Alterar</button> <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-eye-open"></span> Visualizar</button></td></tr>');
+						$('#tabelaFormulario > tbody').append('<tr><td>'+formulario.id+'</td><td>'+formulario.nome+'</td><td><button type="button" class="btn btn-danger" value= "'+formulario.id+'" id="removerFormulario" onclick="removeFormulario(this)">Remover</button> <button class="btn btn-info" >Alterar</button> <button type="button" class="btn btn-default btn-sm" value= "'+formulario.id+'"><span class="glyphicon glyphicon-eye-open"></span> Visualizar</button></td></tr>');
 						perguntas = new Array();
 						var table = $('#tabelaPergunta');
 
@@ -410,19 +412,27 @@ function removeFormulario(handler) {
          }				            
      });
 }
+function visualizarFormulario(handler) {
+	var idFormulario = $(handler).val();	
+	var par = $(handler).parent().parent(); //tr
+	 $.ajax({
+         type: "get",
+         url: '/SistemaAvaliacao/FrontController?acao=VisualizarFormulario',
+         data: {"idFormulario":idFormulario},
+         dataType: "json",
+         success: function (responseTxt,status) {
+        	 if(status == "success"){
+ 					$("#modalVisualizarFormulario").modal();
+ 					alert(idFormulario);
+ 				
+        	 }
+         },
+         error: function (xhr, desc, err){	            
+        	 
+         }				            
+     });
+}
 
-// Função responsável em receber um objeto e extrair as informações necessárias para a remoção da linha.
-function removerLinha(obj) {
-
-        // Capturamos a referência da TR (linha) pai do objeto
-        var objTR = obj.parentNode.parentNode;
-        // Capturamos a referência da TABLE (tabela) pai da linha
-        var objTable = objTR.parentNode;
-        // Capturamos o índice da linha
-        var indexTR = objTR.rowIndex;
-        // Chamamos o método de remoção de linha nativo do JavaScript, passando como parâmetro o índice da linha  
-        objTable.deleteRow(indexTR);
- } 
 
 
 
