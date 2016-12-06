@@ -425,10 +425,11 @@ function visualizarFormulario(handler) {
          url: '/SistemaAvaliacao/FrontController?acao=VisualizarFormulario',
          data: {"idFormulario":idFormulario},
          dataType: "json",
-         success: function (responseTxt,status) {
+         success: function (resultado,status) {
         	 if(status == "success"){
+        		 var formulario = resultado;
  					$("#modalVisualizarFormulario").modal();
- 					alert(idFormulario);
+ 					$("#nomeFormularioVisualizar").val(formulario.nomeFormularioVisualizar);
  				
         	 }
          },
