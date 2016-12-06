@@ -422,8 +422,9 @@ function visualizarFormulario(handler) {
          dataType: "json",
          success: function (responseTxt,status) {
         	 if(status == "success"){
+        		 var formulario = responseTxt;
  					$("#modalVisualizarFormulario").modal();
- 					alert(idFormulario);
+ 					$("#nomeFormularioVisualizar").val(formulario.nomeFormularioVisualizar);
  				
         	 }
          },

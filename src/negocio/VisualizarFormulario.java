@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Session;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import dao.HibernateUtil;
@@ -30,10 +31,12 @@ public class VisualizarFormulario implements Acao{
         
        if(formulario!=null){
        	JSONObject objeto = new JSONObject();
+       	JSONArray jsonArray = new JSONArray();
        	
 			objeto.put("id", formulario.getId());
 			objeto.put("nomeFormularioVisualizar", formulario.getNomeFormulario());
-			//objeto.put("perguntas", formulario.getPerguntas());
+			jsonArray.put(formulario.getPerguntas());
+			objeto.put("perguntas",jsonArray);
 			
 			try {
 				response.getWriter().write(objeto.toString());
