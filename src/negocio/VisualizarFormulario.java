@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import dao.HibernateUtil;
 import dao.TipoDeFormularioDaoImpl;
+import entidade.Pergunta;
 import entidade.TipoDeFormulario;
 
 public class VisualizarFormulario implements Acao{
@@ -30,15 +31,20 @@ public class VisualizarFormulario implements Acao{
        TipoDeFormulario formulario = tipoDeFormularioDaoImpl.pesquisaPorId(idFormulario, session);
         
        if(formulario!=null){
-       	JSONObject objetoForm = new JSONObject();
-       	JSONArray jsonArray = new JSONArray();
        	
-			objetoForm.put("id", formulario.getId());
-			objetoForm.put("nomeFormularioVisualizar", formulario.getNomeFormulario());
+       	JSONArray jsonArray = new JSONArray(); 
+       	JSONObject jsonObject = new JSONObject();  
+       	
+		jsonObject.put("nomeFormularioVisualizar",formulario.getNomeFormulario());
+		jsonArray.put(jsonObject);
+       	for(Pergunta p :formulario.getPerguntas()){
+       		jsonObject = new JSONObject();
+       		jsonObject.put("nomePergunta", p.getNomePergunta());
+       		jsonArray.put(jsonObject);
+       	}
 		
-			jsonArray.put(objetoForm);
-			
-			
+		
+       	
 			try {
 				response.getWriter().write(jsonArray.toString());
 			}catch(IOException e) {

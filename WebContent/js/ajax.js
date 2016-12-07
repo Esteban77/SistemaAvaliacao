@@ -157,8 +157,19 @@ $(document).ready(function() {
 					
 				});
 			
-			//perguntas.clear();
 	});	
+		
+		$('#closeModal').click(function() { 			
+			
+			var table = $('#tabelaVerPergunta');
+
+			table.find('tr').each(function(indice){
+				var par = $(this).closest('tr'); //tr
+				  par.remove();
+				  
+			});
+			
+		});
 		
 		var randomnb = function(){ return Math.round(Math.random()*300)};
 		var resultadosArray = new Array();
@@ -421,13 +432,23 @@ function visualizarFormulario(handler) {
          data: {"idFormulario":idFormulario},
          dataType: "json",
          success: function (resultado,status) {
-        	 if(status == "success"){
-        		 var formulario = resultado;
- 					$("#modalVisualizarFormulario").modal();
- 					$("#nomeFormularioVisualizar").val(formulario.nomeFormularioVisualizar);
- 				
-        	 }
-         },
+        	 $("#modalVisualizarFormulario").modal();
+        	 $("#nomeFormularioVisualizar").prop('disable',true);
+        	 i = 0;
+        	 $.each(resultado,function(key,value){
+        		 if(i == 0){
+        			 $("#nomeFormularioVisualizar").val(value.nomeFormularioVisualizar);
+        			 
+        		 }else{
+        			 
+        			 $('#tabelaVerPergunta > tbody').append("<tr><td width='80%' data-nome="+value.nomePergunta+"><h4>" +value.nomePergunta+"</h4>"+
+     						"<label class='radio-inline'><input type='radio' name='optradio'>Ótimo</label><label class='radio-inline'> <input type='radio' name='optradio'>Bom</label>"+
+       						"<label class='radio-inline'><input type='radio' name='optradio'>Ruin</label><label class='radio-inline'> <input type='radio' name='optradio'>Péssimo</label></td>");
+        		 }	 
+        	i++
+        	 });
+        	 },
+        	
          error: function (xhr, desc, err){	            
         	 
          }				            
