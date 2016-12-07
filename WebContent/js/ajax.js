@@ -426,12 +426,15 @@ function visualizarFormulario(handler) {
          data: {"idFormulario":idFormulario},
          dataType: "json",
          success: function (resultado,status) {
-        	 if(status == "success"){
-        		 var formulario = resultado;
- 					$("#modalVisualizarFormulario").modal();
- 					$("#nomeFormularioVisualizar").val(formulario.nomeFormularioVisualizar);
- 				
-        	 }
+        	 i=0;
+        	 $.each(resultado, function(key, value) {
+         		if(i==0){
+         			$("nomeFormualrio").val(value);
+         		}else{
+         			perguntas.push(value);
+         		}
+         		i++;
+             });
          },
          error: function (xhr, desc, err){	            
         	 
