@@ -159,13 +159,13 @@
 								<div class="modal-body">
 									<form class="form-horizontal" id="visualizarPerguntas">
 										<div class="form-group">
-											<label for="pergunta" class="col-sm-2 control-label">Pergunta</label>
+											<label for="pergunta" class="col-sm-2 control-label">Perguntas</label>
 					
 										</div>
 										<hr>
 									</form>
 								</div>
-								<div id="tabelaVerPerguntas">
+								<div id="tabelaVisuPerguntas">
 									<table id="tabelaVerPergunta">
 											<tbody> 
 												
@@ -173,7 +173,7 @@
 									</table>
 								</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									<button id="closeModal" type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
 								</div>
 							</div>
 						</div>

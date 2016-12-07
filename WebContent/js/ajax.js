@@ -157,12 +157,23 @@ $(document).ready(function() {
 					
 				});
 			
-			//perguntas.clear();
 	});	
 		
 		$('#fecharFormulario').click(function() { 
 			$("#nomeFormulario").val("");
 			$("#pergunta").val("");
+
+		$('#closeModal').click(function() { 			
+			
+			var table = $('#tabelaVerPergunta');
+
+			table.find('tr').each(function(indice){
+				var par = $(this).closest('tr'); //tr
+				  par.remove();
+				  
+			});
+			
+
 		});
 		
 		var randomnb = function(){ return Math.round(Math.random()*300)};
@@ -417,25 +428,36 @@ function removeFormulario(handler) {
          }				            
      });
 }
-function visualizarFormulario(handler) {
+
+function visualizarFormulario(handler) {	
+
 	var idFormulario = $(handler).val();	
 	var par = $(handler).parent().parent(); //tr
+	
 	 $.ajax({
          type: "get",
          url: '/SistemaAvaliacao/FrontController?acao=VisualizarFormulario',
          data: {"idFormulario":idFormulario},
          dataType: "json",
-         success: function (resultado,status) {
-        	 i=0;
-        	 $.each(resultado, function(key, value) {
-         		if(i==0){
-         			$("nomeFormualrio").val(value);
-         		}else{
-         			perguntas.push(value);
-         		}
-         		i++;
-             });
-         },
+         
+         success: function (resultado,status) {        
+        	 $("#modalVisualizarFormulario").modal();
+        	 $("#nomeFormularioVisualizar").prop('disable',true);
+        	 i = 0;
+        	 $.each(resultado, function(key,value){
+        		 if(i == 0){
+        			 $("#nomeFormularioVisualizar").val(value.nomeFormularioVisualizar);
+        			 
+        		 }else{
+        			 
+        			 $('#tabelaVerPergunta > tbody').append("<tr><td width='80%' data-nome="+value.nomePergunta+"><h4>" +value.nomePergunta+"</h4>"+
+     						"<label class='radio-inline'><input type='radio' name='optradio'>Ótimo</label><label class='radio-inline'> <input type='radio' name='optradio'>Bom</label>"+
+       						"<label class='radio-inline'><input type='radio' name='optradio'>Ruin</label><label class='radio-inline'> <input type='radio' name='optradio'>Péssimo</label></td>");
+        		 }	 
+        		 i++
+        	 });
+        	 
+        	 },
          error: function (xhr, desc, err){	            
         	 
          }				            

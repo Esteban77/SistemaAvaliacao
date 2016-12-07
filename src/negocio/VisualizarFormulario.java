@@ -32,25 +32,17 @@ public class VisualizarFormulario implements Acao{
        TipoDeFormulario formulario = tipoDeFormularioDaoImpl.pesquisaPorId(idFormulario, session);
         
        if(formulario!=null){
-       	JSONObject objetoForm = new JSONObject();
-       	JSONArray jsonArray = new JSONArray();
-       	for()
-			
-			objetoForm.put("nomeFormularioVisualizar", formulario.getNomeFormulario());
-			objetoForm.put("perguntas", jsonArray);
-			jsonArray.put(objetoForm);
-			
-			 Long idTipoFormulario = Long.parseLong(id);
-	        	List<Pergunta>listPerguntas = perguntaDao.pesquisaPorIdFormulario(idTipoFormulario, session);
-	        	session.close();
-	    		if(!listPerguntas.isEmpty()){
-		    		
-		    		jsonArray.put(formulario.getNomeFormulario());
-		    		
-		    		for(Pergunta pergunta : listPerguntas){
-		    			  jsonArray.put(pergunta.getNomePergunta());  
-		    		}
-			
+  	
+       	JSONArray jsonArray = new JSONArray(); 
+       	JSONObject jsonObject = new JSONObject();  
+       	
+		jsonObject.put("nomeFormularioVisualizar",formulario.getNomeFormulario());
+		jsonArray.put(jsonObject);
+       	for(Pergunta p :formulario.getPerguntas()){
+       		jsonObject = new JSONObject();
+       		jsonObject.put("nomePergunta", p.getNomePergunta());
+       		jsonArray.put(jsonObject);
+       	}
 			try {
 				response.getWriter().write(jsonArray.toString());
 			}catch(IOException e) {
