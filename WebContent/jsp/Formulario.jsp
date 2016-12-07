@@ -97,7 +97,7 @@
 							<label for="nomeCompleto"><span
 								class="glyphicon glyphicon-user"></span> Nome Completo</label> <input
 								name="nomeConsumidor" type="text" class="form-control obrigatorio"
-								id="nomeConsumidor" placeholder="Digite seu nome completo" pattern="[a-zA-Z]+$" required>
+								id="nomeConsumidor" placeholder="Digite seu nome completo" required>
 						</div>
 						
 						<div class="form-group">
