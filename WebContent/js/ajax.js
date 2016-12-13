@@ -426,6 +426,7 @@ function removeFormulario(handler) {
 function visualizarFormulario(handler) {
 	var idFormulario = $(handler).val();	
 	var par = $(handler).parent().parent(); //tr
+	$("#nomeFormularioVisualizar").prop('disable',true);
 	 $.ajax({
          type: "get",
          url: '/SistemaAvaliacao/FrontController?acao=VisualizarFormulario',
@@ -433,7 +434,6 @@ function visualizarFormulario(handler) {
          dataType: "json",
          success: function (resultado,status) {
         	 $("#modalVisualizarFormulario").modal();
-        	 $("#nomeFormularioVisualizar").prop('disable',true);
         	 i = 0;
         	 $.each(resultado,function(key,value){
         		 if(i == 0){
