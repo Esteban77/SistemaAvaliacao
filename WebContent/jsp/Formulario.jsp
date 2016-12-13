@@ -22,6 +22,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
  
 	<script src="../SistemaAvaliacao/js/funcoesFormularioCliente.js"></script>
+	<script type="text/javascript" src="../SistemaAvaliacao/js/jquery.mask.min.js"/></script>
 	<link rel="stylesheet" href="../SistemaAvaliacao/css/estilos.css">
 	
 </head>
@@ -77,8 +78,8 @@
 						<div class="form-group">
 							<label for="Cpf"><span
 								class="glyphicon glyphicon-pencil"></span> CPF</label> <input
-								name="cpf" type="number" class="form-control obrigatorio" id="cpf"
-								placeholder="Digite seu CPF"  maxlength="11" required>
+								name="cpf" type="text" class="form-control obrigatorio" id="cpf"
+								placeholder="Digite seu CPF"  required>
 						</div>
 						<div class="form-group">
 							<label for="login"><span
@@ -104,7 +105,8 @@
 							<label for="telefone"><span
 								class="glyphicon glyphicon-pencil"></span> Telefone</label> <input
 								name="telefone" type="tel" class="form-control obrigatorio" id="telefone"
-								placeholder="Digite seu telefone" pattern="^\d{4}-\d{3}-\d{4}$" required>
+								placeholder="Digite seu telefone" required>
+<!-- 								placeholder="Digite seu telefone" pattern="^\d{4}-\d{3}-\d{4}$" required> -->
 						</div>
 						
 						<div class="form-group">
