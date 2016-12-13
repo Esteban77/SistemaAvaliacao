@@ -385,7 +385,7 @@ function removeBeneficio(handler) {
 	
 	$("#modalExcluir").modal();
 	
-	$('#confirmaExcluir').click(function() { 	
+	$('#confirmaExcluir').one("click",function() { 	
 	var idBeneficio = $(handler).val();	
 	var par = $(handler).parent().parent(); //tr
 	//Chama a URL do Servlet
@@ -427,7 +427,7 @@ function removeBeneficio(handler) {
 function removeFormulario(handler) {
 	$("#modalExcluir").modal();
 	
-	$('#confirmaExcluir').click(function() { 			
+	$('#confirmaExcluir').one("click",function() { 			
 			
 		var idFormulario = $(handler).val();	
 		var par = $(handler).parent().parent(); //tr
