@@ -119,18 +119,22 @@ $(document).ready(function() {
 			perguntas.push($('#pergunta').val());
 			$('#tabelaPergunta > tbody').append("<tr><td width='80%' data-nome="+$('#pergunta').val()+"><h4>" +$('#pergunta').val()+ "</h4>"+
 						"<label class='radio-inline'><input type='radio' name='optradio'>Ótimo</label><label class='radio-inline'> <input type='radio' name='optradio'>Bom</label>"+
-   						"<label class='radio-inline'><input type='radio' name='optradio'>Ruin</label><label class='radio-inline'> <input type='radio' name='optradio'>Péssimo</label></td>"+
+   						"<label class='radio-inline'><input type='radio' name='optradio'>Ruim</label><label class='radio-inline'> <input type='radio' name='optradio'>Péssimo</label></td>"+
     					"<td width='20%'><button class='btn btn-info' >Alterar</button> <button class='btn btn-danger remover-linha'>Remover</button><td><tr>");
 			$("#pergunta").val("");
 		});	
 		
 		$('#tabelaPergunta').on('click', '.remover-linha', function(e){
-				  e.preventDefault;
-				  var removeItem = $(this).parent().parent().find('td').data('nome');
-				  var index = perguntas.indexOf(removeItem);
-				  perguntas.splice(index, 1);
-				  var par = $(this).parent().parent(); //tr
+			$("#modalExcluir").modal();
+			 e.preventDefault;
+			  var removeItem = $(this).parent().parent().find('td').data('nome');
+			  var index = perguntas.indexOf(removeItem);
+			  perguntas.splice(index, 1);
+			  var par = $(this).parent().parent(); //tr
+			
+			  $('#confirmaExcluir').click(function() { 
 				  par.remove();
+			});
 		});
 
 		$('#salvarFormulario').click(function() { 			
@@ -378,6 +382,10 @@ $(document).ready(function() {
 
 
 function removeBeneficio(handler) {
+	
+	$("#modalExcluir").modal();
+	
+	$('#confirmaExcluir').click(function() { 	
 	var idBeneficio = $(handler).val();	
 	var par = $(handler).parent().parent(); //tr
 	//Chama a URL do Servlet
@@ -394,6 +402,7 @@ function removeBeneficio(handler) {
 			}
 			
 		});
+	});
 }
 
 /*function removeFormulario(handler) {
@@ -416,32 +425,39 @@ function removeBeneficio(handler) {
 }*/
 
 function removeFormulario(handler) {
-	var idFormulario = $(handler).val();	
-	var par = $(handler).parent().parent(); //tr
-	 $.ajax({
-         type: "post",
-         url: '/SistemaAvaliacao/FrontController?acao=RemoverTipoDeFormulario',
-         data: {"idFormulario":idFormulario},
-         dataType: "json",
-         success: function (resultado,status) {
-        	 if(status == "success"){
- 				if(resultado==true){
- 					par.remove();
-// 					$this.closest('tr').remove();
- 				}
-        	 }
-         },
-         error: function (xhr, desc, err){	            
-        	 alert("Não é possível eliminar Formulário já respondido");
-         }				            
-     });
+	$("#modalExcluir").modal();
+	
+	$('#confirmaExcluir').click(function() { 			
+			
+		var idFormulario = $(handler).val();	
+		var par = $(handler).parent().parent(); //tr
+		 $.ajax({
+	         type: "post",
+	         url: '/SistemaAvaliacao/FrontController?acao=RemoverTipoDeFormulario',
+	         data: {"idFormulario":idFormulario},
+	         dataType: "json",
+	         success: function (resultado,status) {
+	        	 if(status == "success"){
+	 				if(resultado==true){
+	 					par.remove();
+
+	 				}
+	        	 }
+	         },
+	         error: function (xhr, desc, err){	            
+	        	 alert("Não é possível eliminar Formulário já respondido");
+	         }				            
+	     });
+				  	
+	});
+	
 }
 
 function visualizarFormulario(handler) {	
 
 	var idFormulario = $(handler).val();	
 	var par = $(handler).parent().parent(); //tr
-	
+
 	 $.ajax({
          type: "get",
          url: '/SistemaAvaliacao/FrontController?acao=VisualizarFormulario',
@@ -450,7 +466,6 @@ function visualizarFormulario(handler) {
          
          success: function (resultado,status) {        
         	 $("#modalVisualizarFormulario").modal();
-        	 $("#nomeFormularioVisualizar").prop('disable',true);
         	 i = 0;
         	 $.each(resultado, function(key,value){
         		 if(i == 0){
@@ -460,7 +475,7 @@ function visualizarFormulario(handler) {
         			 
         			 $('#tabelaVerPergunta > tbody').append("<tr><td width='80%' data-nome="+value.nomePergunta+"><h4>" +value.nomePergunta+"</h4>"+
      						"<label class='radio-inline'><input type='radio' name='optradio'>Ótimo</label><label class='radio-inline'> <input type='radio' name='optradio'>Bom</label>"+
-       						"<label class='radio-inline'><input type='radio' name='optradio'>Ruin</label><label class='radio-inline'> <input type='radio' name='optradio'>Péssimo</label></td>");
+       						"<label class='radio-inline'><input type='radio' name='optradio'>Ruim</label><label class='radio-inline'> <input type='radio' name='optradio'>Péssimo</label></td>");
         		 }	 
         		 i++
         	 });
