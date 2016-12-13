@@ -72,17 +72,11 @@
 							<table class="table table-bordered" id="tabelaFormulario">
 								<thead>
 									<th>ID</th>
-									<th>Nome do Formulário</th>								
+									<th>Nome do Formulário</th>	
+									<th> </th>								
 								</thead>
 								<tbody> 
-<%-- 									<c:forEach var="tipoDeFormulario" items="${empresa.tiposDeFormulario}"> --%>
-<%--  										<tr id="${tipoDeFormulario.id}"> --%>
-<%-- 											<td>${tipoDeFormulario.id}</td> --%>
-<%-- 											<td>${tipoDeFormulario.nomeFormulario}</td> --%>
-<%-- 											<td><button type="button" class="btn btn-danger" value= "${tipoDeFormulario.id}" id="removerFormulario${tipoDeFormulario.id}"">Remover</button></td> --%>
-<%-- 											<td><a href="/SistemaAvaliacao/FrontController?acao=ObterFormulario&idFormulario=${tipoDeFormulario.id}"class="btn btn-info" role="button" ><span class="glyphicon glyphicon-retweet"></span> Alterar</a></td> --%>
-<!-- 										</tr>  -->
-<%-- 									</c:forEach>  --%>
+		
  								</tbody> 
 							</table>
 					</div>
@@ -92,7 +86,6 @@
 							<!-- Modal content-->
 							<div class="modal-content">
 								<div class="modal-header" style="padding: 35px 50px;">
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
 									<h4 class="modal-title">Crie seu Formulário</h4>
 									<br><br>
 									<div class="form-group">
@@ -119,7 +112,7 @@
 									</form>
 								</div>
 								<div id="tabelaAddPergunta">
-									<table id="tabelaPergunta">
+									<table id="tabelaPergunta" class="table table-condensed">
 											<tbody> 
 												
 			 								</tbody> 
@@ -127,7 +120,7 @@
 								</div>
 								<div class="modal-footer">
 									<button id="salvarFormulario" type="button" data-dismiss="modal" class="btn btn-success">Salvar</button>
-									<button id="fecharFormulario" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									<button id="fecharFormulario" type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
 								</div>
 							</div>
 						</div>
@@ -135,8 +128,7 @@
 					<!-- Fim do modal -->
 			</div>
 			
-			<div>
-			
+		<div>
 			<!-- Inicio visualizar formulario -->
 				<div class="modal fade" id="modalVisualizarFormulario" role="dialog" data-backdrop="static">
 					<div class="modal-dialog modal-lg">
@@ -166,14 +158,14 @@
 									</form>
 								</div>
 								<div id="tabelaVisuPerguntas">
-									<table id="tabelaVerPergunta">
+									<table id="tabelaVerPergunta" class="table table-condensed">
 											<tbody> 
 												
 			 								</tbody> 
 									</table>
 								</div>
 								<div class="modal-footer">
-									<button id="closeModal" type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+									<button id="closeModal" type="button" class="btn btn-default" data-dismiss="modal" >Fechar</button>
 								</div>
 							</div>
 						</div>
@@ -255,17 +247,11 @@
 							<table class="table table-bordered" id="tabelaBeneficio">
 								<thead>
 									<th>ID</th>
-									<th>Tipo de Benefício</th>								
+									<th>Tipo de Benefício</th>
+									<th> </th>									
 								</thead>
 								<tbody> 
-<%-- 									<c:forEach var="tipoDeBeneficio" items="${empresa.tiposDeBeneficio}"> --%>
-<%--  										<tr id="${tipoDeBeneficio.id}"> --%>
-<%-- 											<td>${tipoDeBeneficio.id}</td> --%>
-<%-- 											<td>${tipoDeBeneficio.nomeBeneficio}</td> --%>
-<%-- 											<td><button type="button" class="btn btn-danger" value= "${tipoDeBeneficio.id}" id="removerBeneficio" onclick="removeBeneficio(this)">Remover</button></td> --%>
-<%-- 											<td><a href="/SistemaAvaliacao/FrontController?acao=ObterBeneficio&idBeneficio=${tipoDeBeneficio.id}"class="btn btn-info" role="button" ><span class="glyphicon glyphicon-retweet"></span> Alterar</a></td> --%>
-<!-- 										</tr>  -->
-<%-- 									</c:forEach>  --%>
+
  								</tbody> 
 							</table>
 					</div>
@@ -273,6 +259,25 @@
 			</div>
 		</div>
 
+			<!-- Modal Confirma Excluir-->
+			  <div class="modal fade" id="modalExcluir" role="dialog">
+			    <div class="modal-dialog modal-sm">
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          
+			        </div>
+			        <div class="modal-body">
+			          <p>Deseja excluir?</p>
+			        </div>
+			        <div class="modal-footer">
+			          <button type="button" id="confirmaExcluir" class="btn btn-danger" data-dismiss="modal">Sim</button>
+			          <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			  
 	</div>
 </body>
 </html>
