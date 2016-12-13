@@ -52,7 +52,7 @@ $(document).ready(function(){
 	            	 $("#idConsumidor2").val(data.idConsumidor);
 	            },
 	            error: function (xhr, desc, err){	            
-	            	alert("erro");
+	            	alert("Erro: campo já existente");
 	            }
 	        });
 		 $('#modalConsumidor').modal('toggle');
@@ -83,9 +83,11 @@ $(document).ready(function(){
 						//Funcao de callback
 						function(responseTxt, statusTxt, xhr) { 
 					if(statusTxt == "success"){
-						alert(responseTxt.resposta);
+//						alert(responseTxt.resposta);
+						window.location.replace("http://localhost:8080//SistemaAvaliacao/jsp/Obrigado.jsp");
+//						$(location).prop('href', '/jsp/Obrigado.jsp')
 					}if(statusTxt == "error"){
-//						alert("Error: " + xhr.status + ": " + xhr.statusText);
+						alert("Error: " + xhr.status + ": " + xhr.statusText);
 					}
 						});
 			

@@ -2,6 +2,7 @@ package negocio;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,7 +32,7 @@ public class VisualizarFormulario implements Acao{
        TipoDeFormulario formulario = tipoDeFormularioDaoImpl.pesquisaPorId(idFormulario, session);
         
        if(formulario!=null){
-       	
+  	
        	JSONArray jsonArray = new JSONArray(); 
        	JSONObject jsonObject = new JSONObject();  
        	
@@ -42,9 +43,6 @@ public class VisualizarFormulario implements Acao{
        		jsonObject.put("nomePergunta", p.getNomePergunta());
        		jsonArray.put(jsonObject);
        	}
-		
-		
-       	
 			try {
 				response.getWriter().write(jsonArray.toString());
 			}catch(IOException e) {

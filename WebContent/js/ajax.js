@@ -141,7 +141,7 @@ $(document).ready(function() {
 				function(responseTxt, statusTxt, xhr) { 
 					if(statusTxt == "success"){
 						var formulario = responseTxt;
-						$('#tabelaFormulario > tbody').append('<tr><td>'+formulario.id+'</td><td>'+formulario.nome+'</td><td><button type="button" class="btn btn-danger" value= "'+formulario.id+'" id="removerFormulario" onclick="removeFormulario(this)">Remover</button> <button class="btn btn-info" >Alterar</button> <button type="button" class="btn btn-default btn-sm" value= "'+formulario.id+'"><span class="glyphicon glyphicon-eye-open"></span> Visualizar</button></td></tr>');
+						$('#tabelaFormulario > tbody').append('<tr><td>'+formulario.id+'</td><td>'+formulario.nome+'</td><td><button type="button" class="btn btn-danger" value= "'+formulario.id+'" id="removerFormulario" onclick="removeFormulario(this)">Remover</button> <button class="btn btn-info" >Alterar</button> <button type="button" onclick="visualizarFormulario(this)" class="btn btn-default btn-sm" value= "'+formulario.id+'"><span class="glyphicon glyphicon-eye-open"></span> Visualizar</button></td></tr>');
 						perguntas = new Array();
 						var table = $('#tabelaPergunta');
 
@@ -159,6 +159,18 @@ $(document).ready(function() {
 			
 	});	
 		
+		$('#fecharFormulario').click(function() { 
+			var table = $('#tabelaPergunta');
+
+			table.find('tr').each(function(indice){
+				var par = $(this).closest('tr'); //tr
+				  par.remove();
+			});
+			$("#nomeFormulario").val("");
+			$("#pergunta").val("");
+		});
+
+		
 		$('#closeModal').click(function() { 			
 			
 			var table = $('#tabelaVerPergunta');
@@ -169,6 +181,7 @@ $(document).ready(function() {
 				  
 			});
 			
+
 		});
 		
 		var randomnb = function(){ return Math.round(Math.random()*300)};
@@ -208,7 +221,7 @@ $(document).ready(function() {
 
 		$("#minhasEstatisticas").on('shown.bs.tab',function (e) {
 			ctx = document.getElementById("GraficoPizza").getContext("2d");
-		    PizzaChart = new Chart(ctx).Pie(data1, options);
+		    PizzaChart = new Chart(ctx).Pie(data1, options);				  
 			});
 
 			
@@ -323,8 +336,8 @@ $(document).ready(function() {
 		                data: []
 		            }
 			        ]
-			    };                
-
+			    };  
+			
 			    $("#minhasEstatisticas").on('shown.bs.tab',function (e) {
 			    	 $.ajax({
 				            type: $(this).attr('method'),
@@ -423,19 +436,26 @@ function removeFormulario(handler) {
          }				            
      });
 }
-function visualizarFormulario(handler) {
+
+function visualizarFormulario(handler) {	
+
 	var idFormulario = $(handler).val();	
 	var par = $(handler).parent().parent(); //tr
+<<<<<<< HEAD
 	$("#nomeFormularioVisualizar").prop('disable',true);
+=======
+	
+>>>>>>> e734225614823f819ff91bf2c6f57a8004bd4e12
 	 $.ajax({
          type: "get",
          url: '/SistemaAvaliacao/FrontController?acao=VisualizarFormulario',
          data: {"idFormulario":idFormulario},
          dataType: "json",
-         success: function (resultado,status) {
+         
+         success: function (resultado,status) {        
         	 $("#modalVisualizarFormulario").modal();
         	 i = 0;
-        	 $.each(resultado,function(key,value){
+        	 $.each(resultado, function(key,value){
         		 if(i == 0){
         			 $("#nomeFormularioVisualizar").val(value.nomeFormularioVisualizar);
         			 
@@ -445,10 +465,10 @@ function visualizarFormulario(handler) {
      						"<label class='radio-inline'><input type='radio' name='optradio'>Ótimo</label><label class='radio-inline'> <input type='radio' name='optradio'>Bom</label>"+
        						"<label class='radio-inline'><input type='radio' name='optradio'>Ruin</label><label class='radio-inline'> <input type='radio' name='optradio'>Péssimo</label></td>");
         		 }	 
-        	i++
+        		 i++
         	 });
+        	 
         	 },
-        	
          error: function (xhr, desc, err){	            
         	 
          }				            
